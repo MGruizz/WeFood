@@ -1,1 +1,65 @@
-<p>creacion-edicion-receta works!</p>
+
+<div class="row">
+  <h1 class="text-center"> Creacion de receta.</h1>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <form action="">
+          <div class="form-group">
+            <label for="exampleNombreReceta">Nombre de la receta</label>
+            <input type="text" class="form-control"  aria-describedby="nombreReceta" placeholder="ej: Ensalada de fruta ...">
+          </div>
+          <div class="form-group">
+            <label for="exampleDescripcionReceta">Descripcion de la receta</label>
+            <input type="text" class="form-control"  aria-describedby="descReceta">
+          </div>
+          <div class="form-group">
+            <label for="exampleIngredientesReceta">Ingredientes de la receta</label>
+            <input type="text" class="form-control"  aria-describedby="ingrReceta">
+          </div>
+          <div class="form-group">
+            <label for="examplePasosASeguir">Pasos a seguir de la receta</label>
+            <textarea name="comment"  rows="4" cols="75" class="pasosASeguir"></textarea>
+          </div>
+          <div class="row-boton row text-center ">
+            <button type="submit" class="boton-publicar btn btn-primary">Publicar</button>
+          </div>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="carrusel ">
+      <ngb-carousel >
+        <ng-template ngbSlide>
+          <div class="picsum-img-wrapper">
+            <img class="fotos" src="https://santaisabel.vtexassets.com/arquivos/ids/169527-360-360?width=360&height=360&aspect=true]" alt="Random first slide">
+          </div>
+
+        </ng-template>
+        <ng-template ngbSlide>
+          <div class="picsum-img-wrapper">
+            <img class="fotos" src="https://media.istockphoto.com/photos/pears-isolated-one-and-a-half-green-pear-fruit-with-leaf-on-white-picture-id1299073137?k=20&m=1299073137&s=612x612&w=0&h=LLW-397vmkORyyP9zCpyHCfOQYhA4Crp_Fk8QSlvdOg=" alt="Random second slide">
+          </div>
+
+        </ng-template>
+        <ng-template ngbSlide>
+          <div class="picsum-img-wrapper">
+            <img class="fotos" src="https://assets.epicurious.com/photos/57631b4eff66dde1456dfed4/master/pass/sweetened-whipped-cream.jpg" alt="Random third slide">
+          </div>
+
+        </ng-template>
+      </ngb-carousel>
+      <div class="row">
+        <div class="col">
+          <button type="button" class="btn btn-primary">Subir imagen</button>
+        </div>
+        <div class="col-2">
+          <button type="button" class="btn btn-primary">Eliminar imagen</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
