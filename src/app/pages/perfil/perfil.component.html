@@ -31,7 +31,7 @@
         <button type="button" class="boton-a btn btn-secondary">Editar perfil</button>
       </div>
       <div class="separacion row">
-        <button type="button" class="boton-b btn btn-secondary">Publicar receta</button>
+        <button type="button" class="boton-b btn btn-secondary" routerLink="/creacion-edicion-receta">Publicar receta</button>
       </div>
       <div class="separacion row">
         Redes
@@ -55,43 +55,13 @@
     </div>
   </div>
   <div class="separacion row">
-    <div class="col">
+    <div class="col " *ngFor="let receta of recetas; index as i">
       <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="https://cdn.discordapp.com/attachments/1013532354725281872/1020105421404508190/WeFood_Mascot_Sad.png" alt="Card image cap">
+        <img class="card-img-top" [src]= receta.imagenes[0] alt="Card image cap">
         <div class="card-body">
-          <h5 class="card-title">Nombre receta</h5>
-          <p class="card-text">Descripción de la receta.</p>
-          <a href="#" class="boton-receta btn btn-primary">Ver receta</a>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="https://cdn.discordapp.com/attachments/1013532354725281872/1020105421404508190/WeFood_Mascot_Sad.png" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Nombre receta</h5>
-          <p class="card-text">Descripción de la receta.</p>
-          <a href="#" class="boton-receta btn btn-primary">Ver receta</a>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="https://cdn.discordapp.com/attachments/1013532354725281872/1020105421404508190/WeFood_Mascot_Sad.png" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Nombre receta</h5>
-          <p class="card-text">Descripción de la receta.</p>
-          <a href="#" class="boton-receta btn btn-primary">Ver receta</a>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="https://cdn.discordapp.com/attachments/1013532354725281872/1020105421404508190/WeFood_Mascot_Sad.png" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Nombre receta</h5>
-          <p class="card-text">Descripción de la receta.</p>
-          <a href="#" class="boton-receta btn btn-primary">Ver receta</a>
+          <h5 class="card-title">{{receta.nombreReceta}}</h5>
+          <p class="card-text">{{receta.descripcionReceta}}</p>
+          <a href="#" class="boton-receta btn btn-primary" routerLink="/info-receta">Ver receta</a>
         </div>
       </div>
     </div>

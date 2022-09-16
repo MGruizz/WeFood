@@ -9,6 +9,7 @@ import { CreacionUsuarioComponent } from './pages/creacion-usuario/creacion-usua
 
 const routes: Routes = [
   {path:'', component: InicioComponent },
+  {path:'inicio', component: InicioComponent },
   {path:'perfil', component: PerfilComponent },
   {path:'login', component: LoginComponent},
   {path:'info-receta', component: InfoRecetaComponent},
