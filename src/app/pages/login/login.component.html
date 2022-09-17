@@ -3,31 +3,42 @@
     <div class="col-6 mt-5 ms-5 pt-5 ps-5 mb-5">
       <div class="carta card w-75 shadow p-3 mb-5 bg-white rounded">
         <div class="card-body">
-          <div class="row text-center mb-5 mt-3">
-            <img src="../../assets/imagenes/WeFood_Logo.png" alt="Wefood logo" class="fotito " >
+          <div class="row ">
+            <img src="../../assets/imagenes/WeFood_Logo.png" alt="Wefood logo" class="fotito img-responsive" >
           </div>
-          <div class="row text-center mb-2">
-            <h3>Inicia sesion en WeFood.</h3>
+          <div class="row ">
+            <div class="text-center mb-4 mt-4">
+              <h3>Inicia sesion en WeFood.</h3>
+            </div>
           </div>
           <form class="formularioLogin">
             <div class="input-container">
-              <div class="row mb-2 ps-5 pe-5">
-                <label>Nombre de usuario </label>
+              <div class="row ">
+                <div class="mb-2 ps-5 pe-5">
+                  <label>Nombre de usuario </label>
+                </div>
               </div>
-              <div class="row mb-2 ps-5 pe-5">
-                <input type="text" class="form-control" placeholder="Nombre de usuario"/>
+              <div class="row ">
+                <div class="mb-2 ps-5 pe-5">
+                  <input type="text" class="form-control" placeholder="Nombre de usuario"/>
+                </div>
               </div>
             </div>
             <div class="input-container">
-              <div class="row mb-2 ps-5 pe-5">
-                <label>Contraseña </label>
+              <div class="row">
+                <div class="mb-2 ps-5 pe-5">
+                  <label>Contraseña </label>
+                </div>
               </div>
-              <div class="row mb-4 ps-5 pe-5">
-                <input type="password" class="form-control" name="pass" placeholder="Contraseña"required />
+              <div class="row">
+                <div class="mb-4 ps-5 pe-5">
+                  <input type="password" class="form-control" name="pass" placeholder="Contraseña"required />
+                </div>
+
               </div>
             </div>
             <div class="button-enviar text-center mb-4">
-              <button type="button" class="iniciar-sesion btn btn-primary btn-lg">Iniciar Sesion</button>
+              <button type="button" class="iniciar-sesion btn btn-primary btn-lg" routerLink="/inicio">Iniciar Sesion</button>
             </div>
           </form>
         </div>
