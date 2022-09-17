@@ -4,7 +4,7 @@
     <div class="col">
       Foto usuario
     </div>
-    <div class="col-5">
+    <div class="col-7">
       Información personal
     </div>
     <div class="col">
@@ -14,7 +14,7 @@
     <div class="col">
       <img src="https://styles.redditmedia.com/t5_4z9yto/styles/communityIcon_xrgom2rs5tk71.png" alt="..." class="img-thumbnail">
     </div>
-    <div class="col-5">
+    <div class="col-7">
       <div class="row">
         <div class="col-sm-18">
           <div class="card">
@@ -30,14 +30,14 @@
       <div class="row">
         <button type="button" class="boton-a btn btn-secondary">Editar perfil</button>
       </div>
-      <div class="separacion row">
-        <button type="button" class="boton-b btn btn-secondary" routerLink="/creacion-edicion-receta">Publicar receta</button>
-      </div>
-      <div class="separacion row">
-        Redes
+      <div class="row">
+        <button type="button" class="mt-3 boton-a btn btn-secondary" routerLink="/creacion-edicion-receta">Publicar receta</button>
       </div>
       <div class="row">
-        <button type="button" class="boton-c btn btn-secondary">
+        <p class="mt-3 card-text">Redes</p>
+      </div>
+      <div class="row">
+        <button type="button" class="btn-sml text-center rounded">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
             <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
           </svg>
@@ -54,9 +54,9 @@
     <div class="col">
     </div>
   </div>
-  <div class="separacion row">
+  <div class="row">
     <div class="col " *ngFor="let receta of recetas; index as i">
-      <div class="card" style="width: 18rem;">
+      <div class="mt-3 card" style="width: 18rem;">
         <img class="card-img-top" [src]= receta.imagenes[0] alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">{{receta.nombreReceta}}</h5>
@@ -69,8 +69,8 @@
   <div class="row">
     <div class="col">
     </div>
-    <div class="columna-boton col-5">
-      <a href="#" class="boton-vermas btn btn-primary">Ver más</a>
+    <div class="col-5">
+      <a href="#" class="mt-3 boton-vermas btn btn-primary text-center">Ver más</a>
     </div>
     <div class="col">
     </div>
