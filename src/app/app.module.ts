@@ -12,6 +12,7 @@ import { CreacionEdicionRecetaComponent } from './pages/creacion-edicion-receta/
 import { CreacionUsuarioComponent } from './pages/creacion-usuario/creacion-usuario.component';
 import { PassRecoveryComponent } from './pages/pass-recovery/pass-recovery.component';
 import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { HeaderComponent } from './components/header/header.component';
     CreacionUsuarioComponent,
     PassRecoveryComponent,
     HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
