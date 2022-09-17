@@ -1,25 +1,24 @@
-
 <div class="row">
-  <h1 class="text-center"> Creacion de receta.</h1>
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
         <form action="">
+          <h2 class="text-center">Nueva receta</h2>
           <div class="form-group">
             <label for="exampleNombreReceta">Nombre de la receta</label>
-            <input type="text" class="form-control"  aria-describedby="nombreReceta" placeholder="ej: Ensalada de fruta ...">
+            <input type="text" class="form-control"  aria-describedby="nombreReceta" placeholder="ej: Ensalada de fruta...">
           </div>
-          <div class="form-group">
+          <div class="form-group pt-3">
             <label for="exampleDescripcionReceta">Descripcion de la receta</label>
-            <input type="text" class="form-control"  aria-describedby="descReceta">
+            <input type="text" class="form-control"  aria-describedby="descReceta" placeholder="ej: Una ensalada con frutas...">
           </div>
-          <div class="form-group">
-            <label for="exampleIngredientesReceta">Ingredientes de la receta</label>
-            <input type="text" class="form-control"  aria-describedby="ingrReceta">
+          <div class="form-group pt-3">
+            <label for="exampleIngredientes">Ingredientes de la receta</label>
+            <textarea class="form-control" id="exampleIngredientes" rows="3" placeholder="ej: Frutos silvestres, duraznos..."></textarea>
           </div>
-          <div class="form-group">
+          <div class="form-group pt-3">
             <label for="examplePasosASeguir">Pasos a seguir de la receta</label>
-            <textarea name="comment"  rows="4" cols="75" class="pasosASeguir"></textarea>
+            <textarea class="form-control" id="examplePasosASeguir" rows="3" placeholder="ej: Primero lavamos las frutas, luego las cortamos en rodajas..."></textarea>
           </div>
           <div class="row-boton row text-center ">
             <button type="submit" class="boton-publicar btn btn-primary">Publicar</button>
@@ -30,34 +29,23 @@
 
     </div>
   </div>
-  <div class="col-sm-6">
-    <div class="carrusel ">
-      <ngb-carousel >
-        <ng-template ngbSlide>
-          <div class="picsum-img-wrapper">
-            <img class="fotos" src="https://santaisabel.vtexassets.com/arquivos/ids/169527-360-360?width=360&height=360&aspect=true]" alt="Random first slide">
-          </div>
-
-        </ng-template>
-        <ng-template ngbSlide>
-          <div class="picsum-img-wrapper">
-            <img class="fotos" src="https://media.istockphoto.com/photos/pears-isolated-one-and-a-half-green-pear-fruit-with-leaf-on-white-picture-id1299073137?k=20&m=1299073137&s=612x612&w=0&h=LLW-397vmkORyyP9zCpyHCfOQYhA4Crp_Fk8QSlvdOg=" alt="Random second slide">
-          </div>
-
-        </ng-template>
-        <ng-template ngbSlide>
-          <div class="picsum-img-wrapper">
-            <img class="fotos" src="https://assets.epicurious.com/photos/57631b4eff66dde1456dfed4/master/pass/sweetened-whipped-cream.jpg" alt="Random third slide">
-          </div>
-
-        </ng-template>
-      </ngb-carousel>
-      <div class="row">
-        <div class="col">
-          <button type="button" class="btn btn-primary">Subir imagen</button>
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <div class="row pt-3">
+          <img src="../../assets/imagenes/choripan.jpg" class="imagen" alt="Responsive image">
         </div>
-        <div class="col-2">
-          <button type="button" class="btn btn-primary">Eliminar imagen</button>
+        <div class="row pt-3">
+          <div class="col ms-3">
+            <div class="row-boton row text-center">
+              <button type="submit" class="boton-cargar btn btn-primary">Cargar imagen</button>
+            </div>
+          </div>
+          <div class="col ms-3 me-3">
+            <div class="row-boton row text-center">
+              <button type="submit" class="boton-eliminar btn btn-primary">Eliminar imagen</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

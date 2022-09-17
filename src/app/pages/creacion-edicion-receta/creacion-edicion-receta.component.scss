@@ -1,3 +1,9 @@
+.imagen{
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .card{
   margin-top: 5rem;
   margin-left: 10rem;
@@ -7,6 +13,18 @@
 .boton-publicar{
   color: white;
   background-color: orange;
+  font-weight: 700;
+}
+
+.boton-cargar{
+  color: white;
+  background-color: #1cdb1c;
+  font-weight: 700;
+}
+
+.boton-eliminar{
+  color: white;
+  background-color: #ff0000;
   font-weight: 700;
 }
 
