@@ -21,4 +21,13 @@
   height: 100% !important;
 }
 
+.img-frutas {
+  display: none;
+}
 
+@media(min-width: 746px){
+  .img-frutas{
+    display:block;
+  }
+
+}
