@@ -1,33 +1,18 @@
-.crear-cuenta{
-  border-color: lightgray;
-}
-
-.fotito{
-  width: 30rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.iniciar-sesion{
-  font-weight: 600;
-  width: 50%;
-  color: #ffffff;
-  background-color: #ff8d04;
-  border: none;
-  border-radius: 1rem;
-}
-.pagina-general{
+body{
   background-color: rgb(255, 230, 217);
-  height: 100% !important;
 }
 
-.img-frutas {
-  display: none;
+.bg{
+  background-position: center center;
+  background-image: url("../../../assets/imagenes/fruits.jpg");
+  background-size: cover;
 }
 
-@media(min-width: 746px){
-  .img-frutas{
-    display:block;
-  }
-
+.login{
+ background-color: aliceblue;
 }
+
+.boton-inicioSesion{
+  background-color: #ff8d04;
+}
+
