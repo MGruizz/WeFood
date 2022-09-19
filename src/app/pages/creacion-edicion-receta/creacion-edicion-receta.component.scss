@@ -1,0 +1,60 @@
+.container-fluid{
+  background-color: rgba(253, 227, 207, 0.76);
+  height: 100% !important;
+}
+
+.imagen{
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card{
+  margin-top: 5rem;
+  margin-left: 10rem;
+  margin-right: 10rem;
+}
+
+.boton-publicar{
+  color: white;
+  background-color: orange;
+  font-weight: 700;
+}
+
+.boton-cargar{
+  color: black;
+  font-weight: 700;
+  border-color: lavender;
+}
+
+.boton-eliminar{
+  color: black;
+  font-weight: 700;
+  border-color: lavender;
+}
+
+.row-boton{
+  padding-top: 1rem;
+  padding-left: 30%;
+  margin-right: 30%;
+}
+
+.pasosASeguir{
+  resize: none;
+}
+h1{
+  margin-top: 3rem;
+}
+.carrusel{
+  margin-top: 5rem;
+  margin-left: 10rem;
+  margin-right: 10rem;
+  background-color: lightsalmon;
+  border-style: groove;
+}
+
+.fotos{
+  width: 10rem;
+  margin-left: 10rem;
+  margin-right: 10rem;
+}

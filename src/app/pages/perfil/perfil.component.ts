@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Recipe} from "../../services/recipe/recipe.type";
+import {RecipesService} from "../../services/recipe/recipes.service";
 
 @Component({
   selector: 'app-perfil',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilComponent implements OnInit {
 
-  constructor() { }
+  recetas : Recipe[] = [];
+  constructor(private recipeService:RecipesService) { }
 
   ngOnInit(): void {
+    this.recetas = this.recipeService.recetas;
   }
 
 }

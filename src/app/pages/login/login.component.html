@@ -1,1 +1,37 @@
-<p>login works!</p>
+<body>
+  <div class="container w-75 rounded shadow rounded shadow">
+    <div class="pagina-general row align-items-stretch">
+      <div class="col login p-5 rounded-end">
+        <div class="text-center">
+          <img src="../../assets/imagenes/WeFood_Logo.png" alt="Wefood logo" class="img-fluid " >
+        </div>
+        <h2 class="fw-bold text-center py-5">
+          Inicia sesion en WeFood.
+        </h2>
+        <form class="formularioLogin">
+          <div class="mb-4">
+            <label for="email" class="form-label">Nombre de usuario </label>
+            <input type="email" class="form-control" placeholder="Nombre de usuario"/>
+          </div>
+          <div class="mb-4">
+            <label for="password" class="form-label">Contraseña </label>
+            <input type="password" class="form-control" placeholder="Contraseña"/>
+          </div>
+          <div class="mb-4 form-check">
+            <input type="checkbox" name="connected" class="form-check-input"/>
+            <label for="connected" name="connected" class="form-check-label">Mantener sesion iniciada </label>
+          </div>
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary boton-inicioSesion" routerLink="/inicio">Iniciar Sesion</button>
+          </div>
+          <div class="my-3">
+            <span>¿Eres nuevo en WeFood? <a href="#" routerLink="/creacion-usuario">Registrate</a></span>
+          </div>
+        </form>
+      </div>
+      <div class="col bg d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded">
+      </div>
+    </div>
+  </div>
+</body>
+

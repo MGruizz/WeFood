@@ -1,1 +1,62 @@
-<p>creacion-edicion-receta works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-1 mt-4">
+      <button type="button" class="btn border-0" routerLink="/perfil" >
+        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-arrow-bar-left" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M12.5 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5zM10 8a.5.5 0 0 1-.5.5H3.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L3.707 7.5H9.5a.5.5 0 0 1 .5.5z"/>
+        </svg>
+      </button>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card shadow me-4">
+          <div class="card-body">
+            <form action="">
+              <h2 class="text-center">Nueva receta</h2>
+              <div class="form-group">
+                <label for="exampleNombreReceta">Nombre de la receta</label>
+                <input type="text" id="exampleNombreReceta" class="form-control"  aria-describedby="nombreReceta" placeholder="ej: Ensalada de fruta...">
+              </div>
+              <div class="form-group pt-3">
+                <label for="exampleDescripcionReceta">Descripcion de la receta</label>
+                <input type="text" id="exampleDescripcionReceta" class="form-control"  aria-describedby="descReceta" placeholder="ej: Una ensalada con frutas...">
+              </div>
+              <div class="form-group pt-3">
+                <label for="exampleIngredientes">Ingredientes de la receta</label>
+                <textarea class="form-control" id="exampleIngredientes" rows="3" placeholder="ej: Frutos silvestres, duraznos..."></textarea>
+              </div>
+              <div class="form-group pt-3">
+                <label for="examplePasosASeguir">Pasos a seguir de la receta</label>
+                <textarea class="form-control" id="examplePasosASeguir" rows="3" placeholder="ej: Primero lavamos las frutas, luego las cortamos en rodajas..."></textarea>
+              </div>
+              <div class="row-boton row text-center ">
+                <button type="submit" class="boton-publicar btn btn-primary">Publicar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="card shadow">
+          <div class="card-body">
+            <div class="row pt-3">
+              <img src="../../assets/imagenes/choripan.jpg" class="imagen" alt="Responsive image">
+            </div>
+            <div class="row pt-3">
+              <div class="col ms-3">
+                <div class="row-boton row text-center">
+                  <button type="submit" class="boton-cargar btn shadow">Cargar imagen</button>
+                </div>
+              </div>
+              <div class="col ms-2 me-4 ">
+                <div class="row-boton row text-center">
+                  <button type="submit" class="boton-eliminar btn shadow">Eliminar imagen</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
