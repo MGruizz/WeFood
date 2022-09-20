@@ -13,6 +13,7 @@ import { CreacionUsuarioComponent } from './pages/creacion-usuario/creacion-usua
 import { PassRecoveryComponent } from './pages/pass-recovery/pass-recovery.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -27,11 +28,12 @@ import { FooterComponent } from './components/footer/footer.component';
     HeaderComponent,
     FooterComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        NgbModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

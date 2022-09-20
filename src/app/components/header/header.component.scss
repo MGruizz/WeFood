@@ -1,5 +1,7 @@
+@import '../../../environments/variables';
+
 nav{
-  background-color: #91daae;
+  background-color: $color-principal;
 }
 
 .boton-buscar{
