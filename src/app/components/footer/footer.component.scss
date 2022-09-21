@@ -1,5 +1,7 @@
+@import '../../../environments/variables';
+
 .container-fluid{
-  background-color: #91daae;
+  background-color: $color-principal;
 }
 .busqueda{
   margin-top:0.5rem;
