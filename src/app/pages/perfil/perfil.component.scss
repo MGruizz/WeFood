@@ -1,7 +1,7 @@
 @import '../../../environments/variables';
 
-.pagina-general{
-  background-color: #efefef;
+body{
+  background-color: $color-hueso;
 }
 
 .boton-a{
@@ -33,9 +33,5 @@
   margin-top: 1rem;
   padding-left: 15%;
   padding-right: 15%;
-}
-
-.container{
-  padding-top:8rem;
 }
 
