@@ -1,28 +1,32 @@
+@import '../../../environments/variables';
+
 .pagina-general{
   background-color: #efefef;
 }
 
 .boton-a{
   color: white;
-  background-color: #ff8d04;
+  background-color: $color-negro;
 }
 
 .btn-sml{
-  color: white;
-  background-color: #1cbd1c;
+  color: $color-negro;
+  background-color: $color-blanco;
   height: 6vh;
   width: 6vh;
 }
 
 .boton-receta{
-  color: white;
-  background-color: #ff8d04;
+  color: $color-blanco;
+  background-color: $color-negro;
+  border-style: none;
 }
 
 .boton-vermas{
   margin-left: 41%;
-  color: white;
-  background-color: #1cbd1c;
+  color: $color-negro;
+  background-color: $color-hueso;
+  border-style: none;
 }
 
 .columna-boton{

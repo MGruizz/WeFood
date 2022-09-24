@@ -1,13 +1,10 @@
 @import '../../../environments/variables';
-
 .container-fluid{
-  background-color: $color-principal;
+  background-color: $color-naranjo;
 }
-.busqueda{
-  margin-top:0.5rem;
+p,a{
+  color: $color-blanco;
 }
 
-.logo{
-  max-width: 135px;
-  height: auto;
-}
+
+
