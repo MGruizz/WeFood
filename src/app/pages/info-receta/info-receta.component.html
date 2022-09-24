@@ -1,37 +1,49 @@
 <app-header></app-header>
-<div class="row descripcion textarea">
-  <div class="col">
-    <img src="...">
-  </div>
-  <div class="col-8">
-    <div class="form-group">
-      <label for="exampleFormControlTextarea1">Descripcion</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="7" placeholder="Descripcion"></textarea>
+<body>
+  <div class="container">
+    <div class="row">
+      <div clas="col mx-auto">
+        <div class="h1 text-center mt-3 pb-4">
+          {{receta.nombreReceta}}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-lg-4 col-sm-12">
+        <img [src]= receta.imagenes[0] class="w-100 mb-3">
+      </div>
+      <div class="col">
+        <div class="form-group mb-5">
+          <label for="exampleFormControlTextarea1">Descripcion</label>
+          <textarea readonly class="form-control" id="exampleFormControlTextarea1" rows="7" placeholder="Pasos a seguir">{{receta.descripcionReceta}}</textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group mb-5">
+          <label for="exampleFormControlTextarea2">Ingredientes</label>
+          <textarea readonly class="form-control" id="exampleFormControlTextarea2" rows="12" placeholder="Pasos a seguir">{{receta.ingredientes}}</textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group mb-5">
+          <label for="exampleFormControlTextarea3">Pasos a seguir</label>
+          <textarea readonly class="form-control" id="exampleFormControlTextarea3" rows="12" placeholder="Pasos a seguir">{{receta.pasosReceta}}</textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group mb-5">
+        <label for="exampleFormControlTextarea4">Comentarios</label>
+        <textarea readonly class="form-control" id="exampleFormControlTextarea4" rows="7" placeholder="Comentarios">
+        </textarea>
+      </div>
     </div>
   </div>
-</div>
-<div class="row textarea">
-  <div class="col">
-    <div class="form-group">
-      <label for="exampleFormControlTextarea1">Ingredientes</label>
-      <textarea class="form-control" id="exampleFormControlTextarea2" rows="7" placeholder="Ingredientes"></textarea>
-    </div>
-  </div>
-</div>
-<div class="row textarea">
-  <div class="col">
-    <div class="form-group">
-      <label for="exampleFormControlTextarea1">Pasos a seguir</label>
-      <textarea class="form-control" id="exampleFormControlTextarea3" rows="12" placeholder="Pasos a seguir"></textarea>
-    </div>
-  </div>
-</div>
-<div class="row textarea">
-    <div class="form-group">
-      <label for="exampleFormControlTextarea1">Comentarios</label>
-      <textarea class="form-control" id="exampleFormControlTextarea4" rows="7" placeholder="Comentarios"></textarea>
-    </div>
-</div>
+</body>
 <app-footer></app-footer>
 
 

@@ -1,6 +1,8 @@
+@import '../../../environments/variables';
 body{
   padding-top:1.5rem;
-  background-color: rgb(255, 230, 217);
+  background-color: $color-hueso;
+  height: 100vh !important;
 }
 
 .bg{
@@ -14,6 +16,6 @@ body{
 }
 
 .boton-inicioSesion{
-  background-color: #ff8d04;
+  background-color: $color-negro;
 }
 

@@ -1,8 +1,9 @@
-.descripcion{
-  margin-top: 4rem;
+@import '../../../environments/variables';
+
+body{
+  background-color: $color-hueso;
 }
-.textarea{
-  margin-bottom:3rem;
-  padding-left: 10rem;
-  padding-right: 10rem;
+
+textarea{
+  resize: none;
 }
