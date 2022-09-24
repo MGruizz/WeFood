@@ -6,13 +6,13 @@
   padding-right: 10%;
 }
 
-.container{
-  margin-right:-5rem
-}
 .btn{
   background-color: $color-negro;
 }
 .bg{
   background-image: url('https://media-cldnry.s-nbcnews.com/image/upload/newscms/2020_25/1581912/ribeye-salad-today-061920-tease.jpg');
+  background-position: center center;
   background-size: cover;
+  height: 30rem;
+  width: 100%;
 }
