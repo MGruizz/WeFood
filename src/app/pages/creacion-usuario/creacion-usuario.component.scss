@@ -1,3 +1,5 @@
+@import '../../../environments/variables';
+
 .centered{
   position: fixed;
   top: 50%;
@@ -8,14 +10,22 @@
 .boton-registrarse{
   padding-left: 15%;
   padding-right: 15%;
-  color: white;
-  background-color: #1cbd1c;
+  margin-bottom: 2rem;
+  color: $color-blancopuro;
+  background-color: $color-verdeclaro;
+  border: none;
 }
-
 
 body{
   height: 100vh !important;
-  background-color: #cdffcd;
+  padding-top: 1.5rem;
+  background-color: $color-hueso;
+  background-image: url(../../../assets/imagenes/WeFood_Wallpaper_Light.png);
+  background-size: contain;
+}
+
+.registro{
+  background-color: $color-blancopuro;
 }
 
 
