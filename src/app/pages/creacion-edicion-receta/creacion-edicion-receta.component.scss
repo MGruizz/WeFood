@@ -1,6 +1,8 @@
-.container-fluid{
-  background-color: rgba(253, 227, 207, 0.76);
+@import '../../../environments/variables';
+
+body{
   height: 100% !important;
+  background-color: $color-hueso;
 }
 
 .imagen{
@@ -16,9 +18,10 @@
 }
 
 .boton-publicar{
-  color: white;
+  color: $color-blancopuro;
   background-color: orange;
   font-weight: 700;
+  border: none;
 }
 
 .boton-cargar{
