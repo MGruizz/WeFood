@@ -19,7 +19,7 @@ export class CreacionUsuarioComponent implements OnInit {
         Validators.required
       ])],
       email: ['', Validators.compose([
-        Validators.pattern(/^.{5,}$/),
+        Validators.pattern(/^.[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/),
         Validators.required
       ])],
       password: ['', Validators.compose([
