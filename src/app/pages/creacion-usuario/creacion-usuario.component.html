@@ -11,13 +11,30 @@
         <form class="formularioCreacionUsuario" [formGroup]="formularioCreacionUsuarioForm" (ngSubmit)="registrarse()">
           <div class="pt-3 form-group">
             <label for="username">Nombre de usuario</label>
+            <span *ngIf="formularioCreacionUsuarioForm.controls['username'].invalid && (formularioCreacionUsuarioForm.controls['username'].dirty || formularioCreacionUsuarioForm.controls['username'].touched)" class="alert">
+              <small class="mensajeError" *ngIf="formularioCreacionUsuarioForm.controls['username'].errors?.['required']">
+                * Ingrese nombre de usuario.
+              </small>
+              <small class="mensajeError" *ngIf="formularioCreacionUsuarioForm.controls['username'].errors?.['pattern']">
+                * Supero el maximo de 20 caracteres.
+              </small>
+            </span>
             <input type="username" class="form-control" id="username" aria-describedby="usernameHelp"
                    placeholder="Ingrese su nombre de usuario" formControlName="username">
             <small id="usernameHelp" class="form-text text-muted">Los usuarios de la plataforma podrán ver este
               nombre.</small>
+
           </div>
           <div class="pt-3 form-group">
             <label for="email">Correo electrónico</label>
+            <span *ngIf="formularioCreacionUsuarioForm.controls['email'].invalid && (formularioCreacionUsuarioForm.controls['email'].dirty || formularioCreacionUsuarioForm.controls['email'].touched)" class="alert">
+              <small class="mensajeError" *ngIf="formularioCreacionUsuarioForm.controls['email'].errors?.['required']">
+                * Ingrese su correo electronico.
+              </small>
+              <small class="mensajeError" *ngIf="formularioCreacionUsuarioForm.controls['email'].errors?.['pattern']">
+                * Escriba un correo valido.
+              </small>
+            </span>
             <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
                    placeholder="Ingrese su dirección de correo electrónico" formControlName="email">
             <small id="emailHelp" class="form-text text-muted">Nunca compartiremos su correo electrónico con nadie sin
@@ -25,12 +42,28 @@
           </div>
           <div class="pt-3 form-group">
             <label for="password">Contraseña</label>
+            <span *ngIf="formularioCreacionUsuarioForm.controls['password'].invalid && (formularioCreacionUsuarioForm.controls['password'].dirty || formularioCreacionUsuarioForm.controls['password'].touched)" class="alert">
+              <small class="mensajeError" *ngIf="formularioCreacionUsuarioForm.controls['password'].errors?.['required']">
+                * Ingrese su contraseña.
+              </small>
+              <small class="mensajeError" *ngIf="formularioCreacionUsuarioForm.controls['password'].errors?.['pattern']">
+                * Debe tener mas de 5 caracteres.
+              </small>
+            </span>
             <input type="password" class="form-control" id="password"
                    placeholder="Ingrese su contraseña" formControlName="password">
             <small id="passwordHelp" class="form-text text-muted">Su contraseña debe contener un mínimo de 5 carácteres.</small>
           </div>
           <div class="pt-3 form-group">
             <label for="confirmPassword">Repita su contraseña</label>
+            <span *ngIf="formularioCreacionUsuarioForm.controls['confirmPassword'].invalid && (formularioCreacionUsuarioForm.controls['confirmPassword'].dirty || formularioCreacionUsuarioForm.controls['confirmPassword'].touched)" class="alert">
+              <small class="mensajeError" *ngIf="formularioCreacionUsuarioForm.controls['confirmPassword'].errors?.['required']">
+                * Ingrese su contraseña.
+              </small>
+              <small class="mensajeError" *ngIf="formularioCreacionUsuarioForm.controls['confirmPassword'].errors?.['checkPasswords']">
+                * Su contraseña debe coincidir.
+              </small>
+            </span>
             <input type="password" class="form-control" id="confirmPassword"
                      placeholder="Repita su contraseña" formControlName="confirmPassword">
           </div>
