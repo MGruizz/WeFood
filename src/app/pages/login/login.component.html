@@ -11,10 +11,26 @@
         <form class="formularioLogin" [formGroup]="formularioLoginForm" (ngSubmit)="iniciarSesion()">
           <div class="mb-4">
             <label class="form-label">Nombre de usuario </label>
+            <span *ngIf="formularioLoginForm.controls['userName'].invalid && (formularioLoginForm.controls['userName'].dirty || formularioLoginForm.controls['userName'].touched)" class="alert">
+              <small class="mensajeError" *ngIf="formularioLoginForm.controls['userName'].errors?.['required']">
+                * Ingrese su nombre de usuario.
+              </small>
+              <small class="mensajeError" *ngIf="formularioLoginForm.controls['userName'].errors?.['pattern']">
+                * Superó el máximo de 20 carácteres.
+              </small>
+            </span>
             <input type="text" class="form-control" placeholder="Nombre de usuario" formControlName="userName"/>
           </div>
           <div class="mb-4">
             <label class="form-label">Contraseña </label>
+            <span *ngIf="formularioLoginForm.controls['password'].invalid && (formularioLoginForm.controls['password'].dirty || formularioLoginForm.controls['password'].touched)" class="alert">
+              <small class="mensajeError" *ngIf="formularioLoginForm.controls['password'].errors?.['required']">
+                * Ingrese su contraseña.
+              </small>
+              <small class="mensajeError" *ngIf="formularioLoginForm.controls['password'].errors?.['pattern']">
+                * Debe tener mas de 5 caracteres.
+              </small>
+            </span>
             <input type="password" class="form-control" placeholder="Contraseña" formControlName="password"/>
           </div>
           <div class="mb-4 form-check">
@@ -22,7 +38,7 @@
             <label name="connected" class="form-check-label">Mantener sesión iniciada </label>
           </div>
           <div class="d-grid">
-            <button type="submit" class="btn btn-primary boton-inicioSesion">Iniciar Sesión</button>
+            <button type="submit" class="btn btn-primary boton-inicioSesion" [disabled]="!formularioLoginForm.valid">Iniciar Sesión</button>
           </div>
           <div class="my-3">
             <span>¿Eres nuevo en WeFood? <a href="#" routerLink="/creacion-usuario">Regístrate</a></span>
