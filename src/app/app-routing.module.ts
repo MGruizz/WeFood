@@ -8,7 +8,7 @@ import { CreacionEdicionRecetaComponent } from './pages/creacion-edicion-receta/
 import { CreacionUsuarioComponent } from './pages/creacion-usuario/creacion-usuario.component';
 
 const routes: Routes = [
-  {path:'', component: InicioComponent },
+  {path:'', component: LoginComponent },
   {path:'inicio', component: InicioComponent },
   {path:'perfil', component: PerfilComponent },
   {path:'login', component: LoginComponent},
