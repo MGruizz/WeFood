@@ -1,27 +1,35 @@
-# WeFood
+<h1 align="center">WeFood</h1>
+<p align="center">
+  <a href="https://github.com/MGruizz/WeFood"><strong>Explorar el proyecto »</strong></a>
+</p>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1.
+<div align="center">
+  <a href="https://github.com/MGruizz/WeFood">
+    <img src="https://github.com/MGruizz/WeFood/tree/master/src/assets/imagenes/WeFood_Logo_Edit.png" alt="Logo" width="80" height="80">
+  </a>
+</div>
 
-## Development server
+## Acerca del proyecto
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Aplicación web tipo red social sobre recetas saludables, en la que los usuarios pueden publicar sus recetas, ver las de otras personas e interactuar entre sí.
+Cuenta con opciones de creación de cuenta, inicio de sesión, acceso a perfil de usuario, publicación y edición de receta, y visualización de recetas publicadas en la aplicación.
 
-## Code scaffolding
+## Detalles del código
+Las vistas se encuentran en src/app/pages. La aplicación cuenta con 2 formularios reactivos disponibles en las vistas de [login](https://github.com/MGruizz/WeFood/tree/master/src/app/pages/login) y [creacion-usuario](https://github.com/MGruizz/WeFood/tree/master/src/app/pages/creacion-usuario).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Tecnologias
 
-## Build
+En esta sección estarán listadas las tecnologias (lenguaje, frameworks y librerías) utilizadas en este proyecto.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+* [Angular CLI](https://github.com/angular/angular-cli)
+* [TypeScript](https://www.typescriptlang.org/)
+* [Html](https://html.com/)
+* [Css](https://www.w3schools.com/css/)
 
-## Running unit tests
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Programadores
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+* Miguel Guerrero
+* Sebastián Moyano
+* Bastián Sepúlveda
