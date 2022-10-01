@@ -1,5 +1,5 @@
 <app-header></app-header>
-<body class="pb-5">
+<div class="pb-5">
   <div class="container-fluid">
     <div class="row">
       <div class="col bg d-none d-lg-block col-md-5 col-lg-5 col-xl-6">
@@ -15,14 +15,14 @@
               <img [src]= receta.imagenes[0] class="card-img-top" alt="...">
               <h5 class="card-title">{{receta.nombreReceta}}</h5>
               <p class="card-text">{{receta.descripcionReceta}}</p>
-              <a href="/info-receta" class="btn btn-primary d-grid">Ver receta</a>
+              <a routerLink="/info-receta" class="btn btn-primary d-grid">Ver receta</a>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</body>
+</div>
 
 
 

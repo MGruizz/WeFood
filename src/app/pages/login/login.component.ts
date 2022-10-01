@@ -16,7 +16,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     let form ={
-      userName : ['', Validators.required],
+      userName: ['', Validators.compose([
+        Validators.pattern(/^.{1,20}$/),
+        Validators.required
+      ])],
       password: ['', Validators.compose([
         Validators.pattern(/^.{5,}$/),
         Validators.required

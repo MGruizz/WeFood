@@ -44,7 +44,7 @@ export class CreacionUsuarioComponent implements OnInit {
     }
 
   }
-  //Verifica que las password sean iguales
+  //Verifica que las password sean iguales.
   checkPasswords(group: FormGroup):  ValidationErrors | null {
     let pass = group.controls['password'].value;
     let confirmPass = group.controls['confirmPassword'].value;
