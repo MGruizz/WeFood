@@ -15,6 +15,7 @@ export class RecipesService{
         ingredientes:'Pan Batido, Chorizo',
         pasosReceta:'Hacer el chorizo en la parrilla y meterlo al pan batio',
         imagenes:['../../assets/imagenes/choripan.jpg'],
+        autor: 'Luisito comunica',
       } as Recipe,
       {
         nombreReceta : 'Choripan',
@@ -22,6 +23,7 @@ export class RecipesService{
         ingredientes:'Pan Batido, Chorizo',
         pasosReceta:'Hacer el chorizo en la parrilla y meterlo al pan batio',
         imagenes:['../../assets/imagenes/choripan.jpg'],
+        autor: 'Luisito comunica',
       } as Recipe,
       {
         nombreReceta : 'Choripan',
@@ -29,6 +31,7 @@ export class RecipesService{
         ingredientes:'Pan Batido, Chorizo',
         pasosReceta:'Hacer el chorizo en la parrilla y meterlo al pan batio',
         imagenes:['../../assets/imagenes/choripan.jpg'],
+        autor: 'Luisito comunica',
       } as Recipe,
       {
         nombreReceta : 'Choripan',
@@ -36,6 +39,7 @@ export class RecipesService{
         ingredientes:'Pan Batido, Chorizo',
         pasosReceta:'Hacer el chorizo en la parrilla y meterlo al pan batio',
         imagenes:['../../assets/imagenes/choripan.jpg'],
+        autor: 'Luisito comunica',
       } as Recipe
     ]
   }

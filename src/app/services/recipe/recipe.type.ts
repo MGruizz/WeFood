@@ -4,4 +4,5 @@ export interface Recipe{
   ingredientes: string;
   pasosReceta: string;
   imagenes : string[];
+  autor: string;
 }
