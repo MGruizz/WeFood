@@ -8,7 +8,6 @@ import {RecipesService} from "../../services/recipe/recipes.service";
   styleUrls: ['./perfil.component.scss']
 })
 export class PerfilComponent implements OnInit {
-
   recetas : Recipe[] = [];
   constructor(private recipeService:RecipesService) { }
 

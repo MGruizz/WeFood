@@ -15,7 +15,8 @@ Aplicación web tipo red social sobre recetas saludables, en la que los usuarios
 Cuenta con opciones de creación de cuenta, inicio de sesión, acceso a perfil de usuario, publicación y edición de receta, y visualización de recetas publicadas en la aplicación.
 
 ## Detalles del código
-Las vistas se encuentran en [pages](https://github.com/MGruizz/WeFood/tree/master/src/app/pages). La aplicación cuenta con 2 formularios reactivos disponibles en las vistas de [login](https://github.com/MGruizz/WeFood/tree/master/src/app/pages/login) y [creacion-usuario](https://github.com/MGruizz/WeFood/tree/master/src/app/pages/creacion-usuario).
+Las vistas se encuentran en [pages](https://github.com/MGruizz/WeFood/tree/master/src/app/pages).
+La aplicación cuenta con 2 formularios reactivos disponibles en las vistas de [login](https://github.com/MGruizz/WeFood/tree/master/src/app/pages/login) y [creacion-usuario](https://github.com/MGruizz/WeFood/tree/master/src/app/pages/creacion-usuario).
 
 ## Tecnologias
 

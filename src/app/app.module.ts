@@ -10,7 +10,6 @@ import { LoginComponent } from './pages/login/login.component';
 import { InfoRecetaComponent } from './pages/info-receta/info-receta.component';
 import { CreacionEdicionRecetaComponent } from './pages/creacion-edicion-receta/creacion-edicion-receta.component';
 import { CreacionUsuarioComponent } from './pages/creacion-usuario/creacion-usuario.component';
-import { PassRecoveryComponent } from './pages/pass-recovery/pass-recovery.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import {ReactiveFormsModule} from "@angular/forms";
@@ -24,7 +23,6 @@ import {ReactiveFormsModule} from "@angular/forms";
     InfoRecetaComponent,
     CreacionEdicionRecetaComponent,
     CreacionUsuarioComponent,
-    PassRecoveryComponent,
     HeaderComponent,
     FooterComponent,
   ],
