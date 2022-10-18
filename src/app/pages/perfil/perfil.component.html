@@ -13,15 +13,15 @@
     </div>
     <div class="row">
       <div class="col">
-        <img src="https://styles.redditmedia.com/t5_4z9yto/styles/communityIcon_xrgom2rs5tk71.png" alt="..." title="imagen-usuario" class="img-thumbnail">
+        <img [src]=usuario.fotoPerfil alt="..." title="imagen-usuario" class="img-thumbnail">
       </div>
       <div class="col-7">
         <div class="row">
           <div class="col-sm-12">
             <div class="card">
               <div class="card-body">
-                <p class="card-text" >Nombre: Sebita Moyano </p>
-                <p class="card-text" >Descripción: Estudiante esforzado</p>
+                <p class="card-text" >Nombre: {{usuario.nombrePersona}} </p>
+                <p class="card-text" >Descripción: {{usuario.descripcionUsuario}}</p>
               </div>
             </div>
           </div>

@@ -1,5 +1,7 @@
 [
   {
+    "idAutor": 1,
+    "idReceta": 1,
     "nombreReceta": "Choripan",
     "descripcionReceta": " Pan batido con chorizo ",
     "ingredientes": "Pan Batido, Chorizo",
@@ -10,9 +12,11 @@
     "autor": "Luisito comunica"
   },
   {
-    "nombreReceta": "Choripan",
-    "descripcionReceta": " Pan batido con chorizo ",
-    "ingredientes": "Pan Batido, Chorizo",
+    "idAutor":1,
+    "idReceta": 2,
+    "nombreReceta": "Sushi de salmon",
+    "descripcionReceta": "Arroz en vuelto en alga con salmon y queso crema",
+    "ingredientes": "Arroz, Queso crema, Salmon",
     "pasosReceta": "Hacer el chorizo en la parrilla y meterlo al pan batio",
     "imagenes": [
       "../../assets/imagenes/choripan.jpg"
@@ -20,7 +24,9 @@
     "autor": "Luisito comunica"
   },
   {
-    "nombreReceta": "Choripan",
+    "idAutor": 1,
+    "idReceta": 3,
+    "nombreReceta": "Zapallo italiano",
     "descripcionReceta": " Pan batido con chorizo ",
     "ingredientes": "Pan Batido, Chorizo",
     "pasosReceta": "Hacer el chorizo en la parrilla y meterlo al pan batio",

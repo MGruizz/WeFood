@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Recipe} from "../../services/recipe/recipe.type";
 import {RecipesService} from "../../services/recipe/recipes.service";
+import {UserService} from "../../services/user/user.service";
+import {UserLogeado} from "../../services/user/user.type";
 
 @Component({
   selector: 'app-perfil',
@@ -9,10 +11,30 @@ import {RecipesService} from "../../services/recipe/recipes.service";
 })
 export class PerfilComponent implements OnInit {
   recetas : Recipe[] = [];
-  constructor(private recipeService:RecipesService) { }
+  usuario: UserLogeado= {} as UserLogeado;
+
+  constructor(private recipeService:RecipesService, private userService:UserService) {
+
+  }
 
   ngOnInit(): void {
-    this.recetas = this.recipeService.recetas;
+    let aux=0;
+    for (let user of this.userService.usuariosLogeados) {
+      if (user.idUsuario == 1){
+        this.usuario = user;
+
+      }
+
+    }
+    for (let i in this.recipeService.recetas) {
+      if (this.usuario.idUsuario== this.recipeService.recetas[i].idAutor){
+        this.recetas[aux] = this.recipeService.recetas[i];
+        aux++;
+      }
+
+    }
+    console.log(this.recetas)
+
   }
 
 }
