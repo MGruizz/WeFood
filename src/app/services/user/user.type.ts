@@ -12,7 +12,7 @@ export interface UserLogeado{
   contrasena: string;
   nombrePersona:string;
   descripcionUsuario: string;
-  recetas: Recipe[];
+  recetas?: Recipe[];
   redesSociales?: RedSocial[];
   fotoPerfil: string;
 }

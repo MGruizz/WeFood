@@ -1,5 +1,6 @@
 import {Recipe} from "./recipe.type";
 import {Injectable} from "@angular/core";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -7,42 +8,10 @@ import {Injectable} from "@angular/core";
 
 export class RecipesService{
   recetas : Recipe[] = [];
-  constructor() {
-    this.recetas = [
-      {
-        nombreReceta : 'Choripan',
-        descripcionReceta: ' Pan batido con chorizo ',
-        ingredientes:'Pan Batido, Chorizo',
-        pasosReceta:'Hacer el chorizo en la parrilla y meterlo al pan batio',
-        imagenes:['../../assets/imagenes/choripan.jpg'],
-        autor: 'Luisito comunica',
-      } as Recipe,
-      {
-        nombreReceta : 'Choripan',
-        descripcionReceta: ' Pan batido con chorizo ',
-        ingredientes:'Pan Batido, Chorizo',
-        pasosReceta:'Hacer el chorizo en la parrilla y meterlo al pan batio',
-        imagenes:['../../assets/imagenes/choripan.jpg'],
-        autor: 'Luisito comunica',
-      } as Recipe,
-      {
-        nombreReceta : 'Choripan',
-        descripcionReceta: ' Pan batido con chorizo ',
-        ingredientes:'Pan Batido, Chorizo',
-        pasosReceta:'Hacer el chorizo en la parrilla y meterlo al pan batio',
-        imagenes:['../../assets/imagenes/choripan.jpg'],
-        autor: 'Luisito comunica',
-      } as Recipe,
-      {
-        nombreReceta : 'Choripan',
-        descripcionReceta: ' Pan batido con chorizo ',
-        ingredientes:'Pan Batido, Chorizo',
-        pasosReceta:'Hacer el chorizo en la parrilla y meterlo al pan batio',
-        imagenes:['../../assets/imagenes/choripan.jpg'],
-        autor: 'Luisito comunica',
-      } as Recipe
-    ]
+  recetasUrl : string = '../assets/data/recetas.json';
+  constructor(private httpClient:HttpClient) {
+    this.httpClient.get(this.recetasUrl).subscribe((value)=>{
+      this.recetas = value as Recipe[];
+    })
   }
-
-
 }

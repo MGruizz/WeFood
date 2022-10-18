@@ -1,0 +1,42 @@
+[
+  {
+    "nombreReceta": "Choripan",
+    "descripcionReceta": " Pan batido con chorizo ",
+    "ingredientes": "Pan Batido, Chorizo",
+    "pasosReceta": "Hacer el chorizo en la parrilla y meterlo al pan batio",
+    "imagenes": [
+      "../../assets/imagenes/choripan.jpg"
+    ],
+    "autor": "Luisito comunica"
+  },
+  {
+    "nombreReceta": "Choripan",
+    "descripcionReceta": " Pan batido con chorizo ",
+    "ingredientes": "Pan Batido, Chorizo",
+    "pasosReceta": "Hacer el chorizo en la parrilla y meterlo al pan batio",
+    "imagenes": [
+      "../../assets/imagenes/choripan.jpg"
+    ],
+    "autor": "Luisito comunica"
+  },
+  {
+    "nombreReceta": "Choripan",
+    "descripcionReceta": " Pan batido con chorizo ",
+    "ingredientes": "Pan Batido, Chorizo",
+    "pasosReceta": "Hacer el chorizo en la parrilla y meterlo al pan batio",
+    "imagenes": [
+      "../../assets/imagenes/choripan.jpg"
+    ],
+    "autor": "Luisito comunica"
+  },
+  {
+    "nombreReceta": "Choripan",
+    "descripcionReceta": " Pan batido con chorizo ",
+    "ingredientes": "Pan Batido, Chorizo",
+    "pasosReceta": "Hacer el chorizo en la parrilla y meterlo al pan batio",
+    "imagenes": [
+      "../../assets/imagenes/choripan.jpg"
+    ],
+    "autor": "Luisito comunica"
+  }
+]
