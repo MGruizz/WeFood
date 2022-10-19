@@ -18,5 +18,4 @@ export class InicioComponent implements OnInit {
   ngOnInit(): void {
     this.recetas = this.recipeService.recetas;
   }
-
 }

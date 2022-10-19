@@ -18,23 +18,9 @@ export class PerfilComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let aux=0;
-    for (let user of this.userService.usuariosLogeados) {
-      if (user.idUsuario == 1){
-        this.usuario = user;
+    this.usuario = this.userService.buscarUsuario(1);
+    this.recetas = this.recipeService.getUserRecipes(1);
 
-      }
-
-    }
-    for (let i in this.recipeService.recetas) {
-      if (this.usuario.idUsuario== this.recipeService.recetas[i].idAutor){
-        this.recetas[aux] = this.recipeService.recetas[i];
-        aux++;
-      }
-
-    }
     console.log(this.recetas)
-
   }
-
 }
