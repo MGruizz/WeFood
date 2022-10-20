@@ -19,7 +19,7 @@
     "ingredientes": "Arroz, Queso crema, Salmon",
     "pasosReceta": "Aplastar arroz, luego insertar ingredientes encima de forma proporcional y luego envolverlo en alga",
     "imagenes": [
-      "../../assets/imagenes/choripan.jpg"
+      "../../assets/imagenes/sushi.jpg"
     ],
     "autor": "Luisito comunica"
   },
@@ -31,7 +31,7 @@
     "ingredientes": "Manzana",
     "pasosReceta": "Tome una manzana y rallela",
     "imagenes": [
-      "../../assets/imagenes/choripan.jpg"
+      "../../assets/imagenes/manzana-rallada.jpg"
     ],
     "autor": "Luisito comunica"
   },
@@ -43,7 +43,7 @@
     "ingredientes": "Avena, leche",
     "pasosReceta": "echar avena a un bol y vertir agua caliente arriba, para luego dejarlo reposar por 10 minutos",
     "imagenes": [
-      "../../assets/imagenes/choripan.jpg"
+      "../../assets/imagenes/avena.jpg"
     ],
     "autor": "Luisito comunica"
   }
