@@ -9,10 +9,14 @@ import {RecipesService} from "../../services/recipe/recipes.service";
 })
 export class InfoRecetaComponent implements OnInit {
   receta: Recipe= {} as Recipe;
+  totalRecetas : Recipe[] = [];
   constructor(private recipeService: RecipesService) { }
 
   ngOnInit(): void {
-    this.receta = this.recipeService.recetas[0];
+    this.recipeService.cargarRecetas().subscribe((value)=>{
+      this.totalRecetas = value as Recipe[];
+      this.receta = this.recipeService.getRecipeById(1,this.totalRecetas);
+    });
   }
 
 }

@@ -9,7 +9,6 @@ import {Observable} from "rxjs";
 })
 
 export class UserService{
-  usuariosLogeados: UserLogeado[] = [];
   usuariosLogeadoUrl: string = '../assets/data/user.json';
 
 
@@ -17,18 +16,12 @@ export class UserService{
 
   }
 
-  cargarUsers(): void {
-    this.httpClient.get(this.usuariosLogeadoUrl).subscribe((value)=>{
-      this.usuariosLogeados = (value as UserLogeado[]);
-    })
+  cargarUsers(): Observable<any> {
+    return this.httpClient.get(this.usuariosLogeadoUrl);
   }
 
-  buscarUsuario(idUsuario: number):UserLogeado{
-    if(this.usuariosLogeados.length == 0){
-      this.cargarUsers();
-    }
-
-    for (let user of this.usuariosLogeados) {
+  buscarUsuario(idUsuario: number, usuariosLogeados: UserLogeado[]):UserLogeado{
+    for (let user of usuariosLogeados) {
       if (user.idUsuario == idUsuario){
         return user;
       }

@@ -12,14 +12,24 @@ import {UserLogeado} from "../../services/user/user.type";
 export class PerfilComponent implements OnInit {
   recetas : Recipe[] = [];
   usuario: UserLogeado= {} as UserLogeado;
+  usuariosLogeados: UserLogeado[] = [];
+  totalRecetas : Recipe[] = [];
 
   constructor(private recipeService:RecipesService, private userService:UserService) {
 
   }
 
   ngOnInit(): void {
-    this.usuario = this.userService.buscarUsuario(1);
-    this.recetas = this.recipeService.getUserRecipes(1);
+    this.userService.cargarUsers().subscribe((value)=>{
+      this.usuariosLogeados = (value as UserLogeado[]);
+      this.usuario = this.userService.buscarUsuario(1,this.usuariosLogeados);
+    })
+
+    this.recipeService.cargarRecetas().subscribe((value)=>{
+      this.totalRecetas = value as Recipe[];
+      this.recetas = this.recipeService.getUserRecipes(1,this.totalRecetas);
+    })
+
 
     console.log(this.recetas)
   }

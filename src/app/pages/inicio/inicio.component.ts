@@ -13,9 +13,13 @@ import {UserService} from "../../services/user/user.service";
 export class InicioComponent implements OnInit {
 
   recetas : Recipe[] = [];
+  totalRecetas: Recipe[] = [];
   constructor(private recipeService:RecipesService) { }
 
   ngOnInit(): void {
-    this.recetas = this.recipeService.recetas;
+    this.recipeService.cargarRecetas().subscribe((value)=>{
+      this.totalRecetas = value as Recipe[];
+      this.recetas = this.recipeService.getUserRecipes(1,this.totalRecetas);
+    })
   }
 }

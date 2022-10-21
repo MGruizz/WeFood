@@ -7,11 +7,10 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 
-export class RecipesService implements OnInit{
-  recetas : Recipe[] = [];
-  recetasUrl : string = '../assets/data/recetas.json';
-  recetasUsuario: Recipe[] = [];
-  constructor(private httpClient:HttpClient) {
+export class RecipesService implements OnInit {
+  recetasUrl: string = '../assets/data/recetas.json';
+
+  constructor(private httpClient: HttpClient) {
 
   }
 
@@ -19,23 +18,28 @@ export class RecipesService implements OnInit{
 
   }
 
-  cargarRecetas(): void{
-    this.httpClient.get(this.recetasUrl).subscribe((value)=>{
-      this.recetas = value as Recipe[];
-    })
-    console.log(this.recetas);
+  cargarRecetas(): Observable<any> {
+    return this.httpClient.get(this.recetasUrl)
   }
 
-  getUserRecipes(idUsuario: number): Recipe[]{
-    this.recetasUsuario = [];
-    if(this.recetas.length == 0){
-      this.cargarRecetas();
-    }
-    for (let i in this.recetas) {
-      if (idUsuario == this.recetas[i].idAutor){
-        this.recetasUsuario.push(this.recetas[i]);
+  getUserRecipes(idUsuario: number, recetas: Recipe[]): Recipe[] {
+    let recetasUsuario: Recipe[] = [];
+    recetasUsuario = [];
+    for (let i in recetas) {
+      if (idUsuario == recetas[i].idAutor) {
+        recetasUsuario.push(recetas[i]);
       }
     }
-    return this.recetasUsuario;
+    return recetasUsuario;
+  }
+
+  getRecipeById(idRecipe: number, recetas: Recipe[]): Recipe {
+    let recipe = {} as Recipe
+    for (let i in recetas) {
+      if (idRecipe == recetas[i].idReceta) {
+        return recetas[i];
+      }
+    }
+    return recipe;
   }
 }
