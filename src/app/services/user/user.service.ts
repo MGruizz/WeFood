@@ -11,7 +11,6 @@ import {Observable} from "rxjs";
 export class UserService{
   usuariosLogeadoUrl: string = '../assets/data/user.json';
 
-
   constructor(private httpClient:HttpClient) {
 
   }

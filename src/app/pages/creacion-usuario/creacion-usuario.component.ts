@@ -23,17 +23,19 @@ export class CreacionUsuarioComponent implements OnInit {
         Validators.pattern(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/),
         Validators.required
       ])],
-      password: ['', Validators.compose([
-        Validators.pattern(/^.{5,}$/),
-        Validators.required
-      ])],
-      confirmPassword: ['', Validators.compose([
-        Validators.pattern(/^.{5,}$/),
-        Validators.required,
-      ])],
+      passwords: this.formBuilder.group({
+        password: ['', Validators.compose([
+          Validators.pattern(/^.{5,}$/),
+          Validators.required
+        ])],
+        confirmPassword: ['', Validators.compose([
+          Validators.pattern(/^.{5,}$/),
+          Validators.required,
+        ])]
+      },{validators:this.checkPasswords})
     }
 
-    this.formularioCreacionUsuarioForm = this.formBuilder.group(form,{validator:this.checkPasswords});
+    this.formularioCreacionUsuarioForm = this.formBuilder.group(form);
   }
 
   registrarse(){
@@ -45,9 +47,18 @@ export class CreacionUsuarioComponent implements OnInit {
 
   }
   //Verifica que las password sean iguales.
-  checkPasswords(group: FormGroup):  ValidationErrors | null {
-    let pass = group.controls['password'].value;
-    let confirmPass = group.controls['confirmPassword'].value;
+  checkPasswords: ValidatorFn = (group: AbstractControl):  ValidationErrors | null => {
+    let pass = group.get('password')!.value;
+    let confirmPass = group.get('confirmPassword')!.value
+
     return pass === confirmPass ? null : { notSame: true }
+  }
+
+  get controls(){
+    return this.formularioCreacionUsuarioForm.controls;
+  }
+
+  get passwordsControls(){
+    return ((this.formularioCreacionUsuarioForm.get('passwords') as FormGroup).controls)
   }
 }
