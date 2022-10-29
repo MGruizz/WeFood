@@ -3,6 +3,7 @@ import {Recipe} from "../../services/recipe/recipe.type";
 import {RecipesService} from "../../services/recipe/recipes.service";
 import {UserService} from "../../services/user/user.service";
 import {UserLogeado} from "../../services/user/user.type";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-perfil',
@@ -14,8 +15,8 @@ export class PerfilComponent implements OnInit {
   usuario: UserLogeado= {} as UserLogeado;
   usuariosLogeados: UserLogeado[] = [];
   totalRecetas : Recipe[] = [];
-
-  constructor(private recipeService:RecipesService, private userService:UserService) {
+  recipe: Recipe = {} as Recipe;
+  constructor(private recipeService:RecipesService, private userService:UserService, private router:Router) {
 
   }
 
@@ -30,7 +31,12 @@ export class PerfilComponent implements OnInit {
       this.recetas = this.recipeService.getUserRecipes(1,this.totalRecetas);
     })
 
-
+    this.recipeService.sharedData.subscribe(recipe => this.recipe = recipe)
     console.log(this.recetas)
+  }
+
+  verDetalles(index:number){
+    this.recipeService.nextRecipe(this.recetas[index]);
+    this.router.navigate(['/info-receta'])
   }
 }

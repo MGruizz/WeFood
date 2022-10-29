@@ -1,15 +1,17 @@
 import {Recipe} from "./recipe.type";
 import {Injectable, OnInit} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class RecipesService implements OnInit {
-  recetasUrl: string = '../assets/data/recetas.json';
 
+  recetasUrl: string = '../assets/data/recetas.json';
+  private getDataSubject : BehaviorSubject<Recipe> = new BehaviorSubject({} as Recipe);
+  sharedData: Observable<Recipe> = this.getDataSubject.asObservable();
   constructor(private httpClient: HttpClient) {
 
   }
@@ -41,5 +43,9 @@ export class RecipesService implements OnInit {
       }
     }
     return recipe;
+  }
+
+  nextRecipe(recipe: Recipe){
+    this.getDataSubject.next(recipe);
   }
 }

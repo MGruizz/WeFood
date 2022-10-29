@@ -16,7 +16,7 @@
               <h6 class="card-title mt-3"><span class="fw-bold">Nombre: </span>{{receta.nombreReceta}}</h6>
               <h6 class="card-subtitle"><span class="fw-bold">Autor: </span>{{receta.autor}}</h6>
               <p class="card-text "><span class="fw-bold ">Descripcion: </span><span class="tresPuntos">{{receta.descripcionReceta}}</span></p>
-              <a routerLink="/info-receta" class="btn btn-primary d-grid">Ver receta</a>
+              <a (click)="verDetalles(i)" class="btn btn-primary d-grid">Ver receta</a>
             </div>
           </div>
         </div>
