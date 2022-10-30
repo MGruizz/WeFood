@@ -18,30 +18,66 @@
       <div class="col-sm-12 col-md-6 col-xl-6 col-12 col-lg-6">
         <div class="card  ">
           <div class="card-body">
-            <form action="">
+            <form class="formularioCreacionReceta" [formGroup]="formularioCreacionRecetaForm" (ngSubmit)="publicar()">
               <h2 class="card-title text-center">Nueva receta</h2>
               <div class="form-group">
                 <label for="exampleNombreReceta">Nombre de la receta</label>
-                <input type="text" id="exampleNombreReceta" class="form-control" aria-describedby="nombreReceta"
+                <span
+                  *ngIf="formularioCreacionRecetaForm.controls['nombreReceta'].invalid && (formularioCreacionRecetaForm.controls['nombreReceta'].dirty || formularioCreacionRecetaForm.controls['nombreReceta'].touched)"
+                  class="alert">
+                <small class="mensajeError"
+                       *ngIf="formularioCreacionRecetaForm.controls['nombreReceta'].errors?.['required']">
+                * Ingrese nombre receta.
+                </small>
+                <small class="mensajeError"
+                      *ngIf="formularioCreacionRecetaForm.controls['nombreReceta'].errors?.['pattern']">
+                * El nombre debe tener menos de 30 caracteres.
+                </small>
+                </span>
+                <input type="text" id="exampleNombreReceta" class="form-control" formControlName="nombreReceta" aria-describedby="nombreReceta"
                        placeholder="ej: Ensalada de fruta...">
               </div>
               <div class="form-group pt-3">
                 <label for="exampleDescripcionReceta">Descripcion de la receta</label>
-                <input type="text" id="exampleDescripcionReceta" class="form-control" aria-describedby="descReceta"
+                <span
+                  *ngIf="formularioCreacionRecetaForm.controls['descripcionReceta'].invalid && (formularioCreacionRecetaForm.controls['descripcionReceta'].dirty || formularioCreacionRecetaForm.controls['descripcionReceta'].touched)"
+                  class="alert">
+                <small class="mensajeError"
+                       *ngIf="formularioCreacionRecetaForm.controls['descripcionReceta'].errors?.['required']">
+                * Ingrese descripcion de receta.
+                </small>
+                </span>
+                <input type="text" id="exampleDescripcionReceta" class="form-control" formControlName="descripcionReceta" aria-describedby="descReceta"
                        placeholder="ej: Una ensalada con frutas...">
               </div>
               <div class="form-group pt-3">
                 <label for="exampleIngredientes">Ingredientes de la receta</label>
-                <textarea class="form-control" id="exampleIngredientes" rows="3"
+                <span
+                  *ngIf="formularioCreacionRecetaForm.controls['ingredientes'].invalid && (formularioCreacionRecetaForm.controls['ingredientes'].dirty || formularioCreacionRecetaForm.controls['ingredientes'].touched)"
+                  class="alert">
+                <small class="mensajeError"
+                       *ngIf="formularioCreacionRecetaForm.controls['ingredientes'].errors?.['required']">
+                * Ingrese los ingredientes de la receta.
+                </small>
+                </span>
+                <textarea class="form-control" id="exampleIngredientes" formControlName="ingredientes" rows="3"
                           placeholder="ej: Frutos silvestres, duraznos..."></textarea>
               </div>
               <div class="form-group pt-3">
                 <label for="examplePasosASeguir">Pasos a seguir de la receta</label>
-                <textarea class="form-control" id="examplePasosASeguir" rows="3"
+                <span
+                  *ngIf="formularioCreacionRecetaForm.controls['pasosReceta'].invalid && (formularioCreacionRecetaForm.controls['pasosReceta'].dirty || formularioCreacionRecetaForm.controls['pasosReceta'].touched)"
+                  class="alert">
+                <small class="mensajeError"
+                       *ngIf="formularioCreacionRecetaForm.controls['pasosReceta'].errors?.['required']">
+                * Ingrese los pasos a seguir de la receta.
+                </small>
+                </span>
+                <textarea class="form-control" id="examplePasosASeguir" rows="3" formControlName="pasosReceta"
                           placeholder="ej: Primero lavamos las frutas, luego las cortamos en rodajas..."></textarea>
               </div>
               <div class="row-boton row text-center ">
-                <button type="submit" class="botones btn btn-primary mt-3">Publicar</button>
+                <button type="submit" class="botones btn btn-primary mt-3" [disabled]="!formularioCreacionRecetaForm.valid">Publicar</button>
               </div>
             </form>
           </div>
