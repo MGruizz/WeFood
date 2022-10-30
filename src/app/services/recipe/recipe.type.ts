@@ -1,4 +1,6 @@
 export interface Recipe{
+  idAutor: number;
+  idReceta: number;
   nombreReceta : string;
   descripcionReceta: string;
   ingredientes: string;

@@ -1,48 +1,51 @@
 import {Recipe} from "./recipe.type";
-import {Injectable} from "@angular/core";
+import {Injectable, OnInit} from "@angular/core";
+import {HttpClient} from "@angular/common/http";
+import {BehaviorSubject, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class RecipesService{
-  recetas : Recipe[] = [];
-  constructor() {
-    this.recetas = [
-      {
-        nombreReceta : 'Choripan',
-        descripcionReceta: ' Pan batido con chorizo ',
-        ingredientes:'Pan Batido, Chorizo',
-        pasosReceta:'Hacer el chorizo en la parrilla y meterlo al pan batio',
-        imagenes:['../../assets/imagenes/choripan.jpg'],
-        autor: 'Luisito comunica',
-      } as Recipe,
-      {
-        nombreReceta : 'Choripan',
-        descripcionReceta: ' Pan batido con chorizo ',
-        ingredientes:'Pan Batido, Chorizo',
-        pasosReceta:'Hacer el chorizo en la parrilla y meterlo al pan batio',
-        imagenes:['../../assets/imagenes/choripan.jpg'],
-        autor: 'Luisito comunica',
-      } as Recipe,
-      {
-        nombreReceta : 'Choripan',
-        descripcionReceta: ' Pan batido con chorizo ',
-        ingredientes:'Pan Batido, Chorizo',
-        pasosReceta:'Hacer el chorizo en la parrilla y meterlo al pan batio',
-        imagenes:['../../assets/imagenes/choripan.jpg'],
-        autor: 'Luisito comunica',
-      } as Recipe,
-      {
-        nombreReceta : 'Choripan',
-        descripcionReceta: ' Pan batido con chorizo ',
-        ingredientes:'Pan Batido, Chorizo',
-        pasosReceta:'Hacer el chorizo en la parrilla y meterlo al pan batio',
-        imagenes:['../../assets/imagenes/choripan.jpg'],
-        autor: 'Luisito comunica',
-      } as Recipe
-    ]
+export class RecipesService implements OnInit {
+
+  recetasUrl: string = '../assets/data/recetas.json';
+  private getDataSubject : BehaviorSubject<Recipe> = new BehaviorSubject({} as Recipe);
+  sharedData: Observable<Recipe> = this.getDataSubject.asObservable();
+  constructor(private httpClient: HttpClient) {
+
   }
 
+  ngOnInit() {
 
+  }
+
+  cargarRecetas(): Observable<any> {
+    return this.httpClient.get(this.recetasUrl)
+  }
+
+  getUserRecipes(idUsuario: number, recetas: Recipe[]): Recipe[] {
+    let recetasUsuario: Recipe[] = [];
+    recetasUsuario = [];
+    for (let i in recetas) {
+      if (idUsuario == recetas[i].idAutor) {
+        recetasUsuario.push(recetas[i]);
+      }
+    }
+    return recetasUsuario;
+  }
+
+  getRecipeById(idRecipe: number, recetas: Recipe[]): Recipe {
+    let recipe = {} as Recipe
+    for (let i in recetas) {
+      if (idRecipe == recetas[i].idReceta) {
+        return recetas[i];
+      }
+    }
+    return recipe;
+  }
+
+  nextRecipe(recipe: Recipe){
+    this.getDataSubject.next(recipe);
+  }
 }

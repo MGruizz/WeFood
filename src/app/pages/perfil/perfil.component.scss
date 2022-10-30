@@ -32,3 +32,20 @@
   padding-right: 15%;
 }
 
+.img-size{
+  width: 20rem;
+  height: 12rem;
+}
+
+.tresPuntos {
+  display: block;
+  white-space: nowrap;
+  width: 8em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btnReceta{
+  background-color: $color-negro;
+  border: none;
+}

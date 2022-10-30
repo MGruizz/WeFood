@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Recipe} from "../../services/recipe/recipe.type";
 import {RecipesService} from "../../services/recipe/recipes.service";
+import {UserService} from "../../services/user/user.service";
+import {UserLogeado} from "../../services/user/user.type";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-perfil',
@@ -9,10 +12,31 @@ import {RecipesService} from "../../services/recipe/recipes.service";
 })
 export class PerfilComponent implements OnInit {
   recetas : Recipe[] = [];
-  constructor(private recipeService:RecipesService) { }
+  usuario: UserLogeado= {} as UserLogeado;
+  usuariosLogeados: UserLogeado[] = [];
+  totalRecetas : Recipe[] = [];
+  recipe: Recipe = {} as Recipe;
+  constructor(private recipeService:RecipesService, private userService:UserService, private router:Router) {
 
-  ngOnInit(): void {
-    this.recetas = this.recipeService.recetas;
   }
 
+  ngOnInit(): void {
+    this.userService.cargarUsers().subscribe((value)=>{
+      this.usuariosLogeados = (value as UserLogeado[]);
+      this.usuario = this.userService.buscarUsuario(1,this.usuariosLogeados);
+    })
+
+    this.recipeService.cargarRecetas().subscribe((value)=>{
+      this.totalRecetas = value as Recipe[];
+      this.recetas = this.recipeService.getUserRecipes(1,this.totalRecetas);
+    })
+
+    this.recipeService.sharedData.subscribe(recipe => this.recipe = recipe)
+    console.log(this.recetas)
+  }
+
+  verDetalles(index:number){
+    this.recipeService.nextRecipe(this.recetas[index]);
+    this.router.navigate(['/info-receta'])
+  }
 }

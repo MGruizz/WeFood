@@ -9,7 +9,7 @@
   </div>
   <div class="row">
     <div class="col-md-4 col-lg-4 col-sm-12">
-      <img [src]= receta.imagenes[0] class="w-100 mb-3">
+      <img *ngIf="receta.imagenes[0]" [src]= receta.imagenes[0] class="w-100 mb-3">
     </div>
     <div class="col">
       <div class="form-group mb-5">

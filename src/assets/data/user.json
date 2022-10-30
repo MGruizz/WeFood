@@ -1,0 +1,32 @@
+[
+  {
+    "idUsuario": 1,
+    "nombreUsuario": "sebastian",
+    "contrasena": "12345",
+    "nombrePersona": "sebastianmr",
+    "descripcionUsuario": "simpatico",
+    "recetas": [],
+    "redesSociales": [],
+    "fotoPerfil": "../assets/imagenes/fruits.jpg"
+  },
+  {
+    "idUsuario": "2",
+    "nombreUsuario": "miguel",
+    "contrasena": "12345",
+    "nombrePersona": "miguelgr",
+    "descripcionUsuario": "carismatico",
+    "recetas": [],
+    "redesSociales": [],
+    "fotoPerfil": "https://www.google.com/search?q=naranja&hl=es&sxsrf=ALiCzsa0ViG2rWi8rdimQyHG6W0KEcJj4g:1666120472196&tbm=isch&source=iu&ictx=1&vet=1&fir=MTD7708VWwHfyM%252CrvjkD1kytEqmjM%252C%252Fm%252F0cyhj_%253Bx80AWqTGOGBaMM%252Cd5S3CDhFohJbyM%252C_%253BvUShzeT54o0b_M%252Ctt8JGd-VU40y3M%252C_%253BlpQ1PIew9bjQoM%252CQJHb282tljjB3M%252C_%253BEvNlIlFTX0V4xM%252C5f6fNklqAaYzBM%252C_%253BM6jgWVUACDiPyM%252C3ARxJ4erC-wgZM%252C_&usg=AI4_-kTGsmuy82g_lWweG3NyQz3btzlaEw&sa=X&ved=2ahUKEwizvJe3vur6AhXlA7kGHduxBwYQ_B16BAhtEAE#imgrc=MTD7708VWwHfyM"
+  },
+  {
+    "idUsuario": "3",
+    "nombreUsuario": "bastian",
+    "contrasena": "12345",
+    "nombrePersona": "bastiancaleb",
+    "descripcionUsuario": "chistoso",
+    "recetas": [],
+    "redesSociales": [],
+    "fotoPerfil": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXmUJ_bLHuhoCsNJjfklkN7zAM_Uecb8oj4Ez73Zv31w&s"
+  }
+]
