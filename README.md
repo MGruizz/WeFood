@@ -14,7 +14,7 @@
 Aplicación web tipo red social sobre recetas saludables, en la que los usuarios pueden publicar sus recetas, ver las de otras personas e interactuar entre sí.
 Cuenta con opciones de creación de cuenta, inicio de sesión, acceso a perfil de usuario, publicación y edición de receta, y visualización de recetas publicadas en la aplicación.
 
-Esta entrega cuenta con un [informe](https://github.com/MGruizz/WeFood/tree/EP3) llamado EP3_WeFood.pdf.
+Esta entrega cuenta con un [informe](https://github.com/MGruizz/WeFood/blob/EP3/EP3_WeFood.pdf) llamado EP3_WeFood.pdf.
 
 La rama master y la rama EP3 cuentan con la ultima version del proyecto.
 
