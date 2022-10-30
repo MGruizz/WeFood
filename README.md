@@ -14,9 +14,13 @@
 Aplicación web tipo red social sobre recetas saludables, en la que los usuarios pueden publicar sus recetas, ver las de otras personas e interactuar entre sí.
 Cuenta con opciones de creación de cuenta, inicio de sesión, acceso a perfil de usuario, publicación y edición de receta, y visualización de recetas publicadas en la aplicación.
 
+Esta entrega cuenta con un [informe](https://github.com/MGruizz/WeFood/tree/EP3) llamado EP3_WeFood.pdf.
+
 ## Detalles del código
 Las vistas se encuentran en [pages](https://github.com/MGruizz/WeFood/tree/master/src/app/pages).
 La aplicación cuenta con 2 formularios reactivos disponibles en las vistas de [login](https://github.com/MGruizz/WeFood/tree/master/src/app/pages/login) y [creacion-usuario](https://github.com/MGruizz/WeFood/tree/master/src/app/pages/creacion-usuario).
+
+La vista info-recetas requiere ser accedida mediante uno de sus componentes padre (Inicio o perfil) para poder mostar los detalles ya que necesita que se le carguen datos antes. Esa vista se pobla mediante un observable.
 
 ## Tecnologias
 

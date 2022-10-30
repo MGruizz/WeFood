@@ -27,6 +27,6 @@ export class InicioComponent implements OnInit {
 
   verDetalles(index:number){
     this.recipeService.nextRecipe(this.recetas[index]);
-    this.router.navigate(['/info-receta'])
+    this.router.navigate(['/info-receta'],{state:{data:this.recetas[index]}});
   }
 }
