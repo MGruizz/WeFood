@@ -16,6 +16,8 @@ Cuenta con opciones de creación de cuenta, inicio de sesión, acceso a perfil d
 
 Esta entrega cuenta con un [informe](https://github.com/MGruizz/WeFood/tree/EP3) llamado EP3_WeFood.pdf.
 
+La rama master y la rama EP3 cuentan con la ultima version del proyecto.
+
 ## Detalles del código
 Las vistas se encuentran en [pages](https://github.com/MGruizz/WeFood/tree/master/src/app/pages).
 La aplicación cuenta con 2 formularios reactivos disponibles en las vistas de [login](https://github.com/MGruizz/WeFood/tree/master/src/app/pages/login) y [creacion-usuario](https://github.com/MGruizz/WeFood/tree/master/src/app/pages/creacion-usuario).
