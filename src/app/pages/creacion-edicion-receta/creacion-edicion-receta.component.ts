@@ -5,6 +5,9 @@ import {Tag} from "../../services/tag/tag.type";
 import {TagService} from "../../services/tag/tag.service";
 import {UserLogeado} from "../../services/user/user.type";
 
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {MatChipInputEvent} from '@angular/material/chips';
+
 @Component({
   selector: 'app-creacion-edicion-receta',
   templateUrl: './creacion-edicion-receta.component.html',
@@ -14,6 +17,9 @@ export class CreacionEdicionRecetaComponent implements OnInit {
 
   tags: Tag[] = [];
   formularioCreacionRecetaForm : FormGroup = {} as FormGroup;
+
+  addOnBlur = true;
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
 
   constructor(private formBuilder: FormBuilder, private router:Router, private tagService: TagService) { }
 
@@ -45,6 +51,26 @@ export class CreacionEdicionRecetaComponent implements OnInit {
     console.log(this.formularioCreacionRecetaForm.status);
     if(this.formularioCreacionRecetaForm.status === 'VALID'){
       this.router.navigate(['/inicio'])
+    }
+  }
+
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    // Add our tag
+    if (value) {
+      this.tags.push({idTag: 2,nombreTag:value});
+    }
+
+    // Clear the input value
+    event.chipInput!.clear();
+  }
+
+  remove(tag: Tag): void {
+    const index = this.tags.indexOf(tag);
+
+    if (index >= 0) {
+      this.tags.splice(index, 1);
     }
   }
 }

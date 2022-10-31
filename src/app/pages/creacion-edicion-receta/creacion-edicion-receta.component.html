@@ -76,10 +76,20 @@
                 <textarea class="form-control" id="examplePasosASeguir" rows="3" formControlName="pasosReceta"
                           placeholder="ej: Primero lavamos las frutas, luego las cortamos en rodajas..."></textarea>
               </div>
+              <div class="input-group">
+                <div class="form-outline">
+                  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                </div>
+                <button type="button" class="btn btn-primary">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
               <div class="row-boton row text-center ">
                 <button type="submit" class="botones btn btn-primary mt-3" [disabled]="!formularioCreacionRecetaForm.valid">Publicar</button>
               </div>
             </form>
+            <div>
+            </div>
           </div>
         </div>
       </div>
