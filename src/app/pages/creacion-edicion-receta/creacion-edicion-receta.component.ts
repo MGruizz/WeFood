@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {Tag} from "../../services/tag/tag.type";
+import {TagService} from "../../services/tag/tag.service";
+import {UserLogeado} from "../../services/user/user.type";
 
 @Component({
   selector: 'app-creacion-edicion-receta',
@@ -8,8 +11,11 @@ import {Router} from "@angular/router";
   styleUrls: ['./creacion-edicion-receta.component.scss']
 })
 export class CreacionEdicionRecetaComponent implements OnInit {
+
+  tags: Tag[] = [];
   formularioCreacionRecetaForm : FormGroup = {} as FormGroup;
-  constructor(private formBuilder: FormBuilder, private router:Router) { }
+
+  constructor(private formBuilder: FormBuilder, private router:Router, private tagService: TagService) { }
 
   ngOnInit(): void {
     let form = {
@@ -28,6 +34,12 @@ export class CreacionEdicionRecetaComponent implements OnInit {
       ])],
     }
     this.formularioCreacionRecetaForm = this.formBuilder.group(form);
+
+    this.tagService.cargarTags().subscribe((value)=>{
+      this.tags = (value as Tag[]);
+      console.log(this.tags);
+    })
+
   }
   publicar(){
     console.log(this.formularioCreacionRecetaForm.status);

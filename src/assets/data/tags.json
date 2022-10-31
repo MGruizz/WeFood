@@ -1,0 +1,18 @@
+[
+  {
+    "idTag": 1,
+    "nombreTag":"Carne"
+  },
+  {
+    "idTag": 2,
+    "nombreTag":"Vegetariano"
+  },
+  {
+    "idTag": 3,
+    "nombreTag":"Sin lactosa"
+  },
+  {
+    "idTag": 4,
+    "nombreTag":"SugarFree"
+  }
+]
