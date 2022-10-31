@@ -12,8 +12,8 @@ export interface UserLogeado{
   contrasena: string;
   nombrePersona:string;
   descripcionUsuario: string;
-  recetas?: Recipe[];
   redesSociales?: RedSocial[];
   fotoPerfil: string;
+  isAdmin: Boolean;
 }
 

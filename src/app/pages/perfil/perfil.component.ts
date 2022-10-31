@@ -28,7 +28,7 @@ export class PerfilComponent implements OnInit {
 
     this.recipeService.cargarRecetas().subscribe((value)=>{
       this.totalRecetas = value as Recipe[];
-      this.recetas = this.recipeService.getUserRecipes(1,this.totalRecetas);
+      this.recetas = this.recipeService.getUserRecipes(this.usuario.idUsuario,this.totalRecetas);
     })
 
     this.recipeService.sharedData.subscribe(recipe => this.recipe = recipe)
