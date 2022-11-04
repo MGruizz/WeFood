@@ -1,7 +1,7 @@
 import {Recipe} from "../recipe/recipe.type";
 import {RedSocial} from "../../../environments/global.types";
 
-export interface User{
+export interface UserSinLogear{
   nombreUsuario: string;
   contrasena: string;
 }

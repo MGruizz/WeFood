@@ -1,4 +1,4 @@
-import {User} from "./user.type";
+import {UserSinLogear} from "./user.type";
 import {Injectable, OnInit} from "@angular/core";
 import {UserLogeado} from "./user.type";
 import {HttpClient} from "@angular/common/http";
