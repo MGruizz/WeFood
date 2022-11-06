@@ -51,8 +51,8 @@ export class RecipesService implements OnInit {
   getDietRecipes(idDieta: number, recetas: Recipe[]): Recipe[]{
     let recetasDieta: Recipe[] = [];
     for (let i in recetas){
-      for (let dietas of recetas[i].idDietas!){
-        if (idDieta == dietas){
+      for (let j in recetas[i].idDietas!){
+        if (idDieta == recetas[i].idDietas![j]){
           recetasDieta.push(recetas[i]);
         };
       }

@@ -1,3 +1,5 @@
+import {Tag} from "../tag/tag.type";
+
 export interface Recipe{
   idAutor: number;
   idReceta: number;
@@ -8,4 +10,5 @@ export interface Recipe{
   pasosReceta: string;
   imagenes : string[];
   autor: string;
+  tags: Tag[];
 }

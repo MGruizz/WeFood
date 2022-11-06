@@ -10,5 +10,11 @@
     "idDieta": 2,
     "nombreDieta": "Dieta de sushi",
     "descripcionDieta": "Mucho sushi"
+  },
+  {
+    "idAutor": 2,
+    "idDieta": 3,
+    "nombreDieta": "Dieta de ensaladas",
+    "descripcionDieta": "come ensaladas"
   }
 ]

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Tag} from "../../services/tag/tag.type";
 import {TagService} from "../../services/tag/tag.service";
@@ -7,6 +7,8 @@ import {UserLogeado} from "../../services/user/user.type";
 
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
+import {map, Observable, startWith} from 'rxjs';
+import {MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
 
 @Component({
   selector: 'app-creacion-edicion-receta',
@@ -16,12 +18,22 @@ import {MatChipInputEvent} from '@angular/material/chips';
 export class CreacionEdicionRecetaComponent implements OnInit {
 
   tags: Tag[] = [];
+  tagsName: string[] = [];
   formularioCreacionRecetaForm : FormGroup = {} as FormGroup;
+  tagsEnMuestra: string[] = ['Carne','Vegetariano'];
+  tagCtrl = new FormControl('');
+  filteredTags: Observable<string[]>;
 
-  addOnBlur = true;
+  @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement> | undefined;
+
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
 
-  constructor(private formBuilder: FormBuilder, private router:Router, private tagService: TagService) { }
+  constructor(private formBuilder: FormBuilder, private router:Router, private tagService: TagService) {
+    this.filteredTags = this.tagCtrl.valueChanges.pipe(
+      startWith(null),
+      map((tag: string | null) => (tag ? this._filter(tag) : this.tagsName.slice())),
+    );
+  }
 
   ngOnInit(): void {
     let form = {
@@ -43,6 +55,9 @@ export class CreacionEdicionRecetaComponent implements OnInit {
 
     this.tagService.cargarTags().subscribe((value)=>{
       this.tags = (value as Tag[]);
+      for(let i in this.tags){
+        this.tagsName.push(this.tags[i].nombreTag);
+      }
       console.log(this.tags);
     })
 
@@ -57,20 +72,36 @@ export class CreacionEdicionRecetaComponent implements OnInit {
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
 
-    // Add our tag
+    // Add our fruit
     if (value) {
-      this.tags.push({idTag: 2,nombreTag:value});
+      this.tagsEnMuestra.push(value);
     }
 
     // Clear the input value
     event.chipInput!.clear();
+
+    this.tagCtrl.setValue(null);
   }
 
-  remove(tag: Tag): void {
-    const index = this.tags.indexOf(tag);
+  remove(tag: string): void {
+    const index = this.tagsEnMuestra.indexOf(tag);
 
     if (index >= 0) {
-      this.tags.splice(index, 1);
+      this.tagsEnMuestra.splice(index, 1);
     }
+  }
+
+  selected(event: MatAutocompleteSelectedEvent): void {
+    if (!this.tagsEnMuestra.includes(event.option.viewValue)) {
+      this.tagsEnMuestra.push(event.option.viewValue);
+    }
+    this.tagInput!.nativeElement.value = '';
+    this.tagCtrl.setValue(null);
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.tagsName.filter(tag => tag.toLowerCase().includes(filterValue));
   }
 }

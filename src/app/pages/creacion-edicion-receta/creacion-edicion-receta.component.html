@@ -76,13 +76,33 @@
                 <textarea class="form-control" id="examplePasosASeguir" rows="3" formControlName="pasosReceta"
                           placeholder="ej: Primero lavamos las frutas, luego las cortamos en rodajas..."></textarea>
               </div>
-              <div class="input-group">
-                <div class="form-outline">
-                  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                </div>
-                <button type="button" class="btn btn-primary">
-                  <i class="fas fa-search"></i>
-                </button>
+              <div>
+                <mat-form-field class="example-chip-list" appearance="fill">
+                  <mat-label >Tags</mat-label>
+                  <mat-chip-list #chipList aria-label="Seleccion de Tag" >
+                    <mat-chip
+                      *ngFor="let tag of tagsEnMuestra"
+                      (removed)="remove(tag)">
+                        {{tag}}
+                      <button matChipRemove>
+                        <mat-icon>cancel</mat-icon>
+                      </button>
+                    </mat-chip>
+                    <input
+                      placeholder="New Tag..."
+                      #tagInput
+                      [formControl]="tagCtrl"
+                      [matAutocomplete]="auto"
+                      [matChipInputFor]="chipList"
+                      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                      (matChipInputTokenEnd)="add($event)">
+                  </mat-chip-list>
+                  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                    <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
+                      {{tag}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
               </div>
               <div class="row-boton row text-center ">
                 <button type="submit" class="botones btn btn-primary mt-3" [disabled]="!formularioCreacionRecetaForm.valid">Publicar</button>

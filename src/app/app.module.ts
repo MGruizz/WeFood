@@ -17,6 +17,9 @@ import {HttpClientModule} from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatChipsModule} from "@angular/material/chips";
 import {MatIconModule} from "@angular/material/icon";
+import { DietaComponent } from './pages/dieta/dieta.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
 @NgModule({
   declarations: [
@@ -29,6 +32,7 @@ import {MatIconModule} from "@angular/material/icon";
     CreacionUsuarioComponent,
     HeaderComponent,
     FooterComponent,
+    DietaComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,9 @@ import {MatIconModule} from "@angular/material/icon";
     HttpClientModule,
     BrowserAnimationsModule,
     MatChipsModule,
-    MatIconModule
+    MatIconModule,
+    MatFormFieldModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]

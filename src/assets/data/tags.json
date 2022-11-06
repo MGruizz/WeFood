@@ -14,5 +14,29 @@
   {
     "idTag": 4,
     "nombreTag":"SugarFree"
+  },
+  {
+    "idTag": 5,
+    "nombreTag":"Escatologo"
+  },
+  {
+    "idTag": 6,
+    "nombreTag":"Nativo"
+  },
+  {
+    "idTag": 7,
+    "nombreTag":"Indigena"
+  },
+  {
+    "idTag": 8,
+    "nombreTag":"Muy dulce"
+  },
+  {
+    "idTag": 9,
+    "nombreTag":"Veneno"
+  },
+  {
+    "idTag": 10,
+    "nombreTag":"Peligro"
   }
 ]
