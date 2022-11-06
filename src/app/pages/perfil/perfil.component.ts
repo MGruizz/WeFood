@@ -39,7 +39,7 @@ export class PerfilComponent implements OnInit {
       this.totalDietas = value as Diet[];
       this.dietasUsuario = this.dietService.buscarDietasUsuario(this.usuario.idUsuario, this.totalDietas, this.totalRecetas);
     })
-    console.log(this.totalDietas);
+    //console.log(this.totalDietas);
     console.log(this.dietasUsuario);
 
     this.recipeService.sharedData.subscribe(recipe => this.recipe = recipe)
