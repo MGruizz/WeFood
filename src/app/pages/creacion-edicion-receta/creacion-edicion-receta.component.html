@@ -63,7 +63,7 @@
                 <textarea class="form-control" id="exampleIngredientes" formControlName="ingredientes" rows="3"
                           placeholder="ej: Frutos silvestres, duraznos..."></textarea>
               </div>
-              <div class="form-group pt-3">
+              <div class="form-group pt-3 pb-3">
                 <label for="examplePasosASeguir">Pasos a seguir de la receta</label>
                 <span
                   *ngIf="formularioCreacionRecetaForm.controls['pasosReceta'].invalid && (formularioCreacionRecetaForm.controls['pasosReceta'].dirty || formularioCreacionRecetaForm.controls['pasosReceta'].touched)"
@@ -78,8 +78,8 @@
               </div>
               <div>
                 <mat-form-field class="example-chip-list" appearance="fill">
-                  <mat-label >Tags</mat-label>
-                  <mat-chip-list #chipList aria-label="Seleccion de Tag" >
+                  <mat-label class="texto-label">Tags</mat-label>
+                  <mat-chip-list  #chipList aria-label="Seleccion de Tag" >
                     <mat-chip
                       *ngFor="let tag of tagsEnMuestra"
                       (removed)="remove(tag)">
@@ -89,7 +89,7 @@
                       </button>
                     </mat-chip>
                     <input
-                      placeholder="New Tag..."
+                      placeholder="Nuevo tag..."
                       #tagInput
                       [formControl]="tagCtrl"
                       [matAutocomplete]="auto"
