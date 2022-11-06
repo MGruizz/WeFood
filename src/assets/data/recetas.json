@@ -2,6 +2,7 @@
   {
     "idAutor": 1,
     "idReceta": 1,
+    "idDietas": [1],
     "nombreReceta": "Choripan",
     "descripcionReceta": " Pan batido con chorizo ",
     "ingredientes": "Pan Batido, Chorizo",
@@ -14,6 +15,7 @@
   {
     "idAutor":1,
     "idReceta": 2,
+    "idDietas": [1,2],
     "nombreReceta": "Sushi de salmon",
     "descripcionReceta": "Arroz en vuelto en alga con salmon y queso crema",
     "ingredientes": "Arroz, Queso crema, Salmon",

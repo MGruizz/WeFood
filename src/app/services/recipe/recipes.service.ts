@@ -26,7 +26,6 @@ export class RecipesService implements OnInit {
 
   getUserRecipes(idUsuario: number, recetas: Recipe[]): Recipe[] {
     let recetasUsuario: Recipe[] = [];
-    recetasUsuario = [];
     for (let i in recetas) {
       if (idUsuario == recetas[i].idAutor) {
         recetasUsuario.push(recetas[i]);
@@ -47,5 +46,17 @@ export class RecipesService implements OnInit {
 
   nextRecipe(recipe: Recipe){
     this.getDataSubject.next(recipe);
+  }
+
+  getDietRecipes(idDieta: number, recetas: Recipe[]): Recipe[]{
+    let recetasDieta: Recipe[] = [];
+    for (let i in recetas){
+      for (let dietas of recetas[i].idDietas!){
+        if (idDieta == dietas){
+          recetasDieta.push(recetas[i]);
+        };
+      }
+    }
+    return recetasDieta;
   }
 }

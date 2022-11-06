@@ -1,6 +1,7 @@
 export interface Recipe{
   idAutor: number;
   idReceta: number;
+  idDietas?: number[];
   nombreReceta : string;
   descripcionReceta: string;
   ingredientes: string;
