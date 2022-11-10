@@ -2,6 +2,7 @@ import {Recipe} from "./recipe.type";
 import {Injectable, OnInit} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, Observable} from "rxjs";
+import {RecipeMapper} from "./recipe.mapper";
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,11 @@ import {BehaviorSubject, Observable} from "rxjs";
 export class RecipesService implements OnInit {
 
   recetasUrl: string = '../assets/data/recetas.json';
+  private RECETAS_ENDPOINT = '/recetas';
   private getDataSubject : BehaviorSubject<Recipe> = new BehaviorSubject({} as Recipe);
   sharedData: Observable<Recipe> = this.getDataSubject.asObservable();
-  constructor(private httpClient: HttpClient) {
+
+  constructor(private httpClient: HttpClient, private recipeMapper: RecipeMapper) {
 
   }
 
@@ -44,19 +47,12 @@ export class RecipesService implements OnInit {
     return recipe;
   }
 
-  nextRecipe(recipe: Recipe){
-    this.getDataSubject.next(recipe);
+  guardarReceta(receta: Recipe):Observable<any>{
+    const body = this.recipeMapper.mapRecipeToRecipeDto(receta);
+    return this.httpClient.post(this.recetasUrl + this.RECETAS_ENDPOINT,body);
   }
 
-  getDietRecipes(idDieta: number, recetas: Recipe[]): Recipe[]{
-    let recetasDieta: Recipe[] = [];
-    for (let i in recetas){
-      for (let j in recetas[i].idDietas!){
-        if (idDieta == recetas[i].idDietas![j]){
-          recetasDieta.push(recetas[i]);
-        };
-      }
-    }
-    return recetasDieta;
+  nextRecipe(recipe: Recipe){
+    this.getDataSubject.next(recipe);
   }
 }
