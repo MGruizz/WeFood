@@ -4,8 +4,7 @@ import {RecipesService} from "../../services/recipe/recipes.service";
 import {UserService} from "../../services/user/user.service";
 import {UserLogeado} from "../../services/user/user.type";
 import {Router} from "@angular/router";
-import {DietsService} from "../../services/diet/diet.service";
-import {Diet} from "../../services/diet/diet.type";
+
 
 @Component({
   selector: 'app-perfil',
@@ -18,9 +17,7 @@ export class PerfilComponent implements OnInit {
   usuariosLogeados: UserLogeado[] = [];
   totalRecetas : Recipe[] = [];
   recipe: Recipe = {} as Recipe;
-  totalDietas: Diet[] = [];
-  dietasUsuario: Diet[] = [];
-  constructor(private recipeService:RecipesService, private userService:UserService, private router:Router, private dietService: DietsService) {
+  constructor(private recipeService:RecipesService, private userService:UserService, private router:Router) {
 
   }
 
@@ -33,13 +30,6 @@ export class PerfilComponent implements OnInit {
     this.recipeService.cargarRecetas().subscribe((value)=>{
       this.totalRecetas = value as Recipe[];
       this.recetas = this.recipeService.getUserRecipes(this.usuario.idUsuario,this.totalRecetas);
-    })
-
-    this.dietService.cargarDiets().subscribe((value)=>{
-      this.totalDietas = value as Diet[];
-      console.log(this.totalDietas);
-      this.dietasUsuario = this.dietService.buscarDietasUsuario(this.usuario.idUsuario, this.totalDietas, this.totalRecetas);
-      console.log(this.dietasUsuario);
     })
 
 
