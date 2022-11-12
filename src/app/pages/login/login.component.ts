@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {UserService} from "../../services/user/user.service";
 
 
 @Component({
@@ -12,7 +13,7 @@ import {Router} from "@angular/router";
 export class LoginComponent implements OnInit {
   formularioLoginForm : FormGroup = {} as FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router:Router) { }
+  constructor(private formBuilder: FormBuilder, private router:Router, private userService:UserService) { }
 
   ngOnInit(): void {
     let form ={
@@ -31,6 +32,7 @@ export class LoginComponent implements OnInit {
 
   iniciarSesion(){
     console.log(this.formularioLoginForm.status);
+    this.userService.iniciarSesion(this.formularioLoginForm.get('userName')!.value,this.formularioLoginForm.get('password')!.value)
     if(this.formularioLoginForm.status === 'VALID'){
       this.router.navigate(['/inicio'])
     }

@@ -12,7 +12,7 @@ export interface Recipe{
   tags: Tag[];
 }
 
-export interface RecipeDto{
+export interface RecipeDTO{
   idautor: number;
   idreceta: number;
   nombrereceta: string;

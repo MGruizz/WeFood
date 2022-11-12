@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {UserLogeado, UserSinLogear, UserLogeadoDto, RegistroUsuario, RegistroUsuarioDTO} from "./user.type";
+import {UserLogeado, UserSinLogear, UserLogeadoDTO, RegistroUsuario, RegistroUsuarioDTO} from "./user.type";
 import {RedSocial} from "../../../environments/global.types";
 
 
@@ -27,8 +27,8 @@ export class UserMapper {
     return usuario;
   }
 
-  mapUserLogeadoToUsuarioDTO(usuario: UserLogeado):UserLogeadoDto{
-    const usuarioDTO = {} as UserLogeadoDto;
+  mapUserLogeadoToUsuarioDTO(usuario: UserLogeado):UserLogeadoDTO{
+    const usuarioDTO = {} as UserLogeadoDTO;
     usuarioDTO.idusuario = usuario.idUsuario;
     usuarioDTO.correoelectronico = usuario.correoElectronico;
     usuarioDTO.contrasena = usuario.contrasena;
@@ -46,6 +46,24 @@ export class UserMapper {
     return usuarioDTO;
   }
 
+  mapUserLogeadoDTOToUsuario(usuarioDTO: UserLogeadoDTO):UserLogeado{
+    const usuario = {} as UserLogeado;
+    usuario.idUsuario = usuarioDTO.idusuario;
+    usuario.correoElectronico = usuarioDTO.correoelectronico;
+    usuario.contrasena = usuarioDTO.contrasena;
+    usuario.nombrePersona = usuarioDTO.nombrepersona;
+    usuario.isAdmin = usuarioDTO.isadmin;
+    if(usuarioDTO.descripcionusuario){
+      usuario.descripcionUsuario = usuarioDTO.descripcionusuario;
+    }
+    if(usuarioDTO.redessociales){
+      usuario.redesSociales = usuarioDTO.redessociales;
+    }
+    if(usuarioDTO.fotoperfil) {
+      usuario.fotoPerfil = usuarioDTO.fotoperfil;
+    }
+    return usuario;
+  }
 
 
 }

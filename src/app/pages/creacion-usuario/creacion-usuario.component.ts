@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl, ValidationErrors} from '@angular/forms';
 import {Router} from '@angular/router';
+import {RegistroUsuario} from "../../services/user/user.type";
 
 @Component({
   selector: 'app-creacion-usuario',
@@ -39,7 +40,6 @@ export class CreacionUsuarioComponent implements OnInit {
 
   registrarse(){
     console.log(this.formularioCreacionUsuarioForm.status);
-
     if (this.formularioCreacionUsuarioForm.status === 'VALID'){
       this.router.navigate(['/inicio'])
     }

@@ -9,6 +9,7 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {map, Observable, startWith} from 'rxjs';
 import {MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
+import {RecipesService} from "../../services/recipe/recipes.service";
 
 @Component({
   selector: 'app-creacion-edicion-receta',
@@ -28,7 +29,7 @@ export class CreacionEdicionRecetaComponent implements OnInit {
 
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
 
-  constructor(private formBuilder: FormBuilder, private router:Router, private tagService: TagService) {
+  constructor(private formBuilder: FormBuilder, private router:Router, private tagService: TagService, private recipesService:RecipesService) {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
       map((tag: string | null) => (tag ? this._filter(tag) : this.tagsName.slice())),
@@ -61,12 +62,6 @@ export class CreacionEdicionRecetaComponent implements OnInit {
       console.log(this.tags);
     })
 
-  }
-  publicar(){
-    console.log(this.formularioCreacionRecetaForm.status);
-    if(this.formularioCreacionRecetaForm.status === 'VALID'){
-      this.router.navigate(['/inicio'])
-    }
   }
 
   add(event: MatChipInputEvent): void {
@@ -103,5 +98,12 @@ export class CreacionEdicionRecetaComponent implements OnInit {
     const filterValue = value.toLowerCase();
 
     return this.tagsName.filter(tag => tag.toLowerCase().includes(filterValue));
+  }
+
+  publicar(){
+    console.log(this.formularioCreacionRecetaForm.status);
+    if(this.formularioCreacionRecetaForm.status === 'VALID'){
+      this.router.navigate(['/inicio'])
+    }
   }
 }

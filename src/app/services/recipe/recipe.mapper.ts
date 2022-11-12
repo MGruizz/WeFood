@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Recipe, RecipeDto} from "./recipe.type";
+import {Recipe, RecipeDTO} from "./recipe.type";
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +8,8 @@ import {Recipe, RecipeDto} from "./recipe.type";
 export class RecipeMapper {
   constructor() {  }
 
-  mapRecipeToRecipeDto(receta: Recipe):RecipeDto{
-    const recetaDto = {} as RecipeDto;
+  mapRecipeToRecipeDto(receta: Recipe):RecipeDTO{
+    const recetaDto = {} as RecipeDTO;
     recetaDto.idautor = receta.idAutor;
     recetaDto.idreceta = receta.idReceta;
     recetaDto.nombrereceta = receta.nombreReceta;

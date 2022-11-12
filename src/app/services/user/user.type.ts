@@ -17,7 +17,7 @@ export interface UserLogeado{
   isAdmin: Boolean;
 }
 
-export interface UserLogeadoDto{
+export interface UserLogeadoDTO{
   idusuario:number
   correoelectronico: string;
   contrasena: string;

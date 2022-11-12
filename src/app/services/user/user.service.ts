@@ -4,6 +4,7 @@ import {UserLogeado} from "./user.type";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {UserMapper} from "./user.mapper";
+import {constants} from "../../../environments/constants";
 
 @Injectable({
   providedIn: 'root'
@@ -42,5 +43,9 @@ export class UserService{
     const body = this.userMapper.mapLoginDataToLogInBody(mail,password);
     const url = this.usuariosLogeadoUrl + this.USUARIOS_LOGIN_ENDPOINT;
     return this.httpClient.post(url,body);
+  }
+
+  getUserById():Observable<any>{
+    return this.httpClient.get(constants.API_URL + this.USUARIOS_ENDPOINT + '/' + '1');
   }
 }
