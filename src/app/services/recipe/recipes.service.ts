@@ -3,6 +3,7 @@ import {Injectable, OnInit} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, Observable} from "rxjs";
 import {RecipeMapper} from "./recipe.mapper";
+import {constants} from "../../../environments/constants";
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,10 @@ export class RecipesService implements OnInit {
 
   cargarRecetas(): Observable<any> {
     return this.httpClient.get(this.recetasUrl)
+  }
+
+  getRecipes(): Observable<any> {
+    return this.httpClient.get(constants.API_URL + this.RECETAS_ENDPOINT)
   }
 
   getUserRecipes(idUsuario: number, recetas: Recipe[]): Recipe[] {
