@@ -3,13 +3,13 @@ import {RedSocial} from "../../../environments/global.types";
 
 export interface UserSinLogear{
   correoElectronico: string;
-  contrasena: string;
+  password: string;
 }
 
 export interface UserLogeado{
   idUsuario:number
   correoElectronico: string;
-  contrasena: string;
+  password: string;
   nombrePersona:string;
   descripcionUsuario?: string;
   redesSociales?: RedSocial[];
@@ -20,7 +20,7 @@ export interface UserLogeado{
 export interface UserLogeadoDTO{
   idusuario:number
   correoelectronico: string;
-  contrasena: string;
+  password: string;
   nombrepersona:string;
   descripcionusuario?: string;
   redessociales?: RedSocial[];

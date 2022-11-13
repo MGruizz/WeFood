@@ -12,7 +12,7 @@ import {constants} from "../../../environments/constants";
 
 export class UserService{
   usuariosLogeadoUrl: string = '../assets/data/user.json';
-  private USUARIOS_ENDPOINT = '/usuario';
+  private USUARIOS_ENDPOINT = '/usuarios';
   private USUARIOS_LOGIN_ENDPOINT = '/login';
 
 

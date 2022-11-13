@@ -23,7 +23,7 @@ export class UserMapper {
   mapLoginDataToLogInBody(mail: string , password: string): UserSinLogear {
     const usuario = {} as UserSinLogear
     usuario.correoElectronico = mail;
-    usuario.contrasena = password;
+    usuario.password = password;
     return usuario;
   }
 
@@ -31,7 +31,7 @@ export class UserMapper {
     const usuarioDTO = {} as UserLogeadoDTO;
     usuarioDTO.idusuario = usuario.idUsuario;
     usuarioDTO.correoelectronico = usuario.correoElectronico;
-    usuarioDTO.contrasena = usuario.contrasena;
+    usuarioDTO.password = usuario.password;
     usuarioDTO.nombrepersona = usuario.correoElectronico;
     usuarioDTO.isadmin = usuario.isAdmin;
     if(usuario.descripcionUsuario){
@@ -50,7 +50,7 @@ export class UserMapper {
     const usuario = {} as UserLogeado;
     usuario.idUsuario = usuarioDTO.idusuario;
     usuario.correoElectronico = usuarioDTO.correoelectronico;
-    usuario.contrasena = usuarioDTO.contrasena;
+    usuario.password = usuarioDTO.password;
     usuario.nombrePersona = usuarioDTO.nombrepersona;
     usuario.isAdmin = usuarioDTO.isadmin;
     if(usuarioDTO.descripcionusuario){
