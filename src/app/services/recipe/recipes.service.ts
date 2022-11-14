@@ -32,6 +32,10 @@ export class RecipesService implements OnInit {
     return this.httpClient.get(constants.API_URL + this.RECETAS_ENDPOINT)
   }
 
+  getRecipesByUserId(idUsuario :number): Observable<any>{
+    return this.httpClient.get(constants.API_URL+this.RECETAS_ENDPOINT+'/'+idUsuario)
+  }
+
   getUserRecipes(idUsuario: number, recetas: Recipe[]): Recipe[] {
     let recetasUsuario: Recipe[] = [];
     for (let i in recetas) {

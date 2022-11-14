@@ -9,7 +9,7 @@ export interface Recipe{
   pasosReceta: string;
   imagenes : string[];
   autor: string;
-  tags: Tag[];
+  tags?: Tag[];
 }
 
 export interface RecipeDTO{
@@ -21,5 +21,5 @@ export interface RecipeDTO{
   pasosreceta: string;
   imagenes: string[];
   autor: string;
-  tags: Tag[];
+  tags?: Tag[];
 }
