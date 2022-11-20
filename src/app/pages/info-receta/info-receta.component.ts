@@ -15,7 +15,11 @@ export class InfoRecetaComponent implements OnInit {
   ngOnInit(): void {
     console.log(history.state.data);
     console.log(history.state);
-    this.recipeService.sharedData.subscribe(recipe => this.receta = recipe)
+    this.recipeService.sharedData.subscribe(recipe =>{
+      this.receta = recipe;
+      console.log(this.receta)
+    })
   }
+
 
 }

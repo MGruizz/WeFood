@@ -3,6 +3,8 @@ import {Recipe} from "../../services/recipe/recipe.type";
 import {RecipesService} from "../../services/recipe/recipes.service";
 import {UserService} from "../../services/user/user.service";
 import {Router} from "@angular/router";
+import {RecipeDTO} from "../../services/recipe/recipe.type";
+import {RecipeMapper} from "../../services/recipe/recipe.mapper";
 
 @Component({
   selector: 'app-inicio',
@@ -15,12 +17,19 @@ export class InicioComponent implements OnInit {
   recipe: Recipe = {} as Recipe;
   recetas : Recipe[] = [];
   totalRecetas: Recipe[] = [];
-  constructor(private recipeService:RecipesService, private router: Router) { }
+  constructor(private recipeService:RecipesService, private router: Router, private recipeMapper: RecipeMapper) { }
 
   ngOnInit(): void {
-    this.recipeService.cargarRecetas().subscribe((value)=>{
+    /*this.recipeService.cargarRecetas().subscribe((value)=>{
       this.totalRecetas = value as Recipe[];
       this.recetas = this.recipeService.getUserRecipes(1,this.totalRecetas);
+    })*/
+    this.recipeService.getRecipes().subscribe((value) => {
+      console.log(value);
+      for (let receta of value ){
+        this.totalRecetas.push(this.recipeMapper.mapRecipeDTOToRecipe(receta as RecipeDTO));
+      }
+      console.log(this.totalRecetas);
     })
     this.recipeService.sharedData.subscribe(recipe => this.recipe = recipe)
   }

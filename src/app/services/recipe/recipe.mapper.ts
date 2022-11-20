@@ -9,17 +9,31 @@ export class RecipeMapper {
   constructor() {  }
 
   mapRecipeToRecipeDto(receta: Recipe):RecipeDTO{
-    const recetaDto = {} as RecipeDTO;
-    recetaDto.idautor = receta.idAutor;
-    recetaDto.idreceta = receta.idReceta;
-    recetaDto.nombrereceta = receta.nombreReceta;
-    recetaDto.descripcionreceta = receta.descripcionReceta;
-    recetaDto.ingredientes = receta.ingredientes;
-    recetaDto.pasosreceta = receta.pasosReceta;
-    recetaDto.imagenes = receta.imagenes;
-    recetaDto.autor = receta.autor;
-    recetaDto.tags = receta.tags;
-    return recetaDto;
+    const recetaDTO = {} as RecipeDTO;
+    recetaDTO.idautor = receta.idAutor;
+    recetaDTO.idreceta = receta.idReceta;
+    recetaDTO.nombrereceta = receta.nombreReceta;
+    recetaDTO.descripcionreceta = receta.descripcionReceta;
+    recetaDTO.ingredientes = receta.ingredientes;
+    recetaDTO.pasosreceta = receta.pasosReceta;
+    recetaDTO.imagenes = receta.imagenes;
+    recetaDTO.autor = receta.autor;
+    recetaDTO.tags = receta.tags;
+    return recetaDTO;
+  }
+
+  mapRecipeDTOToRecipe(recetaDTO: RecipeDTO): Recipe {
+    const receta = {} as Recipe;
+    receta.idAutor = recetaDTO.idautor;
+    receta.idReceta = recetaDTO.idreceta;
+    receta.nombreReceta = recetaDTO.nombrereceta;
+    receta.descripcionReceta = recetaDTO.descripcionreceta;
+    receta.ingredientes = recetaDTO.ingredientes;
+    receta.pasosReceta = recetaDTO.pasosreceta;
+    receta.imagenes = recetaDTO.imagenes;
+    receta.autor = recetaDTO.autor;
+    receta.tags = recetaDTO.tags;
+    return receta;
   }
 
 }
