@@ -36,7 +36,8 @@ export class UserService{
 
   registrarUsuario (usuario:RegistroUsuario):Observable<any>{
     const body = this.userMapper.mapRegistroUsuarioToRegistroUsuarioDTO(usuario);
-    return this.httpClient.post(this.usuariosLogeadoUrl + this.USUARIOS_ENDPOINT,body);
+    const url = constants.API_URL + this.USUARIOS_ENDPOINT;
+    return this.httpClient.post(url,body,{observe: 'response'});
   }
 
   iniciarSesion(mail: string , password: string):Observable<any>{

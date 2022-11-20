@@ -30,6 +30,12 @@
         <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
         <button class="btn btn-outline my-2 my-sm-0 ms-2 boton-buscar shadow-sm" type="submit">Buscar</button>
       </form>
+      <div *ngIf="estaLogeado(); else noEstaLoggeado">
+        <button (click)="logOut()" class="btn btn-outline my-2 my-sm-0 ms-2 boton-desconectarse shadow-sm" type="submit">Salir</button>
+      </div>
+      <ng-template #noEstaLoggeado>
+        <button class="btn btn-outline my-2 my-sm-0 ms-2 boton-conectarse shadow-sm" routerLink="/login">  Iniciar Sesion</button>
+      </ng-template>
     </div>
   </nav>
 </header>
