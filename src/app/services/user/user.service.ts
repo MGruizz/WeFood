@@ -13,7 +13,7 @@ import {constants} from "../../../environments/constants";
 export class UserService{
   usuariosLogeadoUrl: string = '../assets/data/user.json';
   private USUARIOS_ENDPOINT = '/usuarios';
-  private USUARIOS_LOGIN_ENDPOINT = '/login';
+  private USUARIOS_LOGIN_ENDPOINT = '/login/';
 
 
   constructor(
@@ -41,8 +41,8 @@ export class UserService{
 
   iniciarSesion(mail: string , password: string):Observable<any>{
     const body = this.userMapper.mapLoginDataToLogInBody(mail,password);
-    const url = this.usuariosLogeadoUrl + this.USUARIOS_LOGIN_ENDPOINT;
-    return this.httpClient.post(url,body);
+    const url = constants.API_URL + this.USUARIOS_LOGIN_ENDPOINT;
+    return this.httpClient.post(url,body,{observe: 'response'});
   }
 
   getUserById():Observable<any>{

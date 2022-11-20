@@ -32,9 +32,17 @@ export class LoginComponent implements OnInit {
 
   iniciarSesion(){
     console.log(this.formularioLoginForm.status);
-    this.userService.iniciarSesion(this.formularioLoginForm.get('userName')!.value,this.formularioLoginForm.get('password')!.value)
     if(this.formularioLoginForm.status === 'VALID'){
-      this.router.navigate(['/inicio'])
+      console.log(this.formularioLoginForm.get('userName')!.value,this.formularioLoginForm.get('password')!.value)
+      this.userService.iniciarSesion(this.formularioLoginForm.get('userName')!.value,this.formularioLoginForm.get('password')!.value).subscribe((res)=>{
+        console.log('res: ',res);
+        console.log('res: ',res.body.token);
+        if(res.status == '200'){
+          localStorage.setItem('token',res.body.token);
+          this.router.navigate(['/inicio']);
+        }
+      })
     }
+
   }
 }

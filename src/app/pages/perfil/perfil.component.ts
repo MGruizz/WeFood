@@ -29,6 +29,7 @@ export class PerfilComponent implements OnInit {
     //   console.log(this.usuario);
     // })
     this.userService.getUserById().subscribe((value)=>{
+      // console.log(localStorage.getItem(id));
       console.log(value);
       this.usuario = this.userMapper.mapUserLogeadoDTOToUsuario(value as UserLogeadoDTO) ;
       console.log(this.usuario);
