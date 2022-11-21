@@ -2,7 +2,7 @@ import {RegistroUsuario, UserSinLogear} from "./user.type";
 import {Injectable, OnInit} from "@angular/core";
 import {UserLogeado} from "./user.type";
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {map, Observable, of} from "rxjs";
 import {UserMapper} from "./user.mapper";
 import {constants} from "../../../environments/constants";
 
@@ -11,28 +11,20 @@ import {constants} from "../../../environments/constants";
 })
 
 export class UserService{
-  usuariosLogeadoUrl: string = '../assets/data/user.json';
+
+  set user(value: UserLogeado) {
+    this._user = value;
+  }
+
   private USUARIOS_ENDPOINT = '/usuarios';
   private USUARIOS_LOGIN_ENDPOINT = '/login/';
-
+  private _user: UserLogeado | undefined;
 
   constructor(
     private httpClient:HttpClient,
     private userMapper:UserMapper,
   ) {}
 
-  cargarUsers(): Observable<any> {
-    return this.httpClient.get(this.usuariosLogeadoUrl);
-  }
-
-  buscarUsuario(idUsuario: number, usuariosLogeados: UserLogeado[]):UserLogeado{
-    for (let user of usuariosLogeados) {
-      if (user.idUsuario == idUsuario){
-        return user;
-      }
-    }
-    return {} as UserLogeado;
-  }
 
   registrarUsuario (usuario:RegistroUsuario):Observable<any>{
     const body = this.userMapper.mapRegistroUsuarioToRegistroUsuarioDTO(usuario);
@@ -47,6 +39,17 @@ export class UserService{
   }
 
   getUserById():Observable<any>{
-    return this.httpClient.get(constants.API_URL + this.USUARIOS_ENDPOINT + '/' + '1');
+    return of(this.getUser()).pipe(
+      map((user)=>{
+        if(user){
+          return user;
+        }
+        return localStorage.getItem('user');
+      })
+    );
+  }
+
+  getUser():UserLogeado | undefined{
+    return this._user;
   }
 }

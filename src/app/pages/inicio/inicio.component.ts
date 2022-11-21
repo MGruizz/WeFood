@@ -20,10 +20,7 @@ export class InicioComponent implements OnInit {
   constructor(private recipeService:RecipesService, private router: Router, private recipeMapper: RecipeMapper) { }
 
   ngOnInit(): void {
-    /*this.recipeService.cargarRecetas().subscribe((value)=>{
-      this.totalRecetas = value as Recipe[];
-      this.recetas = this.recipeService.getUserRecipes(1,this.totalRecetas);
-    })*/
+
     this.recipeService.getRecipes().subscribe((value) => {
       console.log(value);
       for (let receta of value ){

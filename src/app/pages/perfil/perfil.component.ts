@@ -28,13 +28,15 @@ export class PerfilComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.userService.cargarUsers().subscribe((value)=>{
-    //   this.usuariosLogeados = (value as UserLogeado[]);
-    //   this.usuario = this.userService.buscarUsuario(1,this.usuariosLogeados);
-    //   console.log(this.usuario);
-    // })
+
     this.userService.getUserById().subscribe((value) => {
-      this.usuario = this.userMapper.mapUserLogeadoDTOToUsuario(value as UserLogeadoDTO);
+      if(typeof value == "string"){
+        this.usuario = JSON.parse(value);
+      }
+      else{
+        this.usuario = value;
+      }
+      console.log(this.usuario);
       this.recipeService.getRecipesByUserId(this.usuario.idUsuario).subscribe((value) => {
         for (let recet of value) {
           let receta = this.recipeMapper.mapRecipeDTOToRecipe(recet as RecipeDTO);
@@ -46,16 +48,14 @@ export class PerfilComponent implements OnInit {
             receta.tags = tags;
             this.recetas.push(receta);
           })
-
         }
-        //console.log(this.recetas)
       })
 
     })
 
 
     this.recipeService.sharedData.subscribe(recipe => this.recipe = recipe)
-    console.log(this.recipe)
+    //console.log(this.recipe)
   }
 
   verDetalles(index:number){

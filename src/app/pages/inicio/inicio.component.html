@@ -12,7 +12,7 @@
         <div class="container-fluid">
           <div class="card p-3 mt-5 ms-5 m shadow h-100 d-flex flex-column ">
             <div class="card-body">
-              <img [src]= receta.imagenes[0] class="card-img-top img-size img-fluid"  alt="...">
+              <img *ngIf="receta.imagenes" [src]= receta.imagenes class="card-img-top img-size img-fluid"  alt="...">
               <h6 class="card-title mt-3"><span class="fw-bold">Nombre: </span>{{receta.nombreReceta}}</h6>
               <h6 class="card-subtitle"><span class="fw-bold">Autor: </span>{{receta.autor}}</h6>
               <p class="card-text "><span class="fw-bold ">Descripcion: </span><span class="tresPuntos">{{receta.descripcionReceta}}</span></p>

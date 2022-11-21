@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {UserService} from "../../services/user/user.service";
+import {UserLogeadoDTO} from "../../services/user/user.type";
+import {UserMapper} from "../../services/user/user.mapper";
 
 
 @Component({
@@ -13,7 +15,7 @@ import {UserService} from "../../services/user/user.service";
 export class LoginComponent implements OnInit {
   formularioLoginForm : FormGroup = {} as FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router:Router, private userService:UserService) { }
+  constructor(private formBuilder: FormBuilder, private router:Router, private userService:UserService, private userMapper:UserMapper) { }
 
   ngOnInit(): void {
     let form ={
@@ -35,10 +37,12 @@ export class LoginComponent implements OnInit {
     if(this.formularioLoginForm.status === 'VALID'){
       console.log(this.formularioLoginForm.get('userName')!.value,this.formularioLoginForm.get('password')!.value)
       this.userService.iniciarSesion(this.formularioLoginForm.get('userName')!.value,this.formularioLoginForm.get('password')!.value).subscribe((res)=>{
-        console.log('res: ',res);
-        console.log('res: ',res.body.token);
+        console.log('res: ',res.body);
         if(res.status == '200'){
+          this.userService.user  = this.userMapper.mapUserLogeadoDTOToUsuario(res.body.user as UserLogeadoDTO)
+          console.log(this.userService.user);
           localStorage.setItem('token',res.body.token);
+          localStorage.setItem('user',JSON.stringify(this.userService.user));
           this.router.navigate(['/inicio']);
         }
       })
