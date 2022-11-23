@@ -15,7 +15,6 @@ import {RecipeMapper} from "../../services/recipe/recipe.mapper";
 
 export class InicioComponent implements OnInit {
   recipe: Recipe = {} as Recipe;
-  recetas : Recipe[] = [];
   totalRecetas: Recipe[] = [];
   constructor(private recipeService:RecipesService, private router: Router, private recipeMapper: RecipeMapper) { }
 
@@ -26,13 +25,13 @@ export class InicioComponent implements OnInit {
       for (let receta of value ){
         this.totalRecetas.push(this.recipeMapper.mapRecipeDTOToRecipe(receta as RecipeDTO));
       }
-      console.log(this.totalRecetas);
+      // console.log(this.totalRecetas);
     })
     this.recipeService.sharedData.subscribe(recipe => this.recipe = recipe)
   }
 
   verDetalles(index:number){
-    this.recipeService.nextRecipe(this.recetas[index]);
-    this.router.navigate(['/info-receta'],{state:{data:this.recetas[index]}});
+    this.recipeService.nextRecipe(this.totalRecetas[index]);
+    this.router.navigate(['/info-receta'],);
   }
 }

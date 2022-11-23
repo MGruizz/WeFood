@@ -23,3 +23,11 @@ export interface RecipeDTO{
   autor: string;
   tags?: Tag[];
 }
+
+export interface NewRecipe{
+  nombrereceta:string,
+  descripcionreceta:string,
+  ingredientes:string,
+  pasosrecetas:string,
+  tags:number[]
+}

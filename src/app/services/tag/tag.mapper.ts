@@ -10,14 +10,26 @@ export class TagMapper {
   mapTagToTagDto(tag : Tag):TagDTO{
     const tagDTO = {} as TagDTO;
     tagDTO.idtag=tag.idTag;
-    tagDTO.nombretag=tag.nombreTag;
+    tagDTO.nombre=tag.nombreTag;
     return tagDTO;
   }
   mapTagDtoToTag(tagDTO: TagDTO): Tag {
   const tag = {} as Tag;
   tag.idTag = tagDTO.idtag;
-  tag.nombreTag = tagDTO.nombretag;
+  tag.nombreTag = tagDTO.nombre;
   return tag;
+  }
+
+  mapStringToTag(tagsName:string[],totalTags:Tag[]):number[]{
+    const tags :number[] = [];
+    for(let i in tagsName){
+      for(let tag of totalTags){
+        if(tagsName[i] == tag.nombreTag){
+          tags.push(tag.idTag);
+        }
+      }
+    }
+    return tags;
   }
 }
 

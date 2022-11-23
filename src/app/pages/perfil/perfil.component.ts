@@ -36,7 +36,6 @@ export class PerfilComponent implements OnInit {
       else{
         this.usuario = value;
       }
-      console.log(this.usuario);
       this.recipeService.getRecipesByUserId(this.usuario.idUsuario).subscribe((value) => {
         for (let recet of value) {
           let receta = this.recipeMapper.mapRecipeDTOToRecipe(recet as RecipeDTO);

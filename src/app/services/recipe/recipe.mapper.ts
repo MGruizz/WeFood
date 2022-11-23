@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Recipe, RecipeDTO} from "./recipe.type";
+import {NewRecipe, Recipe, RecipeDTO} from "./recipe.type";
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +34,16 @@ export class RecipeMapper {
     receta.autor = recetaDTO.autor;
     receta.tags = recetaDTO.tags;
     return receta;
+  }
+
+  mapDatatoCreateRecipe(nombreReceta:string, descripcionReceta:string,ingredientes:string,pasosReceta:string, tags:number[]):NewRecipe{
+    const recipe = {} as NewRecipe;
+    recipe.nombrereceta = nombreReceta;
+    recipe.descripcionreceta = descripcionReceta;
+    recipe.pasosrecetas = pasosReceta;
+    recipe.ingredientes = ingredientes;
+    recipe.tags = tags;
+    return recipe;
   }
 
 }

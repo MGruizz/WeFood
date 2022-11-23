@@ -1,9 +1,9 @@
 export interface Tag{
-  idTag: Number;
+  idTag: number;
   nombreTag: string;
 }
 
 export interface TagDTO{
-  idtag: Number;
-  nombretag: string;
+  idtag: number;
+  nombre: string;
 }

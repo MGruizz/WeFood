@@ -1,7 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {Tag} from "../../services/tag/tag.type";
+import {Tag, TagDTO} from "../../services/tag/tag.type";
 import {TagService} from "../../services/tag/tag.service";
 import {UserLogeado} from "../../services/user/user.type";
 
@@ -10,6 +10,7 @@ import {MatChipInputEvent} from '@angular/material/chips';
 import {map, Observable, startWith} from 'rxjs';
 import {MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
 import {RecipesService} from "../../services/recipe/recipes.service";
+import {TagMapper} from "../../services/tag/tag.mapper";
 
 @Component({
   selector: 'app-creacion-edicion-receta',
@@ -29,7 +30,8 @@ export class CreacionEdicionRecetaComponent implements OnInit {
 
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
 
-  constructor(private formBuilder: FormBuilder, private router:Router, private tagService: TagService, private recipesService:RecipesService) {
+  constructor(private formBuilder: FormBuilder, private router:Router, private tagService: TagService, private recipesService:RecipesService,
+              private tagMapper : TagMapper) {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
       map((tag: string | null) => (tag ? this._filter(tag) : this.tagsName.slice())),
@@ -55,11 +57,12 @@ export class CreacionEdicionRecetaComponent implements OnInit {
     this.formularioCreacionRecetaForm = this.formBuilder.group(form);
 
     this.tagService.cargarTags().subscribe((value)=>{
-      this.tags = (value as Tag[]);
+      for (let tag of value) {
+        this.tags.push(this.tagMapper.mapTagDtoToTag(tag as TagDTO));
+      }
       for(let i in this.tags){
         this.tagsName.push(this.tags[i].nombreTag);
       }
-      console.log(this.tags);
     })
 
   }
@@ -67,8 +70,8 @@ export class CreacionEdicionRecetaComponent implements OnInit {
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
 
-    // Add our fruit
-    if (value) {
+    // Add our tag
+    if (value && this.tagsName.includes(value)) {
       this.tagsEnMuestra.push(value);
     }
 
@@ -100,9 +103,17 @@ export class CreacionEdicionRecetaComponent implements OnInit {
     return this.tagsName.filter(tag => tag.toLowerCase().includes(filterValue));
   }
 
+
+
   publicar(){
     console.log(this.formularioCreacionRecetaForm.status);
+
+    let tagsToBack = this.tagMapper.mapStringToTag(this.tagsEnMuestra,this.tags);
     if(this.formularioCreacionRecetaForm.status === 'VALID'){
+      console.log(this.formularioCreacionRecetaForm.get('nombreReceta')!.value,this.formularioCreacionRecetaForm.get('descripcionReceta')!.value,
+                  this.formularioCreacionRecetaForm.get('ingredientes')!.value,this.formularioCreacionRecetaForm.get('pasosReceta')!.value,tagsToBack)
+
+
       this.router.navigate(['/inicio'])
     }
   }

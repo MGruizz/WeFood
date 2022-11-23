@@ -40,9 +40,10 @@ export class LoginComponent implements OnInit {
         console.log('res: ',res.body);
         if(res.status == '200'){
           this.userService.user  = this.userMapper.mapUserLogeadoDTOToUsuario(res.body.user as UserLogeadoDTO)
-          console.log(this.userService.user);
+          console.log(this.userService.getUser());
           localStorage.setItem('token',res.body.token);
-          localStorage.setItem('user',JSON.stringify(this.userService.user));
+          console.log(JSON.stringify(this.userService.getUser()));
+          localStorage.setItem('user',JSON.stringify(this.userService.getUser()));
           this.router.navigate(['/inicio']);
         }
       })
