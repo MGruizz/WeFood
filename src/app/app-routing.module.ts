@@ -6,7 +6,6 @@ import { LoginComponent } from './pages/login/login.component';
 import { InfoRecetaComponent } from './pages/info-receta/info-receta.component';
 import { CreacionEdicionRecetaComponent } from './pages/creacion-edicion-receta/creacion-edicion-receta.component';
 import { CreacionUsuarioComponent } from './pages/creacion-usuario/creacion-usuario.component';
-import {DietaComponent} from "./pages/dieta/dieta.component";
 import {AuthGuard} from "./services/auth/auth.guard";
 
 const routes: Routes = [

@@ -23,11 +23,7 @@ export class TagMapper {
   mapStringToTag(tagsName:string[],totalTags:Tag[]):number[]{
     const tags :number[] = [];
     for(let i in tagsName){
-      for(let tag of totalTags){
-        if(tagsName[i] == tag.nombreTag){
-          tags.push(tag.idTag);
-        }
-      }
+      tags.push((totalTags.find(({nombreTag}) => nombreTag == tagsName[i])!).idTag)
     }
     return tags;
   }

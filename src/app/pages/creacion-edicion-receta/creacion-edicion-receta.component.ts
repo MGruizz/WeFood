@@ -11,6 +11,7 @@ import {map, Observable, startWith} from 'rxjs';
 import {MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
 import {RecipesService} from "../../services/recipe/recipes.service";
 import {TagMapper} from "../../services/tag/tag.mapper";
+import {NewRecipe} from "../../services/recipe/recipe.type";
 
 @Component({
   selector: 'app-creacion-edicion-receta',
@@ -110,11 +111,24 @@ export class CreacionEdicionRecetaComponent implements OnInit {
 
     let tagsToBack = this.tagMapper.mapStringToTag(this.tagsEnMuestra,this.tags);
     if(this.formularioCreacionRecetaForm.status === 'VALID'){
-      console.log(this.formularioCreacionRecetaForm.get('nombreReceta')!.value,this.formularioCreacionRecetaForm.get('descripcionReceta')!.value,
-                  this.formularioCreacionRecetaForm.get('ingredientes')!.value,this.formularioCreacionRecetaForm.get('pasosReceta')!.value,tagsToBack)
+      const recipe:NewRecipe = {
+        nombrereceta:this.formularioCreacionRecetaForm.get('nombreReceta')!.value,
+        descripcionreceta:this.formularioCreacionRecetaForm.get('descripcionReceta')!.value,
+        ingredientes:this.formularioCreacionRecetaForm.get('ingredientes')!.value,
+        pasosrecetas:this.formularioCreacionRecetaForm.get('pasosReceta')!.value,
+        tags:tagsToBack
+      }
+      this.recipesService.guardarReceta(recipe).subscribe((res)=>{
+        console.log(res);
+        if(res.status == '201'){
+          this.router.navigate(['/perfil']);
+        }
+        else{
+          console.log('Error en la insersion');
+        }
+      })
 
 
-      this.router.navigate(['/inicio'])
     }
   }
 }

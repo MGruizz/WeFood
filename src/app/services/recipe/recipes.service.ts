@@ -1,6 +1,6 @@
-import {Recipe} from "./recipe.type";
+import {NewRecipe, Recipe} from "./recipe.type";
 import {Injectable, OnInit} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient,HttpHeaders} from "@angular/common/http";
 import {BehaviorSubject, Observable} from "rxjs";
 import {RecipeMapper} from "./recipe.mapper";
 import {constants} from "../../../environments/constants";
@@ -56,11 +56,10 @@ export class RecipesService implements OnInit {
     return recipe;
   }
 
-  guardarReceta(receta: Recipe):Observable<any>{
-    const body = this.recipeMapper.mapRecipeToRecipeDto(receta);
-    return this.httpClient.post(this.recetasUrl + this.RECETAS_ENDPOINT,body);
+  guardarReceta(receta: NewRecipe):Observable<any>{
+    const body = receta;
+    return this.httpClient.post(constants.API_URL + this.RECETAS_ENDPOINT,body,{ headers: new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('token')})})
   }
-
   nextRecipe(recipe: Recipe){
     this.getDataSubject.next(recipe);
   }
