@@ -6,14 +6,15 @@ import { LoginComponent } from './pages/login/login.component';
 import { InfoRecetaComponent } from './pages/info-receta/info-receta.component';
 import { CreacionEdicionRecetaComponent } from './pages/creacion-edicion-receta/creacion-edicion-receta.component';
 import { CreacionUsuarioComponent } from './pages/creacion-usuario/creacion-usuario.component';
+import {AuthGuard} from "./services/auth/auth.guard";
 
 const routes: Routes = [
   {path:'', component: LoginComponent },
   {path:'inicio', component: InicioComponent },
-  {path:'perfil', component: PerfilComponent },
+  {path:'perfil', component: PerfilComponent , canActivate:[AuthGuard]},
   {path:'login', component: LoginComponent},
   {path:'info-receta', component: InfoRecetaComponent},
-  {path:'creacion-edicion-receta', component: CreacionEdicionRecetaComponent},
+  {path:'creacion-edicion-receta', component: CreacionEdicionRecetaComponent , canActivate:[AuthGuard]},
   {path:'creacion-usuario', component: CreacionUsuarioComponent},
 ];
 

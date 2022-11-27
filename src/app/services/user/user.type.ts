@@ -1,19 +1,41 @@
 import {Recipe} from "../recipe/recipe.type";
 import {RedSocial} from "../../../environments/global.types";
 
-export interface User{
-  nombreUsuario: string;
-  contrasena: string;
+export interface UserSinLogear{
+  correoElectronico: string;
+  password: string;
 }
 
 export interface UserLogeado{
   idUsuario:number
-  nombreUsuario: string;
-  contrasena: string;
+  correoElectronico: string;
+  password: string;
   nombrePersona:string;
-  descripcionUsuario: string;
-  recetas?: Recipe[];
+  descripcionUsuario?: string;
   redesSociales?: RedSocial[];
-  fotoPerfil: string;
+  fotoPerfil?: string;
+  isAdmin: Boolean;
 }
 
+export interface UserLogeadoDTO{
+  idusuario:number
+  correoelectronico: string;
+  password: string;
+  nombrepersona:string;
+  descripcionusuario?: string;
+  redessociales?: RedSocial[];
+  fotoperfil?: string;
+  isadmin: Boolean;
+}
+
+export interface RegistroUsuario{
+  nombrePersona: string;
+  correoElectronico: string;
+  password: string;
+}
+
+export interface RegistroUsuarioDTO{
+  nombrepersona: string;
+  correoelectronico: string;
+  password: string;
+}

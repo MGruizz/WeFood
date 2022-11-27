@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl, ValidationErrors} from '@angular/forms';
 import {Router} from '@angular/router';
+import {RegistroUsuario} from "../../services/user/user.type";
+import {UserService} from "../../services/user/user.service";
 
 @Component({
   selector: 'app-creacion-usuario',
@@ -9,8 +11,7 @@ import {Router} from '@angular/router';
 })
 export class CreacionUsuarioComponent implements OnInit {
   formularioCreacionUsuarioForm : FormGroup = {} as FormGroup;
-
-  constructor(private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private userService : UserService) { }
 
   ngOnInit(): void {
     let form ={
@@ -40,9 +41,19 @@ export class CreacionUsuarioComponent implements OnInit {
 
   registrarse(){
     console.log(this.formularioCreacionUsuarioForm.status);
-
     if (this.formularioCreacionUsuarioForm.status === 'VALID'){
-      this.router.navigate(['/inicio'])
+      let usuarioRegistrado={} as RegistroUsuario
+      usuarioRegistrado={
+        nombrePersona: this.formularioCreacionUsuarioForm.get('username')!.value,
+        correoElectronico: this.formularioCreacionUsuarioForm.get('email')!.value,
+        password: this.formularioCreacionUsuarioForm.get('passwords.password')!.value
+      }
+      this.userService.registrarUsuario(usuarioRegistrado).subscribe((res)=>{
+        console.log('res: ',res);
+        if(res.status == '200'){
+          this.router.navigate(['/login']);
+        }
+      });
     }
 
   }
