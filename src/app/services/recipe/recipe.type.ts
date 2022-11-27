@@ -20,7 +20,7 @@ export interface RecipeDTO{
   ingredientes: string;
   pasosreceta: string;
   imagenes: string[];
-  autor: string;
+  nombrepersona: string;
   tags?: Tag[];
 }
 

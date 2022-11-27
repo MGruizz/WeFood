@@ -17,7 +17,7 @@ export class RecipeMapper {
     recetaDTO.ingredientes = receta.ingredientes;
     recetaDTO.pasosreceta = receta.pasosReceta;
     recetaDTO.imagenes = receta.imagenes;
-    recetaDTO.autor = receta.autor;
+    recetaDTO.nombrepersona = receta.autor;
     recetaDTO.tags = receta.tags;
     return recetaDTO;
   }
@@ -31,7 +31,7 @@ export class RecipeMapper {
     receta.ingredientes = recetaDTO.ingredientes;
     receta.pasosReceta = recetaDTO.pasosreceta;
     receta.imagenes = recetaDTO.imagenes;
-    receta.autor = recetaDTO.autor;
+    receta.autor = recetaDTO.nombrepersona;
     receta.tags = recetaDTO.tags;
     return receta;
   }

@@ -41,8 +41,10 @@ export class PerfilComponent implements OnInit {
           let receta = this.recipeMapper.mapRecipeDTOToRecipe(recet as RecipeDTO);
           this.tagService.getTagsByRecipeID(receta.idReceta).subscribe((value) => {
             let tags: Tag[] = [];
-            for (let tag of value) {
-              tags.push(this.tagMapper.mapTagDtoToTag(tag as TagDTO));
+            if(value.res.length > 0){
+              for (let tag of value.res) {
+                tags.push(this.tagMapper.mapTagDtoToTag(tag as TagDTO));
+              }
             }
             receta.tags = tags;
             this.recetas.push(receta);
