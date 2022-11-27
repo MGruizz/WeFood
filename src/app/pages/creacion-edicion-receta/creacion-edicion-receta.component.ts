@@ -12,6 +12,7 @@ import {MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
 import {RecipesService} from "../../services/recipe/recipes.service";
 import {TagMapper} from "../../services/tag/tag.mapper";
 import {NewRecipe} from "../../services/recipe/recipe.type";
+import {HttpResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-creacion-edicion-receta',
@@ -119,6 +120,8 @@ export class CreacionEdicionRecetaComponent implements OnInit {
         tags:tagsToBack
       }
       this.recipesService.guardarReceta(recipe).subscribe((res)=>{
+        console.log(res.status);
+        console.log(res.body);
         console.log(res);
         if(res.status == '201'){
           this.router.navigate(['/perfil']);

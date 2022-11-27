@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Recipe} from "../../services/recipe/recipe.type";
 import {RecipesService} from "../../services/recipe/recipes.service";
 import {Router} from "@angular/router";
+import {UserLogeado} from "../../services/user/user.type";
+import {UserService} from "../../services/user/user.service";
 
 @Component({
   selector: 'app-info-receta',
@@ -10,14 +12,14 @@ import {Router} from "@angular/router";
 })
 export class InfoRecetaComponent implements OnInit {
   receta: Recipe= {} as Recipe;
-  constructor(private recipeService: RecipesService, private router: Router) { }
+  constructor(private recipeService: RecipesService, private router: Router, private userService: UserService) { }
 
   ngOnInit(): void {
     console.log(history.state.data);
     console.log(history.state);
     this.recipeService.sharedData.subscribe(recipe =>{
       this.receta = recipe;
-      console.log(this.receta)
+      console.log(this.receta);
     })
   }
 
