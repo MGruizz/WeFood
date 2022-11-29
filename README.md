@@ -22,6 +22,8 @@ La aplicación cuenta con 2 formularios reactivos disponibles en las vistas de [
 La vista info-recetas requiere ser accedida mediante uno de sus componentes padre (Inicio o perfil) para poder mostar los detalles ya que necesita que se le carguen datos antes. Esa vista se pobla mediante un observable.
 
 ## Requerimientos
+
+Antes de ejecutar proyecto, escribir comando npm install para instalar todas las dependencias ubicadas en package.json
 Se debe tener la bd conectada y la api escuchando request para que el front funcione correctamente.
 Luego ejecutar con comando ng serve y hacer uso normal de la aplicacion (se requiere estar registrado para poder logearse correctamente).
 
