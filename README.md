@@ -23,7 +23,11 @@ La vista info-recetas requiere ser accedida mediante uno de sus componentes padr
 
 ## Requerimientos
 Se debe tener la bd conectada y la api escuchando request para que el front funcione correctamente.
-Luego ejecutar con comando ng serve y hacer uso normal de la aplicacion.
+Luego ejecutar con comando ng serve y hacer uso normal de la aplicacion (se requiere estar registrado para poder logearse correctamente).
+
+Para acceder al perfil, se requiere estar logeado o sino sera redireccionado al login.
+Se puede acceder al inicio por url sin estar logeado.
+
 
 
 ## Tecnologias
