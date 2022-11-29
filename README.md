@@ -1,6 +1,6 @@
 <h1 align="center">WeFood</h1>
 <p align="center">
-  <a href="https://github.com/MGruizz/api-wefood"><strong>Explorar el proyecto »</strong></a>
+  <a href="https://github.com/MGruizz/WeFood"><strong>Explorar el proyecto »</strong></a>
 </p>
 
 <div align="center">
