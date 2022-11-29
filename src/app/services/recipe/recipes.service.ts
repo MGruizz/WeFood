@@ -60,6 +60,7 @@ export class RecipesService implements OnInit {
     const body = receta;
     return this.httpClient.post(constants.API_URL + this.RECETAS_ENDPOINT,body,{ headers: new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('token')}),observe: 'response'})
   }
+
   nextRecipe(recipe: Recipe){
     this.getDataSubject.next(recipe);
   }

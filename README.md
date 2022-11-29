@@ -1,6 +1,6 @@
 <h1 align="center">WeFood</h1>
 <p align="center">
-  <a href="https://github.com/MGruizz/WeFood"><strong>Explorar el proyecto »</strong></a>
+  <a href="https://github.com/MGruizz/api-wefood"><strong>Explorar el proyecto »</strong></a>
 </p>
 
 <div align="center">
@@ -14,9 +14,6 @@
 Aplicación web tipo red social sobre recetas saludables, en la que los usuarios pueden publicar sus recetas, ver las de otras personas e interactuar entre sí.
 Cuenta con opciones de creación de cuenta, inicio de sesión, acceso a perfil de usuario, publicación y edición de receta, y visualización de recetas publicadas en la aplicación.
 
-Esta entrega cuenta con un [informe](https://github.com/MGruizz/WeFood/blob/EP3/EP3_WeFood.pdf) llamado EP3_WeFood.pdf.
-
-La rama master y la rama EP3 cuentan con la ultima version del proyecto.
 
 ## Detalles del código
 Las vistas se encuentran en [pages](https://github.com/MGruizz/WeFood/tree/master/src/app/pages).
