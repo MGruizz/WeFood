@@ -13,6 +13,7 @@ export class RecipesService implements OnInit {
 
   recetasUrl: string = '../assets/data/recetas.json';
   private RECETAS_ENDPOINT = '/recetas';
+  private BUSCARRECETAS_ENDPOINT = '/buscarRecetas'
   private getDataSubject : BehaviorSubject<Recipe> = new BehaviorSubject({} as Recipe);
   sharedData: Observable<Recipe> = this.getDataSubject.asObservable();
 
@@ -34,6 +35,10 @@ export class RecipesService implements OnInit {
 
   getRecipesByUserId(idUsuario :number): Observable<any>{
     return this.httpClient.get(constants.API_URL+this.RECETAS_ENDPOINT+'/'+idUsuario)
+  }
+
+  buscarReceta(palabraclave: string): Observable<any>{
+    return this.httpClient.get(constants.API_URL+this.BUSCARRECETAS_ENDPOINT+'/'+palabraclave)
   }
 
   getUserRecipes(idUsuario: number, recetas: Recipe[]): Recipe[] {
