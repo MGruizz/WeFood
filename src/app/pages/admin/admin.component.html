@@ -1,6 +1,6 @@
 <app-header></app-header>
 <div class="cuerpo">
-  <div class="container-fluid w-75 rounded shadow mt-3 mb-5 vistaAdmin">
+  <div class="container-fluid col-lg-6 col-sm-6 col-md-8 col-10 rounded shadow mt-3 mb-5 vistaAdmin">
 
     <div class="row">
       <div class="col-lg-10 col-md-11 col-sm-11 rounded-end mx-auto my-auto ">
@@ -10,61 +10,105 @@
         <h3 class="fw-bold text-center">
           Seleccione opcion deseada:
         </h3>
-        <form class="formularioCreacionTag" [formGroup]="formularioCreacionTagForm">
+        <!--Crear tag-->
+        <form class="formularioCreacionTag" [formGroup]="formularioCreacionTagForm" (ngSubmit)="crearTag()">
           <div class="mt-4 mb-3">
             <div class="row">
               <h4 for="tagNuevo" class=" text-center"> Ingresar nuevo tag</h4>
               <div class="form-group  mb-2 mt-2 col-6">
-                <input type="text" class="form-control" id="tagNuevo" placeholder="Nuevo tag">
+                <input type="text" class="form-control" id="tagNuevo" placeholder="Nuevo tag"
+                       formControlName="tagNuevo">
               </div>
               <button type="submit" class="btn btn-primary col-5 h-25 mt-2 me-1 botonIngresar">Ingresar tag</button>
             </div>
           </div>
         </form>
+        <!--Editar tag-->
+        <div>
+          <form class="FormularioEdicionTag" [formGroup]="formularioEdicionTagForm" (ngSubmit)="editarTag()">
+            <h4 class="text-center">Editar tag </h4>
+            <div class="row">
+              <mat-form-field class="example-chip-list" appearance="outline">
+                <mat-label class="texto-label">Tags</mat-label>
+                <mat-chip-list #chipList aria-label="Seleccion de Tag">
+                  <mat-chip
+                    *ngFor="let tag of tagsEnMuestra"
+                    (removed)="remove(tag)">
+                    {{tag}}
+                    <button matChipRemove>
+                      <mat-icon>cancel</mat-icon>
+                    </button>
+                  </mat-chip>
+                  <input
+                    placeholder="Nuevo tag..."
+                    #tagInput
+                    [formControl]="tagCtrl"
+                    [matAutocomplete]="auto"
+                    [matChipInputFor]="chipList"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    (matChipInputTokenEnd)="add($event)">
+                </mat-chip-list>
+                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                  <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
+                    {{tag}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+            </div>
 
-        <form class="FormularioEdicionTag" [formGroup]="formularioEdicionTagForm" (ngSubmit)="editarTag()" >
-          <h4 class="text-center">Editar tag </h4>
+            <div>
+              <H6 class="ms-3">Ingrese nuevo nombre al tag</H6>
+              <div class="row">
+                <div class="form-group  mb-2 mt-2 col-6">
+                  <input type="text" class="form-control" id="nombreNuevo" placeholder="Nombre nuevo"
+                         formControlName="nombreNuevo">
+                </div>
+                <button type="submit" class="btn btn-primary col-5 h-25 mt-2 me-1 botonIngresar">Editar tag</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!--Eliminar tag-->
+        <div class="mb-4">
+          <h3 class="text-center">Eliminar tag</h3>
+
           <div class="row">
-            <mat-form-field class="example-chip-list" appearance="outline">
+            <mat-form-field class="example-chip-list" appearance="outline" color="warn">
               <mat-label class="texto-label">Tags</mat-label>
-              <mat-chip-list #chipList aria-label="Seleccion de Tag">
+              <mat-chip-list #chipLista aria-label="Seleccion de Tag">
                 <mat-chip
-                  *ngFor="let tag of tagsEnMuestra"
-                  (removed)="remove(tag)">
+                  *ngFor="let tag of tagsEliminarEnMuestra"
+                  (removed)="removeEliminar(tag)">
                   {{tag}}
                   <button matChipRemove>
                     <mat-icon>cancel</mat-icon>
                   </button>
                 </mat-chip>
                 <input
-                  placeholder="Nuevo tag..."
-                  #tagInput
-                  [formControl]="tagCtrl"
-                  [matAutocomplete]="auto"
-                  [matChipInputFor]="chipList"
+                  placeholder="Selecciona tag..."
+                  #tagEliminarInput
+                  [formControl]="tagsCtrlEliminar"
+                  [matAutocomplete]="autoeliminar"
+                  [matChipInputFor]="chipLista"
                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                  (matChipInputTokenEnd)="add($event)">
+                  (matChipInputTokenEnd)="addEliminar($event)">
               </mat-chip-list>
-              <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-                <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
+              <mat-autocomplete #autoeliminar="matAutocomplete" (optionSelected)="selectedEliminar($event)">
+                <mat-option *ngFor="let tag of filteredTagsEliminar | async" [value]="tag">
                   {{tag}}
                 </mat-option>
               </mat-autocomplete>
             </mat-form-field>
+
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary col-5 h-25 mt-2 me-1 botonEliminar " (click)="eliminarTag() ">
+              Eliminar tag
+            </button>
           </div>
 
-          <div>
-            <H5 class="text-center">Ingrese nuevo nombre al tag</H5>
-            <div class="row">
-              <div class="form-group  mb-2 mt-2 col-6">
-                <input type="text" class="form-control" id="nombreNuevo" placeholder="Nombre nuevo" formControlName="nombreNuevo">
-              </div>
-              <button type="submit" class="btn btn-primary col-5 h-25 mt-2 me-1 botonIngresar" >Ingresar nombre</button>
-            </div>
-          </div>
-        </form>
-
-
+        </div>
       </div>
     </div>
   </div>

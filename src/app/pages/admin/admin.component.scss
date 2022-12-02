@@ -5,6 +5,9 @@
 .botonIngresar{
   background-color: $color-negro;
 }
+.botonEliminar{
+  background-color: $color-rojo;
+}
 
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-flex {
   background-color: #ebeded;

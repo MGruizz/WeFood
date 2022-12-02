@@ -28,4 +28,13 @@ export class TagService implements OnInit{
     let body= {id:tag,nombre:nombreNuevo}
     return this.httpClient.put(constants.API_URL+this.TAGS_ENDPOINT,body,{ headers: new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('token')}),observe: 'response'})
   }
+  crearTag(nuevoTag:string): Observable<any>{
+    let body = {nombre:nuevoTag}
+    console.log('Esta llegando a la creacion')
+    return this.httpClient.post(constants.API_URL+this.TAGS_ENDPOINT,body,{ headers: new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('token')}),observe: 'response'})
+  }
+  eliminarTag(tag:Number): Observable<any>{
+    console.log('llega a funcion : '+tag)
+    return this.httpClient.delete(constants.API_URL+this.TAGS_ENDPOINT+'/'+tag,{ headers: new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('token')}),observe: 'response'})
+  }
 }
