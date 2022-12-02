@@ -41,6 +41,7 @@ import {MatInputModule} from "@angular/material/input";
     FooterComponent,
     DietaComponent,
     ModaleditarpefilComponent,
+    BuscadorComponent,
   ],
   imports: [
     BrowserModule,
