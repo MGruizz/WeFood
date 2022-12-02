@@ -1,7 +1,7 @@
-import {RegistroUsuario, UserSinLogear} from "./user.type";
+import {RegistroUsuario, UserSinLogear, UsuarioEdit} from "./user.type";
 import {Injectable, OnInit} from "@angular/core";
 import {UserLogeado} from "./user.type";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {map, Observable, of} from "rxjs";
 import {UserMapper} from "./user.mapper";
 import {constants} from "../../../environments/constants";
@@ -17,6 +17,7 @@ export class UserService{
   }
 
   private USUARIOS_ENDPOINT = '/usuarios';
+  private USUARIOS_EDIT_ENDPOINT = '/editusuario';
   private USUARIOS_LOGIN_ENDPOINT = '/login/';
   private _user: UserLogeado | undefined;
 
@@ -36,6 +37,12 @@ export class UserService{
     const body = this.userMapper.mapLoginDataToLogInBody(mail,password);
     const url = constants.API_URL + this.USUARIOS_LOGIN_ENDPOINT;
     return this.httpClient.post(url,body,{observe: 'response'});
+  }
+
+  editarInformacionUsuario (user : UsuarioEdit){
+    const body = user;
+    const url = constants.API_URL + this.USUARIOS_EDIT_ENDPOINT;
+    return this.httpClient.put(url,body,{ headers: new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('token')}),observe: 'response'})
   }
 
   getUserById():Observable<any>{

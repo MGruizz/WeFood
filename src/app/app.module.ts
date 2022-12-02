@@ -23,6 +23,11 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {AuthGuard} from "./services/auth/auth.guard";
 import {TokenInterceptorService} from "./services/auth/token-interceptor.service";
 import { AdminComponent } from './pages/admin/admin.component';
+import { BuscadorComponent } from './pages/buscador/buscador.component';
+import { ModaleditarpefilComponent } from './components/modaleditarpefil/modaleditarpefil.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatButtonModule} from "@angular/material/button";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -37,6 +42,8 @@ import { AdminComponent } from './pages/admin/admin.component';
     FooterComponent,
     DietaComponent,
     AdminComponent,
+    ModaleditarpefilComponent,
+    BuscadorComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +55,10 @@ import { AdminComponent } from './pages/admin/admin.component';
     MatChipsModule,
     MatIconModule,
     MatFormFieldModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatInputModule
   ],
   providers: [
     AuthGuard,

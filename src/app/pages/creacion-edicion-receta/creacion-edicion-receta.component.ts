@@ -22,8 +22,8 @@ import {HttpResponse} from "@angular/common/http";
 export class CreacionEdicionRecetaComponent implements OnInit {
 
   tags: Tag[] = [];
-  tagsName: string[] = [];
   formularioCreacionRecetaForm : FormGroup = {} as FormGroup;
+  tagsName: string[] = [];
   tagsEnMuestra: string[] = ['Carne','Vegetariano'];
   tagCtrl = new FormControl('');
   filteredTags: Observable<string[]>;

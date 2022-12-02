@@ -8,6 +8,7 @@ import { CreacionEdicionRecetaComponent } from './pages/creacion-edicion-receta/
 import { CreacionUsuarioComponent } from './pages/creacion-usuario/creacion-usuario.component';
 import {AuthGuard} from "./services/auth/auth.guard";
 import {AdminComponent} from "./pages/admin/admin.component";
+import {BuscadorComponent} from "./pages/buscador/buscador.component";
 
 const routes: Routes = [
   {path:'', component: LoginComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path:'creacion-edicion-receta', component: CreacionEdicionRecetaComponent , canActivate:[AuthGuard]},
   {path:'creacion-usuario', component: CreacionUsuarioComponent},
   {path:'admin', component: AdminComponent}
+  {path:'buscador', component: BuscadorComponent}
 ];
 
 @NgModule({
