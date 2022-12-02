@@ -46,9 +46,7 @@ export class HeaderComponent implements OnInit {
     return false
   }
   esAdmin(): boolean{
-    console.log(JSON.parse(this.authService.getUser()!));
     let usuario: UserLogeado=  JSON.parse(this.authService.getUser()!);
-    console.log(usuario)
     if(usuario.isAdmin){
       return true;
     }
@@ -56,7 +54,6 @@ export class HeaderComponent implements OnInit {
   }
 
   buscar() {
-    console.log(this.formularioSearchForm.status);
     if (this.formularioSearchForm.status === 'VALID') {
       this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
       this.router.onSameUrlNavigation = 'reload';

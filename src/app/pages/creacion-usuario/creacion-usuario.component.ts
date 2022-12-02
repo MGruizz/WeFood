@@ -3,6 +3,9 @@ import {FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl, Valida
 import {Router} from '@angular/router';
 import {RegistroUsuario} from "../../services/user/user.type";
 import {UserService} from "../../services/user/user.service";
+import {ModaleditarpefilComponent} from "../../components/modaleditarpefil/modaleditarpefil.component";
+import {MatDialog} from "@angular/material/dialog";
+import {ModalerrorComponent} from "../../components/modalerror/modalerror.component";
 
 @Component({
   selector: 'app-creacion-usuario',
@@ -11,7 +14,7 @@ import {UserService} from "../../services/user/user.service";
 })
 export class CreacionUsuarioComponent implements OnInit {
   formularioCreacionUsuarioForm : FormGroup = {} as FormGroup;
-  constructor(private formBuilder: FormBuilder, private router: Router, private userService : UserService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private userService : UserService, private matdialog:MatDialog) { }
 
   ngOnInit(): void {
     let form ={
@@ -39,6 +42,20 @@ export class CreacionUsuarioComponent implements OnInit {
     this.formularioCreacionUsuarioForm = this.formBuilder.group(form);
   }
 
+  abrirModal(mensaje:string,titulo:string){
+    let mensajeError: string;
+    const popup = this.matdialog.open(ModalerrorComponent, {
+      width: '20%',
+      data: {
+        titulo: titulo,
+        mensajeError: mensaje
+      }
+    });
+    popup.afterClosed().subscribe(res =>{
+      console.log(res);
+    })
+  }
+
   registrarse(){
     console.log(this.formularioCreacionUsuarioForm.status);
     if (this.formularioCreacionUsuarioForm.status === 'VALID'){
@@ -49,14 +66,22 @@ export class CreacionUsuarioComponent implements OnInit {
         password: this.formularioCreacionUsuarioForm.get('passwords.password')!.value
       }
       this.userService.registrarUsuario(usuarioRegistrado).subscribe((res)=>{
-        console.log('res: ',res);
         if(res.status == '200'){
+          console.log(res.body.res)
+          this.abrirModal(res.body.res,'Felicidades');
           this.router.navigate(['/login']);
         }
-      });
+      },
+        (error)=>{
+        console.log(error)
+          this.abrirModal(error.error,'Ocurrio un error');
+        });
     }
 
   }
+
+
+
   //Verifica que las password sean iguales.
   checkPasswords: ValidatorFn = (group: AbstractControl):  ValidationErrors | null => {
     let pass = group.get('password')!.value;

@@ -28,6 +28,7 @@ import { ModaleditarpefilComponent } from './components/modaleditarpefil/modaled
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
+import { ModalerrorComponent } from './components/modalerror/modalerror.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import {MatInputModule} from "@angular/material/input";
     AdminComponent,
     ModaleditarpefilComponent,
     BuscadorComponent,
+    ModalerrorComponent,
   ],
   imports: [
     BrowserModule,
