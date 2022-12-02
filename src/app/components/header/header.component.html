@@ -4,11 +4,11 @@
       <a routerLink="/inicio" class="navbar-brand mb-0 h1">
         <img src="../../assets/imagenes/WeFood_Logo_Edit.png" width="130" height="70" class="d-inline-block align-top ">
       </a>
-      <button type="button" class="navbar-toggler"  (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" data-bs-toggle="collapse" data-bs-target="defaultNavbar1" aria-controls="defaultNavbar1"
+      <button type="button" class="navbar-toggler" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" data-bs-toggle="collapse" data-bs-target="defaultNavbar1" aria-controls="defaultNavbar1"
               aria-expanded="false" aria-label="Toggle navigation"  >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse ms-3" id="defaultNavbar1" [ngbCollapse]="isCollapsed">
+      <div class="collapse navbar-collapse ms-3 " id="defaultNavbar1" [ngbCollapse]="isCollapsed">
         <ul class="navbar-nav">
           <li class="nav-item active me-5">
             <a routerLink="/inicio" class="nav-link active ">
@@ -17,10 +17,17 @@
               </p>
             </a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item active me-5">
             <a routerLink="/perfil" class="nav-link active">
               <p class="h5 pt-2 ">
                 Perfil
+              </p>
+            </a>
+          </li>
+          <li class="nav-item active " *ngIf="esAdmin()">
+            <a routerLink="/admin" class="nav-link active">
+              <p class="h5 pt-2 ">
+                Administrador
               </p>
             </a>
           </li>
@@ -36,6 +43,7 @@
       <ng-template #noEstaLoggeado>
         <button class="btn btn-outline my-2 my-sm-0 ms-2 boton-conectarse shadow-sm" routerLink="/login">  Iniciar Sesion</button>
       </ng-template>
+
     </div>
   </nav>
 </header>

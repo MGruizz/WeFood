@@ -22,6 +22,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {AuthGuard} from "./services/auth/auth.guard";
 import {TokenInterceptorService} from "./services/auth/token-interceptor.service";
+import { AdminComponent } from './pages/admin/admin.component';
 import { BuscadorComponent } from './pages/buscador/buscador.component';
 import { ModaleditarpefilComponent } from './components/modaleditarpefil/modaleditarpefil.component';
 import {MatDialogModule} from "@angular/material/dialog";
@@ -40,6 +41,7 @@ import {MatInputModule} from "@angular/material/input";
     HeaderComponent,
     FooterComponent,
     DietaComponent,
+    AdminComponent,
     ModaleditarpefilComponent,
     BuscadorComponent,
   ],

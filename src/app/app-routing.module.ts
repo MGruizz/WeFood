@@ -7,6 +7,7 @@ import { InfoRecetaComponent } from './pages/info-receta/info-receta.component';
 import { CreacionEdicionRecetaComponent } from './pages/creacion-edicion-receta/creacion-edicion-receta.component';
 import { CreacionUsuarioComponent } from './pages/creacion-usuario/creacion-usuario.component';
 import {AuthGuard} from "./services/auth/auth.guard";
+import {AdminComponent} from "./pages/admin/admin.component";
 import {BuscadorComponent} from "./pages/buscador/buscador.component";
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path:'info-receta', component: InfoRecetaComponent},
   {path:'creacion-edicion-receta', component: CreacionEdicionRecetaComponent , canActivate:[AuthGuard]},
   {path:'creacion-usuario', component: CreacionUsuarioComponent},
+  {path:'admin', component: AdminComponent}
   {path:'buscador', component: BuscadorComponent}
 ];
 

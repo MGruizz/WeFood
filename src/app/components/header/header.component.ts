@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../services/auth/auth.service";
+import {UserService} from "../../services/user/user.service";
+import {UserLogeado} from "../../services/user/user.type";
+import {UserMapper} from "../../services/user/user.mapper";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router, NavigationExtras} from "@angular/router";
 import {RecipesService} from "../../services/recipe/recipes.service";
@@ -11,7 +14,11 @@ import {RecipesService} from "../../services/recipe/recipes.service";
 })
 export class HeaderComponent implements OnInit {
   public isCollapsed = true;
+  constructor(
+    private authService: AuthService,
+    private userMapper: UserMapper
   formularioSearchForm: FormGroup = {} as FormGroup;
+
 
   constructor(
     private authService: AuthService,
@@ -41,6 +48,15 @@ export class HeaderComponent implements OnInit {
       return true
     }
     return false
+  }
+  esAdmin(): boolean{
+    console.log(JSON.parse(this.authService.getUser()!));
+    let usuario: UserLogeado=  JSON.parse(this.authService.getUser()!);
+    console.log(usuario)
+    if(usuario.isAdmin){
+      return true;
+    }
+    return false;
   }
 
   buscar() {
