@@ -23,6 +23,7 @@ export class PerfilComponent implements OnInit {
   usuario: UserLogeado= {} as UserLogeado;
   usuariosLogeados: UserLogeado[] = [];
   recipe: Recipe = {} as Recipe;
+
   constructor(private recipeService:RecipesService, private userService:UserService, private router:Router,
               private userMapper:UserMapper, private recipeMapper: RecipeMapper, private tagService:TagService,
               private tagMapper: TagMapper, private matdialog:MatDialog) {
@@ -67,6 +68,16 @@ export class PerfilComponent implements OnInit {
   }
 
   abrirModal(){
-    this.matdialog.open(ModaleditarpefilComponent);
+    const popup = this.matdialog.open(ModaleditarpefilComponent, {
+      width: '20%',
+      data: {
+        nombreUsuario: this.usuario.nombrePersona,
+        descripcion: this.usuario.descripcionUsuario,
+        fotoPerfil: this.usuario.fotoPerfil
+      }
+    });
+    popup.afterClosed().subscribe(res =>{
+      console.log(res);
+    })
   }
 }

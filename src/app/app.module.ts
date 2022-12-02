@@ -24,6 +24,8 @@ import {AuthGuard} from "./services/auth/auth.guard";
 import {TokenInterceptorService} from "./services/auth/token-interceptor.service";
 import { ModaleditarpefilComponent } from './components/modaleditarpefil/modaleditarpefil.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatButtonModule} from "@angular/material/button";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import {MatDialogModule} from "@angular/material/dialog";
     MatIconModule,
     MatFormFieldModule,
     MatAutocompleteModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonModule,
+    MatInputModule
   ],
   providers: [
     AuthGuard,

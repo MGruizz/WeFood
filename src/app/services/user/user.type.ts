@@ -39,3 +39,10 @@ export interface RegistroUsuarioDTO{
   correoelectronico: string;
   password: string;
 }
+
+export interface UsuarioEdit{
+  idUsuario: number;
+  nombreUsuario: string;
+  descripcion: string;
+  fotoPerfil?: string;
+}

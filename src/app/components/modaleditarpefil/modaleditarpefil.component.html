@@ -1,1 +1,20 @@
-<p>modaleditarpefil works!</p>
+<h1 mat-dialog-title>Editar perfil</h1>
+<div mat-dialog-content>
+  <form [formGroup]="formularioEditPerfilForm" >
+    <p>Editar nombre de usuario</p>
+    <mat-form-field appearance="fill">
+      <mat-label>Nuevo nombre</mat-label>
+      <input  matInput formControlName="username" >
+    </mat-form-field>
+    <p>Editar descripcion de usuario</p>
+    <mat-form-field appearance="fill">
+      <mat-label>Nueva descripcion</mat-label>
+      <input matInput formControlName="descripcion">
+    </mat-form-field>
+  </form>
+  <p>Al editar informacion, seras redirigido al login para que reinicies sesion y ver los cambios</p>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close (click)="cerrarPopUp()">Guardar</button>
+  <button mat-button mat-dialog-close>Cancelar</button>
+</div>
