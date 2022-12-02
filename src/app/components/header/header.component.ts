@@ -14,14 +14,10 @@ import {RecipesService} from "../../services/recipe/recipes.service";
 })
 export class HeaderComponent implements OnInit {
   public isCollapsed = true;
-  constructor(
-    private authService: AuthService,
-    private userMapper: UserMapper
   formularioSearchForm: FormGroup = {} as FormGroup;
-
-
   constructor(
     private authService: AuthService,
+    private userMapper: UserMapper,
     private formBuilder: FormBuilder,
     private router:Router,
     private recipeService: RecipesService

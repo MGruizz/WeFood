@@ -18,7 +18,7 @@ const routes: Routes = [
   {path:'info-receta', component: InfoRecetaComponent},
   {path:'creacion-edicion-receta', component: CreacionEdicionRecetaComponent , canActivate:[AuthGuard]},
   {path:'creacion-usuario', component: CreacionUsuarioComponent},
-  {path:'admin', component: AdminComponent}
+  {path:'admin', component: AdminComponent},
   {path:'buscador', component: BuscadorComponent}
 ];
 
