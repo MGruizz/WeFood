@@ -9,6 +9,8 @@ import {RecipeMapper} from "../../services/recipe/recipe.mapper";
 import {TagService} from "../../services/tag/tag.service";
 import {Tag, TagDTO} from "../../services/tag/tag.type";
 import {TagMapper} from "../../services/tag/tag.mapper";
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {ModaleditarpefilComponent} from "../../components/modaleditarpefil/modaleditarpefil.component";
 
 
 @Component({
@@ -23,7 +25,7 @@ export class PerfilComponent implements OnInit {
   recipe: Recipe = {} as Recipe;
   constructor(private recipeService:RecipesService, private userService:UserService, private router:Router,
               private userMapper:UserMapper, private recipeMapper: RecipeMapper, private tagService:TagService,
-              private tagMapper: TagMapper) {
+              private tagMapper: TagMapper, private matdialog:MatDialog) {
 
   }
 
@@ -62,5 +64,9 @@ export class PerfilComponent implements OnInit {
   verDetalles(index:number){
     this.recipeService.nextRecipe(this.recetas[index]);
     this.router.navigate(['/info-receta'])
+  }
+
+  abrirModal(){
+    this.matdialog.open(ModaleditarpefilComponent);
   }
 }
