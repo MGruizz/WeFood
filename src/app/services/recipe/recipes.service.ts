@@ -69,4 +69,6 @@ export class RecipesService implements OnInit {
   nextRecipe(recipe: Recipe){
     this.getDataSubject.next(recipe);
   }
+
+
 }
