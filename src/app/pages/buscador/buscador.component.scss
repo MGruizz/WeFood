@@ -1,0 +1,56 @@
+@import '../../../environments/variables';
+
+body{
+  background-color: $color-hueso;
+}
+
+h2, h5{
+  text-align: center;
+}
+
+article h6{
+  padding: 0 0 0 1rem;
+}
+
+section article{
+  background-color: white;
+  margin: 2rem 2rem 0;
+  width: 20rem;
+  height: 12rem;
+  float: left;
+}
+
+article{
+  padding: 1rem 0;
+}
+
+
+.botoncito{
+  padding-left:10%;
+  padding-right: 10%;
+}
+
+.btn{
+  background-color: $color-negro;
+  border: none;
+}
+.bg{
+  background-image: url("../../../assets/imagenes/banner-inicio.jpg");
+  background-position: center center;
+  background-size: cover;
+  height: 30rem;
+  width: 100%;
+}
+
+.img-size{
+  width: 20rem;
+  height: 12rem;
+}
+
+.tresPuntos {
+  display: block;
+  white-space: nowrap;
+  width: 15em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

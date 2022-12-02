@@ -26,8 +26,8 @@
           </li>
         </ul>
       </div>
-      <form class="d-flex">
-        <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
+      <form class="d-flex" [formGroup]="formularioSearchForm" (ngSubmit)="buscar()">
+        <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar" formControlName="palabraClave">
         <button class="btn btn-outline my-2 my-sm-0 ms-2 boton-buscar shadow-sm" type="submit">Buscar</button>
       </form>
       <div *ngIf="estaLogeado(); else noEstaLoggeado">

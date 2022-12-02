@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../services/auth/auth.service";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Router, NavigationExtras} from "@angular/router";
+import {RecipesService} from "../../services/recipe/recipes.service";
 
 @Component({
   selector: 'app-header',
@@ -8,22 +11,47 @@ import {AuthService} from "../../services/auth/auth.service";
 })
 export class HeaderComponent implements OnInit {
   public isCollapsed = true;
-  constructor(
-    private authService: AuthService
+  formularioSearchForm: FormGroup = {} as FormGroup;
 
-  ) { }
+  constructor(
+    private authService: AuthService,
+    private formBuilder: FormBuilder,
+    private router:Router,
+    private recipeService: RecipesService
+  ) {
+  }
 
   ngOnInit(): void {
+    let form = {
+      palabraClave: ['', Validators.compose([
+        Validators.pattern(/^.{1,30}$/),
+        Validators.required
+      ])],
+    }
+
+    this.formularioSearchForm = this.formBuilder.group(form)
   }
-  logOut(){
+
+  logOut() {
     this.authService.logOut();
   }
-  estaLogeado(): boolean{
-    if (this.authService.loggedIn()){
+
+  estaLogeado(): boolean {
+    if (this.authService.loggedIn()) {
       return true
     }
     return false
   }
 
+  buscar() {
+    console.log(this.formularioSearchForm.status);
+    if (this.formularioSearchForm.status === 'VALID') {
+      this.router.routeReuseStrategy.shouldReuseRoute=()=>false;
+      this.router.onSameUrlNavigation = 'reload';
+      this.router.navigate(['/buscador'], { state: { palabraclave: this.formularioSearchForm.get('palabraClave')!.value }});
+    } else {
+      console.log('Error al realizar la búsqueda');
+    }
+  }
 
 }
