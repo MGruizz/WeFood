@@ -9,6 +9,8 @@ import {RecipeMapper} from "../../services/recipe/recipe.mapper";
 import {TagService} from "../../services/tag/tag.service";
 import {Tag, TagDTO} from "../../services/tag/tag.type";
 import {TagMapper} from "../../services/tag/tag.mapper";
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {ModaleditarpefilComponent} from "../../components/modaleditarpefil/modaleditarpefil.component";
 
 
 @Component({
@@ -21,9 +23,10 @@ export class PerfilComponent implements OnInit {
   usuario: UserLogeado= {} as UserLogeado;
   usuariosLogeados: UserLogeado[] = [];
   recipe: Recipe = {} as Recipe;
+
   constructor(private recipeService:RecipesService, private userService:UserService, private router:Router,
               private userMapper:UserMapper, private recipeMapper: RecipeMapper, private tagService:TagService,
-              private tagMapper: TagMapper) {
+              private tagMapper: TagMapper, private matdialog:MatDialog) {
 
   }
 
@@ -62,5 +65,19 @@ export class PerfilComponent implements OnInit {
   verDetalles(index:number){
     this.recipeService.nextRecipe(this.recetas[index]);
     this.router.navigate(['/info-receta'])
+  }
+
+  abrirModal(){
+    const popup = this.matdialog.open(ModaleditarpefilComponent, {
+      width: '20%',
+      data: {
+        nombreUsuario: this.usuario.nombrePersona,
+        descripcion: this.usuario.descripcionUsuario,
+        fotoPerfil: this.usuario.fotoPerfil
+      }
+    });
+    popup.afterClosed().subscribe(res =>{
+      console.log(res);
+    })
   }
 }
