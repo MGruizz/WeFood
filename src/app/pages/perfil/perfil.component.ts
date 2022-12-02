@@ -68,16 +68,22 @@ export class PerfilComponent implements OnInit {
   }
 
   abrirModal(){
-    const popup = this.matdialog.open(ModaleditarpefilComponent, {
-      width: '20%',
-      data: {
-        nombreUsuario: this.usuario.nombrePersona,
-        descripcion: this.usuario.descripcionUsuario,
-        fotoPerfil: this.usuario.fotoPerfil
-      }
-    });
-    popup.afterClosed().subscribe(res =>{
-      console.log(res);
-    })
+    const popup = this.matdialog
+        .open(ModaleditarpefilComponent,
+          {
+            width: '20%',
+            data: {
+              nombreUsuario: this.usuario.nombrePersona,
+              descripcion: this.usuario.descripcionUsuario,
+              fotoPerfil: this.usuario.fotoPerfil
+            }
+          }
+         )
+        .afterClosed()
+        .subscribe((shouldReload: boolean) => {
+          popup.unsubscribe();
+          if (shouldReload) window.location.reload()
+        });
+
   }
 }

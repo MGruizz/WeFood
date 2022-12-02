@@ -7,8 +7,9 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../services/user/user.service";
-import {UserLogeado, UsuarioEdit} from "../../services/user/user.type";
+import {UserLogeado, UserLogeadoDTO, UsuarioEdit} from "../../services/user/user.type";
 import {AuthService} from "../../services/auth/auth.service";
+import {UserMapper} from "../../services/user/user.mapper";
 
 
 @Component({
@@ -23,7 +24,8 @@ export class ModaleditarpefilComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data:any, private Ref:MatDialogRef<ModaleditarpefilComponent>,
               private formBuilder: FormBuilder,
               private userService:UserService,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private userMapper:UserMapper) { }
 
   ngOnInit(): void {
     let form ={
@@ -55,8 +57,9 @@ export class ModaleditarpefilComponent implements OnInit {
       descripcion: this.formularioEditPerfilForm.get('descripcion')!.value
     };
     this.userService.editarInformacionUsuario(user).subscribe(res =>{
-      this.authService.logOut();
-      console.log(res)
+      this.userService.user  = this.userMapper.mapUserLogeadoDTOToUsuario(res.body as UserLogeadoDTO)
+      localStorage.removeItem('user');
+      localStorage.setItem('user',JSON.stringify(this.userService.getUser()));
     })
     this.Ref.close(user);
   }
