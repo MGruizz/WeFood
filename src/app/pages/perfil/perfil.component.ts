@@ -11,6 +11,7 @@ import {Tag, TagDTO} from "../../services/tag/tag.type";
 import {TagMapper} from "../../services/tag/tag.mapper";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {ModaleditarpefilComponent} from "../../components/modaleditarpefil/modaleditarpefil.component";
+import {ModaleditarrecetaComponent} from "../../components/modaleditarreceta/modaleditarreceta.component";
 
 
 @Component({
@@ -86,4 +87,33 @@ export class PerfilComponent implements OnInit {
         });
 
   }
+
+
+  abrirModalEdicionReceta(receta: Recipe){
+    const popup = this.matdialog
+      .open(ModaleditarrecetaComponent,
+        {
+          width: '40%',
+          data: {
+            id: receta.idReceta,
+            nombre: receta.nombreReceta,
+            descripcion: receta.descripcionReceta,
+            ingredientes: receta.ingredientes,
+            pasos: receta.pasosReceta,
+            tags: receta.tags
+          }
+        }
+      )
+      .afterClosed()
+      .subscribe((shouldReload: boolean) => {
+        popup.unsubscribe();
+        if (shouldReload) window.location.reload()
+      });
+
+  }
+
+  eliminarReceta(id: number){
+    this.recipeService.eliminarReceta(id).subscribe( res => window.location.reload())
+  }
+
 }

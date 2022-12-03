@@ -29,6 +29,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import { ModalerrorComponent } from './components/modalerror/modalerror.component';
+import { ModaleditarrecetaComponent } from './components/modaleditarreceta/modaleditarreceta.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { ModalerrorComponent } from './components/modalerror/modalerror.componen
     ModaleditarpefilComponent,
     BuscadorComponent,
     ModalerrorComponent,
+    ModaleditarrecetaComponent,
   ],
   imports: [
     BrowserModule,
