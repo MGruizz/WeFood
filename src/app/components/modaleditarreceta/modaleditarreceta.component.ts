@@ -91,7 +91,6 @@ export class ModaleditarrecetaComponent implements OnInit {
       pasosReceta: this.formularioEditarRecetaForm.get('pasosReceta')!.value,
       tags: tags
     };
-    console.log(tags);
     this.recipeService.editarInformacionReceta(recipe).subscribe(res=>{
       console.log(res);
     })

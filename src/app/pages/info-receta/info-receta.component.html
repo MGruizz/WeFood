@@ -14,6 +14,10 @@
     <div class="col">
       <div class="form-group mb-5">
         <p>Autor: {{receta.autor}}</p>
+        <div class="row">
+          <p>Tags: <span *ngFor="let tag of receta.tags; index as i">[{{tag.nombreTag}}] </span></p>
+
+        </div>
         <label for="exampleFormControlTextarea1">Descripcion</label>
         <textarea readonly class="form-control" id="exampleFormControlTextarea1" rows="7" placeholder="Pasos a seguir">{{receta.descripcionReceta}}</textarea>
       </div>
