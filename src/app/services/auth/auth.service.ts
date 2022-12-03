@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Router} from "@angular/router";
+import {UserLogeado} from "../user/user.type";
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +25,13 @@ export class AuthService {
   }
   getUser(){
     return localStorage.getItem('user');
+  }
+
+  isAdmin(): boolean{
+    let usuario: UserLogeado = JSON.parse(this.getUser()!);
+    if (usuario.isAdmin) {
+      return true;
+    }
+    return false;
   }
 }
