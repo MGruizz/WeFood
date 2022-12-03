@@ -47,11 +47,16 @@ export class HeaderComponent implements OnInit {
 
 
   esAdmin(): boolean {
-    let usuario: UserLogeado = JSON.parse(this.authService.getUser()!);
-    if (usuario.isAdmin) {
-      return true;
+    if (localStorage.getItem('user')){
+      let usuario: UserLogeado = JSON.parse(this.authService.getUser()!);
+      if (usuario.isAdmin) {
+        return true;
+      }
     }
     return false;
+
+
+
   }
 
   buscar(){
