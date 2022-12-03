@@ -68,7 +68,7 @@ import { ModalerrorComponent } from './components/modalerror/modalerror.componen
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
-    }
+    },
   ],
   bootstrap: [AppComponent]
 })
