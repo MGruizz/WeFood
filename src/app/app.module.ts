@@ -30,6 +30,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import { ModalerrorComponent } from './components/modalerror/modalerror.component';
 import { ModaleditarrecetaComponent } from './components/modaleditarreceta/modaleditarreceta.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { ModaleditarrecetaComponent } from './components/modaleditarreceta/modal
     BuscadorComponent,
     ModalerrorComponent,
     ModaleditarrecetaComponent,
+    FileUploadComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,7 +72,7 @@ import { ModaleditarrecetaComponent } from './components/modaleditarreceta/modal
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
-    }
+    },
   ],
   bootstrap: [AppComponent]
 })

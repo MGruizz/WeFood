@@ -9,6 +9,8 @@ import { CreacionUsuarioComponent } from './pages/creacion-usuario/creacion-usua
 import {AuthGuard} from "./services/auth/auth.guard";
 import {AdminComponent} from "./pages/admin/admin.component";
 import {BuscadorComponent} from "./pages/buscador/buscador.component";
+import {TieneRolGuard} from "./services/auth/tiene-rol.guard";
+
 
 const routes: Routes = [
   {path:'', component: LoginComponent },
@@ -18,7 +20,7 @@ const routes: Routes = [
   {path:'info-receta', component: InfoRecetaComponent},
   {path:'creacion-edicion-receta', component: CreacionEdicionRecetaComponent , canActivate:[AuthGuard]},
   {path:'creacion-usuario', component: CreacionUsuarioComponent},
-  {path:'admin', component: AdminComponent},
+  {path:'admin', component: AdminComponent, canActivate:[AuthGuard,TieneRolGuard]},
   {path:'buscador', component: BuscadorComponent}
 ];
 
