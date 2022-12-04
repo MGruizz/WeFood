@@ -8,6 +8,9 @@ import {RecipeMapper} from "../../services/recipe/recipe.mapper";
 import {Tag, TagDTO} from "../../services/tag/tag.type";
 import {TagService} from "../../services/tag/tag.service";
 import {TagMapper} from "../../services/tag/tag.mapper";
+import {ComentariosService} from "../../services/comentarios/comentarios.service";
+import {Comentario, ComentarioDTO} from "../../services/comentarios/comentarios.type";
+import {ComentariosMapper} from "../../services/comentarios/comentarios.mapper";
 
 @Component({
   selector: 'app-inicio',
@@ -20,7 +23,8 @@ export class InicioComponent implements OnInit {
   recipe: Recipe = {} as Recipe;
   totalRecetas: Recipe[] = [];
   constructor(private recipeService:RecipesService, private router: Router, private recipeMapper: RecipeMapper,
-              private tagService: TagService, private tagMapper:TagMapper) { }
+              private tagService: TagService, private tagMapper:TagMapper, private comentarioService:ComentariosService,
+              private comentariosMapper: ComentariosMapper) { }
 
   ngOnInit(): void {
 
@@ -35,8 +39,19 @@ export class InicioComponent implements OnInit {
             }
           }
           receta.tags = tags;
-          this.totalRecetas.push(receta);
+
         })
+        this.comentarioService.getComentariosByRecipeId(receta.idReceta).subscribe(value =>{
+          let comentarios: Comentario[] = [];
+          console.log(value);
+          if(value.length > 0){
+            for (let comentario of value){
+              comentarios.push(this.comentariosMapper.mapComentarioDTOToComentario(comentario as ComentarioDTO))
+            }
+          }
+          receta.comentarios = comentarios;
+        })
+        this.totalRecetas.push(receta);
       }
       console.log(this.totalRecetas)
     })

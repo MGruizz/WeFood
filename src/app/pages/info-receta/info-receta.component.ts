@@ -6,6 +6,8 @@ import {UserLogeado} from "../../services/user/user.type";
 import {UserService} from "../../services/user/user.service";
 import {TagService} from "../../services/tag/tag.service";
 import {Tag} from "../../services/tag/tag.type";
+import {ComentariosService} from "../../services/comentarios/comentarios.service";
+import {NuevoComentario} from "../../services/comentarios/comentarios.type";
 
 @Component({
   selector: 'app-info-receta',
@@ -14,7 +16,8 @@ import {Tag} from "../../services/tag/tag.type";
 })
 export class InfoRecetaComponent implements OnInit {
   receta: Recipe= {} as Recipe;
-  constructor(private recipeService: RecipesService, private router: Router, private userService: UserService) { }
+  constructor(private recipeService: RecipesService, private router: Router, private userService: UserService,
+              private comentarioService: ComentariosService) { }
 
   ngOnInit(): void {
     console.log(history.state.data);
@@ -25,7 +28,16 @@ export class InfoRecetaComponent implements OnInit {
     })
 
 
-  }
 
-
+    }
+  // comentarReceta(){
+  //
+  //   let comentario: NuevoComentario = {
+  //     comentario: 'obtener valor del html',
+  //     nombreAutor: this.userService.getUser()?.nombrePersona!
+  //   }
+  //   this.comentarioService.guardarComentario(comentario).subscribe(res =>{
+  //     console.log(res)
+  //   })
+  // }
 }

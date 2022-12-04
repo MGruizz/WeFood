@@ -1,4 +1,5 @@
 import {Tag} from "../tag/tag.type";
+import {Comentario} from "../comentarios/comentarios.type";
 
 export interface Recipe{
   idAutor: number;
@@ -10,6 +11,7 @@ export interface Recipe{
   imagenes : string;
   autor: string;
   tags?: Tag[];
+  comentarios?:Comentario[];
 }
 
 export interface RecipeDTO{
@@ -22,6 +24,7 @@ export interface RecipeDTO{
   imagenes: string;
   nombrepersona: string;
   tags?: Tag[];
+  comentarios?:Comentario[];
 }
 
 export interface NewRecipe{

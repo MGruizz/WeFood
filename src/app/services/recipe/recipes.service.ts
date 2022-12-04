@@ -54,17 +54,6 @@ export class RecipesService implements OnInit {
     return recetasUsuario;
   }
 
-  /*
-  getRecipeById(idRecipe: number, recetas: Recipe[]): Recipe {
-    let recipe = {} as Recipe
-    for (let i in recetas) {
-      if (idRecipe == recetas[i].idReceta) {
-        return recetas[i];
-      }
-    }
-    return recipe;
-  }*/
-
   guardarReceta(receta: NewRecipe):Observable<any>{
     const body = receta;
     return this.httpClient.post(constants.API_URL + this.RECETAS_ENDPOINT,body,{ headers: new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('token')}),observe: 'response'})

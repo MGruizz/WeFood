@@ -85,6 +85,10 @@ export class ModaleditarrecetaComponent implements OnInit {
     for(let tag of this.tagsEnMuestra){
       tags.push(this.tags.find(tags => tags.nombreTag == tag)!)
     }
+    let imagen = this.formularioEditarRecetaForm.get('imagen')!.value;
+    if(imagen.length == 0){
+      imagen = 'https://media.discordapp.net/attachments/1013532354725281872/1020105421404508190/WeFood_Mascot_Sad.png?width=985&height=554';
+    }
 
     let recipe = {
       idReceta: this.data.id,
@@ -92,7 +96,7 @@ export class ModaleditarrecetaComponent implements OnInit {
       descripcionReceta: this.formularioEditarRecetaForm.get('descripcionReceta')!.value,
       ingredientes: this.formularioEditarRecetaForm.get('ingredientes')!.value,
       pasosReceta: this.formularioEditarRecetaForm.get('pasosReceta')!.value,
-      imagenes: this.formularioEditarRecetaForm.get('imagen')!.value,
+      imagenes: imagen,
       tags: tags
     };
     this.recipeService.editarInformacionReceta(recipe).subscribe(res=>{
