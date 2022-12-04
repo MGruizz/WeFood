@@ -10,6 +10,7 @@ import {ComentariosService} from "../../services/comentarios/comentarios.service
 import {Comentario, NuevoComentario} from "../../services/comentarios/comentarios.type";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { AuthService } from 'src/app/services/auth/auth.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-info-receta',
@@ -22,7 +23,8 @@ export class InfoRecetaComponent implements OnInit {
   usuario: UserLogeado= {} as UserLogeado;
 
   constructor(private recipeService: RecipesService, private router: Router, private userService: UserService,
-              private comentarioService: ComentariosService, private formBuilder: FormBuilder, private authService: AuthService) {
+              private comentarioService: ComentariosService, private formBuilder: FormBuilder, private authService: AuthService,
+              private _location: Location) {
   }
 
   ngOnInit(): void {
@@ -56,7 +58,7 @@ export class InfoRecetaComponent implements OnInit {
       this.comentarioService.guardarComentario(comentario).subscribe(res => {
         console.log(res);
       })
-      this.router.navigate(['/perfil'])
+      this._location.back()
 
     }
 

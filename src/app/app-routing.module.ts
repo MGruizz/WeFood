@@ -13,7 +13,7 @@ import {TieneRolGuard} from "./services/auth/tiene-rol.guard";
 
 
 const routes: Routes = [
-  {path:'', component: LoginComponent },
+  {path:'', component: InicioComponent },
   {path:'inicio', component: InicioComponent },
   {path:'perfil', component: PerfilComponent , canActivate:[AuthGuard]},
   {path:'login', component: LoginComponent},
