@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Recipe, RecipeDTO} from "../../services/recipe/recipe.type";
 import {RecipesService} from "../../services/recipe/recipes.service";
 import {UserService} from "../../services/user/user.service";
@@ -12,6 +12,9 @@ import {TagMapper} from "../../services/tag/tag.mapper";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {ModaleditarpefilComponent} from "../../components/modaleditarpefil/modaleditarpefil.component";
 import {ModaleditarrecetaComponent} from "../../components/modaleditarreceta/modaleditarreceta.component";
+import {Comentario, ComentarioDTO} from "../../services/comentarios/comentarios.type";
+import {ComentariosMapper} from "../../services/comentarios/comentarios.mapper";
+import {ComentariosService} from "../../services/comentarios/comentarios.service";
 
 
 @Component({
@@ -20,76 +23,85 @@ import {ModaleditarrecetaComponent} from "../../components/modaleditarreceta/mod
   styleUrls: ['./perfil.component.scss']
 })
 export class PerfilComponent implements OnInit {
-  recetas : Recipe[] = [];
-  usuario: UserLogeado= {} as UserLogeado;
+  recetas: Recipe[] = [];
+  usuario: UserLogeado = {} as UserLogeado;
   usuariosLogeados: UserLogeado[] = [];
   recipe: Recipe = {} as Recipe;
 
-  constructor(private recipeService:RecipesService, private userService:UserService, private router:Router,
-              private userMapper:UserMapper, private recipeMapper: RecipeMapper, private tagService:TagService,
-              private tagMapper: TagMapper, private matdialog:MatDialog) {
+  constructor(private recipeService: RecipesService, private userService: UserService, private router: Router,
+              private userMapper: UserMapper, private recipeMapper: RecipeMapper, private tagService: TagService,
+              private tagMapper: TagMapper, private matdialog: MatDialog, private comentariosMapper: ComentariosMapper,
+              private comentarioService: ComentariosService) {
 
   }
 
   ngOnInit(): void {
 
     this.userService.getUserById().subscribe((value) => {
-      if(typeof value == "string"){
-        this.usuario = JSON.parse(value);
-      }
-      else{
-        this.usuario = value;
-      }
-      this.recipeService.getRecipesByUserId(this.usuario.idUsuario).subscribe((value) => {
-        for (let recet of value) {
-          let receta = this.recipeMapper.mapRecipeDTOToRecipe(recet as RecipeDTO);
-          this.tagService.getTagsByRecipeID(receta.idReceta).subscribe((value) => {
-            let tags: Tag[] = [];
-            if(value.res.length > 0){
-              for (let tag of value.res) {
-                tags.push(this.tagMapper.mapTagDtoToTag(tag as TagDTO));
-              }
-            }
-            receta.tags = tags;
-            this.recetas.push(receta);
-          })
+        if (typeof value == "string") {
+          this.usuario = JSON.parse(value);
+        } else {
+          this.usuario = value;
         }
-      })
+        this.recipeService.getRecipesByUserId(this.usuario.idUsuario).subscribe((value) => {
+          for (let recet of value) {
+            let receta = this.recipeMapper.mapRecipeDTOToRecipe(recet as RecipeDTO);
+            this.tagService.getTagsByRecipeID(receta.idReceta).subscribe((value) => {
+              let tags: Tag[] = [];
+              if (value.res.length > 0) {
+                for (let tag of value.res) {
+                  tags.push(this.tagMapper.mapTagDtoToTag(tag as TagDTO));
+                }
+              }
+              receta.tags = tags;
 
-    })
+            })
+            this.comentarioService.getComentariosByRecipeId(receta.idReceta).subscribe(value => {
+              let comentarios: Comentario[] = [];
+              if (value.length > 0) {
+                for (let comentario of value) {
+                  comentarios.push(this.comentariosMapper.mapComentarioDTOToComentario(comentario as ComentarioDTO))
+                }
+              }
+              receta.comentarios = comentarios;
+            })
+            this.recetas.push(receta);
+          }
 
-
-    this.recipeService.sharedData.subscribe(recipe => this.recipe = recipe)
-    //console.log(this.recipe)
+        })
+      }
+    )
+    this.recipeService.sharedData.subscribe(recipe =>{
+      this.recipe = recipe
+    });
   }
-
-  verDetalles(index:number){
+  verDetalles(index: number) {
     this.recipeService.nextRecipe(this.recetas[index]);
     this.router.navigate(['/info-receta'])
   }
 
-  abrirModal(){
+  abrirModal() {
     const popup = this.matdialog
-        .open(ModaleditarpefilComponent,
-          {
-            width: '20%',
-            data: {
-              nombreUsuario: this.usuario.nombrePersona,
-              descripcion: this.usuario.descripcionUsuario,
-              fotoPerfil: this.usuario.fotoPerfil
-            }
+      .open(ModaleditarpefilComponent,
+        {
+          width: '20%',
+          data: {
+            nombreUsuario: this.usuario.nombrePersona,
+            descripcion: this.usuario.descripcionUsuario,
+            fotoPerfil: this.usuario.fotoPerfil
           }
-         )
-        .afterClosed()
-        .subscribe((shouldReload: boolean) => {
-          popup.unsubscribe();
-          if (shouldReload) window.location.reload()
-        });
+        }
+      )
+      .afterClosed()
+      .subscribe((shouldReload: boolean) => {
+        popup.unsubscribe();
+        if (shouldReload) window.location.reload()
+      });
 
   }
 
 
-  abrirModalEdicionReceta(receta: Recipe){
+  abrirModalEdicionReceta(receta: Recipe) {
     const popup = this.matdialog
       .open(ModaleditarrecetaComponent,
         {
@@ -110,11 +122,11 @@ export class PerfilComponent implements OnInit {
         popup.unsubscribe();
         if (shouldReload) window.location.reload()
       });
-
   }
 
-  eliminarReceta(id: number){
-    this.recipeService.eliminarReceta(id).subscribe( res => window.location.reload())
+  eliminarReceta(id: number)
+  {
+    this.recipeService.eliminarReceta(id).subscribe(res => window.location.reload())
   }
 
 }
