@@ -30,11 +30,12 @@
                 * Ingrese nombre receta.
                 </small>
                 <small class="mensajeError"
-                      *ngIf="formularioCreacionRecetaForm.controls['nombreReceta'].errors?.['pattern']">
+                       *ngIf="formularioCreacionRecetaForm.controls['nombreReceta'].errors?.['pattern']">
                 * El nombre debe tener menos de 30 caracteres.
                 </small>
                 </span>
-                <input type="text" id="exampleNombreReceta" class="form-control" formControlName="nombreReceta" aria-describedby="nombreReceta"
+                <input type="text" id="exampleNombreReceta" class="form-control" formControlName="nombreReceta"
+                       aria-describedby="nombreReceta"
                        placeholder="ej: Ensalada de fruta..."><!---->
               </div>
               <div class="form-group pt-3">
@@ -47,7 +48,8 @@
                 * Ingrese descripcion de receta.
                 </small>
                 </span>
-                <input type="text" id="exampleDescripcionReceta" class="form-control" formControlName="descripcionReceta" aria-describedby="descReceta"
+                <input type="text" id="exampleDescripcionReceta" class="form-control"
+                       formControlName="descripcionReceta" aria-describedby="descReceta"
                        placeholder="ej: Una ensalada con frutas...">
               </div>
               <div class="form-group pt-3">
@@ -80,11 +82,11 @@
 
                 <mat-form-field class="example-chip-list" appearance="fill">
                   <mat-label class="texto-label">Tags</mat-label>
-                  <mat-chip-list  #chipList aria-label="Seleccion de Tag" >
+                  <mat-chip-list #chipList aria-label="Seleccion de Tag">
                     <mat-chip
                       *ngFor="let tag of tagsEnMuestra"
                       (removed)="remove(tag)">
-                        {{tag}}
+                      {{tag}}
                       <button matChipRemove>
                         <mat-icon>cancel</mat-icon>
                       </button>
@@ -105,30 +107,25 @@
                   </mat-autocomplete>
                 </mat-form-field>
               </div>
+              <div class="form-group pt-3 pb-3">
+                <label>Ingrese url para imagen receta</label>
+                <span
+                  *ngIf="formularioCreacionRecetaForm.controls['imagen'].invalid && (formularioCreacionRecetaForm.controls['imagen'].dirty || formularioCreacionRecetaForm.controls['pasosReceta'].touched)"
+                  class="alert">
+                </span>
+                <textarea class="form-control" rows="3" formControlName="imagen"
+                          placeholder="Ingrese url para imagen receta"></textarea>
+              </div>
               <div class="row-boton row text-center ">
-                <button type="submit" class="botones btn btn-primary mt-3" [disabled]="!formularioCreacionRecetaForm.valid">Publicar</button>
+                <button type="submit" class="botones btn btn-primary mt-3"
+                        [disabled]="!formularioCreacionRecetaForm.valid">Publicar
+                </button>
               </div>
             </form>
             <div>
             </div>
           </div>
-        </div>
-      </div>
-      <!--    FOTO-->
-      <div class="col">
-        <div class="card">
-          <img class="imagenReceta card-img-top center img-thumbnail img-responsive" src="../../../assets/imagenes/choripan.jpg"
-               alt="Card image cap">
-          <div class="card-body">
-            <div class="row">
-              <div class="col text-center">
-                <a class="btn btn-primary botones">Cargar imagen</a>
-              </div>
-              <div class="col text-center">
-                <a class="btn btn-primary botones">Eliminar imagen</a>
-              </div>
-            </div>
-          </div>
+
         </div>
       </div>
     </div>

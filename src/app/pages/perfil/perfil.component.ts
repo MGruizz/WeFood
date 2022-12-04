@@ -100,7 +100,8 @@ export class PerfilComponent implements OnInit {
             descripcion: receta.descripcionReceta,
             ingredientes: receta.ingredientes,
             pasos: receta.pasosReceta,
-            tags: receta.tags
+            tags: receta.tags,
+            imagen: receta.imagenes,
           }
         }
       )

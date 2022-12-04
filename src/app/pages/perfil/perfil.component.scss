@@ -40,7 +40,7 @@
 .tresPuntos {
   display: block;
   white-space: nowrap;
-  width: 8em;
+  width: 16em;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -49,6 +49,8 @@
   background-color: $color-negro;
   border: none;
 }
+
+
 
 
 .among-us {

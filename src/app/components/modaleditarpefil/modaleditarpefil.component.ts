@@ -37,6 +37,10 @@ export class ModaleditarpefilComponent implements OnInit {
         Validators.pattern(/^.{0,}$/),
         Validators.required
       ])],
+      fotoPerfil: [this.data.fotoPerfil, Validators.compose([
+        Validators.pattern(/^.{0,}$/),
+        Validators.required
+      ])],
     }
 
     this.formularioEditPerfilForm = this.formBuilder.group(form);
@@ -54,7 +58,8 @@ export class ModaleditarpefilComponent implements OnInit {
     let user = {
       idUsuario : this.usuario.idUsuario,
       nombreUsuario: this.formularioEditPerfilForm.get('username')!.value,
-      descripcion: this.formularioEditPerfilForm.get('descripcion')!.value
+      descripcion: this.formularioEditPerfilForm.get('descripcion')!.value,
+      fotoPerfil: this.formularioEditPerfilForm.get('fotoPerfil')!.value,
     };
     this.userService.editarInformacionUsuario(user).subscribe(res =>{
       this.userService.user  = this.userMapper.mapUserLogeadoDTOToUsuario(res.body as UserLogeadoDTO)

@@ -7,7 +7,7 @@ export interface Recipe{
   descripcionReceta: string;
   ingredientes: string;
   pasosReceta: string;
-  imagenes : string[];
+  imagenes : string;
   autor: string;
   tags?: Tag[];
 }
@@ -19,7 +19,7 @@ export interface RecipeDTO{
   descripcionreceta: string;
   ingredientes: string;
   pasosreceta: string;
-  imagenes: string[];
+  imagenes: string;
   nombrepersona: string;
   tags?: Tag[];
 }
@@ -29,6 +29,7 @@ export interface NewRecipe{
   descripcionreceta:string,
   ingredientes:string,
   pasosrecetas:string,
+  imagenes:string,
   tags:number[]
 }
 

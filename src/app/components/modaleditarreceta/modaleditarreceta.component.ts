@@ -60,6 +60,9 @@ export class ModaleditarrecetaComponent implements OnInit {
       pasosReceta:[this.data.pasos, Validators.compose([
         Validators.required
       ])],
+      imagen:[this.data.imagen, Validators.compose([
+        Validators.required
+      ])],
     }
 
     this.formularioEditarRecetaForm = this.formBuilder.group(form);
@@ -89,6 +92,7 @@ export class ModaleditarrecetaComponent implements OnInit {
       descripcionReceta: this.formularioEditarRecetaForm.get('descripcionReceta')!.value,
       ingredientes: this.formularioEditarRecetaForm.get('ingredientes')!.value,
       pasosReceta: this.formularioEditarRecetaForm.get('pasosReceta')!.value,
+      imagenes: this.formularioEditarRecetaForm.get('imagen')!.value,
       tags: tags
     };
     this.recipeService.editarInformacionReceta(recipe).subscribe(res=>{

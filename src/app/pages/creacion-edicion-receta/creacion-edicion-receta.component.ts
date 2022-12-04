@@ -55,6 +55,9 @@ export class CreacionEdicionRecetaComponent implements OnInit {
       pasosReceta:['', Validators.compose([
         Validators.required
       ])],
+      imagen:['', Validators.compose([
+        Validators.required
+      ])],
     }
     this.formularioCreacionRecetaForm = this.formBuilder.group(form);
 
@@ -109,7 +112,10 @@ export class CreacionEdicionRecetaComponent implements OnInit {
 
   publicar(){
     console.log(this.formularioCreacionRecetaForm.status);
-
+    let imagenReceta = this.formularioCreacionRecetaForm.get('imagen')!.value
+    if(imagenReceta.length == 0){
+      imagenReceta = 'https://media.discordapp.net/attachments/1013532354725281872/1020105421404508190/WeFood_Mascot_Sad.png?width=985&height=554'
+    }
     let tagsToBack = this.tagMapper.mapStringToTag(this.tagsEnMuestra,this.tags);
     if(this.formularioCreacionRecetaForm.status === 'VALID'){
       const recipe:NewRecipe = {
@@ -117,6 +123,7 @@ export class CreacionEdicionRecetaComponent implements OnInit {
         descripcionreceta:this.formularioCreacionRecetaForm.get('descripcionReceta')!.value,
         ingredientes:this.formularioCreacionRecetaForm.get('ingredientes')!.value,
         pasosrecetas:this.formularioCreacionRecetaForm.get('pasosReceta')!.value,
+        imagenes: imagenReceta,
         tags:tagsToBack
       }
       this.recipesService.guardarReceta(recipe).subscribe((res)=>{

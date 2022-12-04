@@ -11,10 +11,12 @@
       <mat-label>Nueva descripcion</mat-label>
       <input matInput formControlName="descripcion">
     </mat-form-field>
-    <p>Editar foto de subir</p>
-    <app-file-upload></app-file-upload>
+    <p>Editar foto de perfil</p>
+    <mat-form-field appearance="fill">
+      <mat-label>Insertar link de una imagen</mat-label>
+      <input matInput formControlName="fotoPerfil">
+    </mat-form-field>
   </form>
-  <p>Al editar informacion, seras redirigido al login para que reinicies sesion y ver los cambios</p>
 </div>
 <div mat-dialog-actions align="end">
   <button mat-button mat-dialog-close (click)="cerrarPopUp()">Guardar</button>
