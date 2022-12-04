@@ -4,6 +4,8 @@ import {RecipesService} from "../../services/recipe/recipes.service";
 import {Router} from "@angular/router";
 import {UserLogeado} from "../../services/user/user.type";
 import {UserService} from "../../services/user/user.service";
+import {TagService} from "../../services/tag/tag.service";
+import {Tag} from "../../services/tag/tag.type";
 
 @Component({
   selector: 'app-info-receta',
@@ -21,6 +23,8 @@ export class InfoRecetaComponent implements OnInit {
       this.receta = recipe;
       console.log(this.receta);
     })
+
+
   }
 
 

@@ -31,3 +31,12 @@ export interface NewRecipe{
   pasosrecetas:string,
   tags:number[]
 }
+
+export interface RecetaEdit{
+  idReceta: number;
+  nombreReceta: string;
+  descripcionReceta: string;
+  ingredientes: string;
+  pasosReceta: string;
+  tags: Tag[];
+}

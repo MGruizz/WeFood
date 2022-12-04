@@ -62,6 +62,17 @@
         <div class="container-fluid">
           <div class="card p-3 mt-5 ms-5 m shadow h-100 d-flex flex-column ">
             <div class="card-body">
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-2">
+                <button class="justify-content-md-end" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                  </svg>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" (click)="abrirModalEdicionReceta(receta)">Editar</a>
+                  <a class="dropdown-item" (click)="eliminarReceta(receta.idReceta)">Eliminar</a>
+                </div>
+              </div>
               <img *ngIf="receta.imagenes" [src]= receta.imagenes class="card-img-top img-size img-fluid"  alt="...">
               <h6 class="card-title mt-3"><span class="fw-bold">Nombre: </span>{{receta.nombreReceta}}</h6>
               <p class="card-text "><span class="fw-bold ">Descripcion: </span><span class="tresPuntos">{{receta.descripcionReceta}}</span></p>

@@ -1,9 +1,10 @@
-import {NewRecipe, Recipe} from "./recipe.type";
+import {NewRecipe, Recipe, RecetaEdit} from "./recipe.type";
 import {Injectable, OnInit} from "@angular/core";
 import {HttpClient,HttpHeaders} from "@angular/common/http";
-import {BehaviorSubject, Observable} from "rxjs";
+import {BehaviorSubject, map, Observable, of} from "rxjs";
 import {RecipeMapper} from "./recipe.mapper";
 import {constants} from "../../../environments/constants";
+import {UserLogeado, UsuarioEdit} from "../user/user.type";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,9 @@ export class RecipesService implements OnInit {
 
   recetasUrl: string = '../assets/data/recetas.json';
   private RECETAS_ENDPOINT = '/recetas';
-  private BUSCARRECETAS_ENDPOINT = '/buscarRecetas'
+  private BUSCARRECETAS_ENDPOINT = '/buscarRecetas';
+  private RECETAS_EDIT_ENDPOINT = '/editreceta';
+  private RECETAS_ELIMINAR_ENDPOINT = '/eliminarreceta';
   private getDataSubject : BehaviorSubject<Recipe> = new BehaviorSubject({} as Recipe);
   sharedData: Observable<Recipe> = this.getDataSubject.asObservable();
 
@@ -51,6 +54,7 @@ export class RecipesService implements OnInit {
     return recetasUsuario;
   }
 
+  /*
   getRecipeById(idRecipe: number, recetas: Recipe[]): Recipe {
     let recipe = {} as Recipe
     for (let i in recetas) {
@@ -59,7 +63,7 @@ export class RecipesService implements OnInit {
       }
     }
     return recipe;
-  }
+  }*/
 
   guardarReceta(receta: NewRecipe):Observable<any>{
     const body = receta;
@@ -70,5 +74,15 @@ export class RecipesService implements OnInit {
     this.getDataSubject.next(recipe);
   }
 
+  editarInformacionReceta (recipe : RecetaEdit){
+    const body = recipe;
+    const url = constants.API_URL + this.RECETAS_EDIT_ENDPOINT;
+    return this.httpClient.put(url,body,{ headers: new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('token')}),observe: 'response'})
+  }
+
+  eliminarReceta(id: number){
+    const url = constants.API_URL + this.RECETAS_ELIMINAR_ENDPOINT + '/' +id;
+    return this.httpClient.delete(url,{ headers: new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('token')}),observe: 'response'})
+  }
 
 }

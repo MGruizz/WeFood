@@ -1,0 +1,59 @@
+<h1 mat-dialog-title>Editar receta</h1>
+<h3>"{{data.nombre}}"</h3>
+<div mat-dialog-content>
+  <form [formGroup]="formularioEditarRecetaForm" >
+    <p>Editar nombre de la receta</p>
+    <mat-form-field appearance="fill">
+      <mat-label>Nuevo nombre</mat-label>
+      <input  matInput formControlName="nombreReceta" >
+    </mat-form-field>
+    <p>Editar descripción de la receta</p>
+    <mat-form-field appearance="fill">
+      <mat-label>Nueva descripción</mat-label>
+      <input matInput formControlName="descripcionReceta">
+    </mat-form-field>
+    <p>Editar ingredientes de la receta</p>
+    <mat-form-field appearance="fill">
+      <mat-label>Nuevos ingredientes</mat-label>
+      <input matInput formControlName="ingredientes">
+    </mat-form-field>
+    <p>Editar pasos a seguir de la receta</p>
+    <mat-form-field appearance="fill">
+      <mat-label>Nuevos pasos a seguir</mat-label>
+      <input matInput formControlName="pasosReceta">
+    </mat-form-field>
+    <p> Editar tags de la receta </p>
+    <div class="mt-3">
+      <mat-form-field class="example-chip-list"  style="width:20vw !important;">
+        <mat-label class="texto-label">Tags</mat-label>
+        <mat-chip-list #chipList aria-label="Selección de Tag" >
+          <mat-chip
+            *ngFor="let tag of tagsEnMuestra"
+            (removed)="remove(tag)">
+            {{tag}}
+            <button matChipRemove>
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip>
+          <input
+            placeholder="Nuevo tag..."
+            #tagsInput
+            [formControl]="tagsCtrl"
+            [matAutocomplete]="auto"
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            (matChipInputTokenEnd)="add($event)">
+        </mat-chip-list>
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+          <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
+            {{tag}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close (click)="cerrarPopUp()">Guardar</button>
+  <button mat-button mat-dialog-close>Cancelar</button>
+</div>

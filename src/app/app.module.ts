@@ -29,6 +29,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import { ModalerrorComponent } from './components/modalerror/modalerror.component';
+import { ModaleditarrecetaComponent } from './components/modaleditarreceta/modaleditarreceta.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 @NgModule({
@@ -47,6 +48,7 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
     ModaleditarpefilComponent,
     BuscadorComponent,
     ModalerrorComponent,
+    ModaleditarrecetaComponent,
     FileUploadComponent,
   ],
   imports: [
