@@ -7,7 +7,9 @@ import {UserService} from "../../services/user/user.service";
 import {TagService} from "../../services/tag/tag.service";
 import {Tag} from "../../services/tag/tag.type";
 import {ComentariosService} from "../../services/comentarios/comentarios.service";
-import {NuevoComentario} from "../../services/comentarios/comentarios.type";
+import {Comentario, NuevoComentario} from "../../services/comentarios/comentarios.type";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-info-receta',
@@ -15,29 +17,51 @@ import {NuevoComentario} from "../../services/comentarios/comentarios.type";
   styleUrls: ['./info-receta.component.scss'],
 })
 export class InfoRecetaComponent implements OnInit {
-  receta: Recipe= {} as Recipe;
+  receta: Recipe = {} as Recipe;
+  formularioComentariosForm: FormGroup = {} as FormGroup;
+  usuario: UserLogeado= {} as UserLogeado;
+
   constructor(private recipeService: RecipesService, private router: Router, private userService: UserService,
-              private comentarioService: ComentariosService) { }
+              private comentarioService: ComentariosService, private formBuilder: FormBuilder, private authService: AuthService) {
+  }
 
   ngOnInit(): void {
-    console.log(history.state.data);
-    console.log(history.state);
-    this.recipeService.sharedData.subscribe(recipe =>{
+    let form = {
+      comentario: ['', Validators.compose([
+        Validators.pattern(/^.{1,500}$/),
+        Validators.required
+      ])],
+    }
+    this.recipeService.sharedData.subscribe(recipe => {
       this.receta = recipe;
-      console.log(this.receta);
+    });
+    this.userService.getUserById().subscribe((value) => {
+      if (typeof value == "string") {
+        this.usuario = JSON.parse(value);
+      } else {
+        this.usuario = value;
+      }
     })
+    this.formularioComentariosForm = this.formBuilder.group(form);
 
+  }
 
+  comentarReceta() {
+    if (this.formularioComentariosForm.status=== 'VALID'){
+      let comentario: NuevoComentario = {
+        comentario: this.formularioComentariosForm.get('comentario')!.value,
+        nombreAutor: this.usuario.nombrePersona,
+        idReceta: this.receta.idReceta,
+      }
+      this.comentarioService.guardarComentario(comentario).subscribe(res => {
+        console.log(res);
+      })
+      this.router.navigate(['/perfil'])
 
     }
-  // comentarReceta(){
-  //
-  //   let comentario: NuevoComentario = {
-  //     comentario: 'obtener valor del html',
-  //     nombreAutor: this.userService.getUser()?.nombrePersona!
-  //   }
-  //   this.comentarioService.guardarComentario(comentario).subscribe(res =>{
-  //     console.log(res)
-  //   })
-  // }
+
+  }
+  estaLogeado():boolean{
+    return this.authService.loggedIn();
+  }
 }
