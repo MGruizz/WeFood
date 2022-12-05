@@ -36,7 +36,8 @@ export class CreacionUsuarioComponent implements OnInit {
           Validators.pattern(/^.{5,}$/),
           Validators.required,
         ])]
-      },{validators:this.checkPasswords})
+      },{validators:this.checkPasswords}),
+      cb: [false, Validators.requiredTrue]
     }
 
     this.formularioCreacionUsuarioForm = this.formBuilder.group(form);

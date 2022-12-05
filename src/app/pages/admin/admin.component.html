@@ -19,7 +19,7 @@
                 <input type="text" class="form-control" id="tagNuevo" placeholder="Nuevo tag"
                        formControlName="tagNuevo">
               </div>
-              <button type="submit" class="btn btn-primary col-5 h-25 mt-2 me-1 botonIngresar">Ingresar tag</button>
+              <button type="submit" class="btn btn-primary col-5 h-25 mt-2 me-1 botonIngresar" [disabled]="!formularioCreacionTagForm.valid">Ingresar tag</button>
             </div>
           </div>
         </form>
@@ -63,7 +63,7 @@
                   <input type="text" class="form-control" id="nombreNuevo" placeholder="Nombre nuevo"
                          formControlName="nombreNuevo">
                 </div>
-                <button type="submit" class="btn btn-primary col-5 h-25 mt-2 me-1 botonIngresar">Editar tag</button>
+                <button type="submit" class="btn btn-primary col-5 h-25 mt-2 me-1 botonIngresar" [disabled]="!formularioEdicionTagForm.valid">Editar tag</button>
               </div>
             </div>
           </form>
@@ -103,7 +103,7 @@
 
           </div>
           <div class="text-center">
-            <button type="submit" class="btn btn-primary col-5 h-25 mt-2 me-1 botonEliminar " (click)="eliminarTag() ">
+            <button type="submit" class="btn btn-primary col-5 h-25 mt-2 me-1 botonEliminar " (click)="eliminarTag() " >
               Eliminar tag
             </button>
           </div>
