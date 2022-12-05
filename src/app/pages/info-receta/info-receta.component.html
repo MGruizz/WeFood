@@ -48,7 +48,7 @@
           <textarea class="form-control" id="comentario" formControlName="comentario" rows="4"
                     placeholder="Que esta pensando?" ></textarea>
           <div class="mt-2 " align="end">
-            <button type="submit" class="btn boton-Comentar" >
+            <button type="submit" class="btn boton-Comentar" [disabled]="!formularioComentariosForm.valid">
               Publicar comentario
             </button>
           </div>
