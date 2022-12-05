@@ -59,6 +59,6 @@
   </form>
 </div>
 <div mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close (click)="cerrarPopUp()">Guardar</button>
+  <button mat-button mat-dialog-close (click)="cerrarPopUp()" [disabled]="!formularioEditarRecetaForm.valid">Guardar</button>
   <button mat-button mat-dialog-close>Cancelar</button>
 </div>

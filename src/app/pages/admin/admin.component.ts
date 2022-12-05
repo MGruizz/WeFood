@@ -119,6 +119,7 @@ export class AdminComponent implements OnInit {
         console.log(res)
       });
     }
+    window.location.reload()
   }
 
   editarTag(): void {
@@ -129,6 +130,7 @@ export class AdminComponent implements OnInit {
         console.log(res)
       });
     }
+    window.location.reload()
   }
 
   eliminarTag(): void {
@@ -139,7 +141,7 @@ export class AdminComponent implements OnInit {
         console.log(res)
       })
     }
-
+    window.location.reload()
   }
 
 
